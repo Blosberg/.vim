@@ -50,6 +50,33 @@ chr1	100	200	2
 chr1	150	250	3
 chr1	160	260	4
 
+= Groupby =
+
+> bedtools intersect -a  arange -b tmpb_input.bed -g ${GenomeFai} -wo > tmp_intsct.bed
+> bedtools intersect -a  arange -b tmpb_input.bed -g ${GenomeFai} -wo | head
+chr1    3041000 3042000 chr1    3041583 3041584 1       1
+chr1    3084000 3085000 chr1    3084110 3084111 1       1
+chr1    3084000 3085000 chr1    3084835 3084836 1       1
+chr1    3085000 3086000 chr1    3085408 3085409 1       1
+chr1    3085000 3086000 chr1    3085417 3085418 1       1
+chr1    3087000 3088000 chr1    3087431 3087432 1       1
+chr1    3088000 3089000 chr1    3088123 3088124 1       1
+chr1    3117000 3118000 chr1    3117520 3117521 1       1
+chr1    3191000 3192000 chr1    3191499 3191500 0       1
+chr1    3264000 3265000 chr1    3264042 3264043 1       1
+
+[13:59]bosberg@folsomprisonblues:test/$bedtools groupby -i tmp_intsct.bed -g 1,2,3  -c 7,8 -o mean,sum | head
+chr1    3041000 3042000 1       1
+chr1    3084000 3085000 1       2
+chr1    3085000 3086000 1       2
+chr1    3087000 3088000 1       1
+chr1    3088000 3089000 1       1
+chr1    3117000 3118000 1       1
+chr1    3191000 3192000 0       1
+chr1    3264000 3265000 0.75    4
+chr1    3288000 3289000 0.5     2
+chr1    3299000 3300000 1       1
+
 = Map =
 # -a =file to be mapped onto
 # -b =data to take
