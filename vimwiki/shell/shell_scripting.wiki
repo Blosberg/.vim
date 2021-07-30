@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # see also [[shell_variables]] --manipulate strings, check length, etc.
 
 = redirects, pipes =
@@ -16,6 +15,11 @@ do
 	command2
 	commandN
 done
+
+or
+
+tmpArr=( val1 val2 val3)
+for f in ${tmpArr[@]}"
 
 == seq examples ==
 for i in {1..5}
@@ -132,3 +136,12 @@ if [ ! -f ${fin} ]
           echo "${fin} exists."
 
    fi
+
+# alternative:
+# if  test -f testB; then echo " Exists "; else echo "does not exist"; fi
+
+= Check if variable is defined =
+if [ -z $SAMPLE ]; then
+    echo "[ERROR] Please provide SAMPLE name."
+    exit
+fi

@@ -1,0 +1,19 @@
+snippet for
+for ${1:loopVar} in ${2:set}:
+    if (   ${3:ContCond}  ) :
+       continue
+    elif ( ${4:breakCond} ) :
+       break
+    else:
+       ${0:pass}
+endsnippet
+
+snippet fori
+for ${1:loopVar} in range(${2:start},${3:stop}):
+    if (   ${4:ContCond}  ) :
+       continue
+    elif ( ${5:breakCond} ) :
+       break
+    else:
+       ${0:pass}
+endsnippet
