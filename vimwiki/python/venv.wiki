@@ -1,23 +1,44 @@
-= Create a virtual environment =
-        
+= requirements files: copying, creating and managing =
+
+# while using existing virtualenv
+(oldenv): pip freeze > requirements.txt
+
+# after creating and logged-in to new virtualenv
+(newenv): pip install -r requirements.txt
+
+# where requirements.txt is the same file created using (oldenv)
+
+= Create new environment =
+
 python3 -m venv [name of venv]
 # good style to create the folder named "venv" within the folder for your project
+
+# log in to it
 source venv/bin/activate
-
-= output package list =
-The packages currently being used in your environment:
-( venv ) pip freeze
-certifi==2019.11.28
-chardet==3.0.4
-...
-# you can pipe this to a requirements.txt file to create a list of
-# dependencies for your current project)
-pip freeze > requirements.txt
-
-= Import list of requirements = 
-pip install -r requirements.txt
 
 = leave the environment =
 ( venv ) $ deactivate
+
+= Clone a venv =
+
+    Download virtualenv-clone:
+
+    wget https://pypi.python.org/packages/source/v/virtualenv-clone/virtualenv-clone-0.2.6.tar.gz
+    tar -zxvf virtualenv-clone-0.2.6.tar.gz
+    cd virtualenv-clone-0.2.6
+
+    Install virtualenv-clone inside any virtualenv environment:
+
+    virtualenv newenv            # create a new environment. You can use any existing one.
+    source newenv/bin/activate   # login to newenv
+    (newenv): python setup.py install  # install virtualenv-clone in newenv
+    # be sure that you are inside the directory "virtualenv-clone-0.2.6"
+
+    virtualenv-clone will be installed inside newenv.
+
+    Now while logged-in as newenv we can create a copy of any existing environment. For example creating the copy of ProjectAenv:
+
+    (newenv): virtualenv-clone ProjectAenv ProjectBenv
+    (newenv): deactivate             # to come out from newenv.
 
 
