@@ -11,6 +11,40 @@ EFGHIJK
 $echo ${var:4:3}
 EFG
 
+= Remove parts of string with matching globs using # % (from start/end) =
+# means match from the beginning (think of a comment line) and % means from the end. One instance means shortest and two instances means longest.
+# 
+
+$string="a_b_c_d_e"
+${MYVAR%pattern}     # delete shortest match of pattern from the end
+$echo ${string%_*}
+a_b_c_d
+
+${MYVAR%%pattern}    # delete longest match of pattern from the end
+$echo ${string%%_*}
+a
+
+${MYVAR#pattern}     # delete shortest match of pattern from the beginning
+$echo ${string#_*}
+a_b_c_d_e
+# ^ doesn't work because needs matching _start. That's why you need * glob
+
+$echo ${string##_*}
+a_b_c_d_e
+$echo ${string##*_}
+e
+
+${MYVAR##pattern}    # delete longest match of pattern from the beginning
+$echo ${string#*_}
+
+You can get substrings based on position using numbers:
+
+${MYVAR:3}   # Remove the first three chars (leaving 4..end)
+${MYVAR::3}  # Return the first three characters
+${MYVAR:3:5} # The next five characters after removing the first 3 (chars 4-9)
+
+
+
 = Get length of string=
 $echo ${#var}
 26
