@@ -1,0 +1,15 @@
+snippet for@
+	for ${1:x} in "${2:Arr}\$@" ; do
+		${0:${VISUAL}}
+	done
+
+snippet sanarg
+	if [ $# -ne ${1:2} ]; then
+	   echo "Please provide input args 1 and 2"
+	   exit
+	else
+	   ${2:Val1}=\$1
+	   ${3:Val2}=\$2  	
+	fi
+
+
