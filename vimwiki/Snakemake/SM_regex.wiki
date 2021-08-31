@@ -1,0 +1,8 @@
+
+"{CTCodeSeq,[A-Za-z0-9_]+}"
+# ^ those characters repeated arbitrarily many times
+
+
+   output:                                                                                                   
+        Gen_CpG_Union  = os.path.join( Dir_CpGUnions, "UnionMF_samples_CpG_{Genome,^\+}_"+CovStr+".bed" )    
+# ^ ensures wc doesn't match a "+" symbol

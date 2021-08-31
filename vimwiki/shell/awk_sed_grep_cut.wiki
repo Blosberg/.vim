@@ -97,6 +97,9 @@ sed 's/\(AM-WGBS-[0-9]\{3\}\).*:All/\1/' readstats.tsv > temp  && mv temp readst
 
 grep -E '^(^chr[0-9]{1,2}\s|chrM\s|^chrX\s|^chrY\s)' chrTestSet.bed
 
+# show which line number
+grep -n "" <file>
+
 = cut =
 
 cut -f[n] -d"[x]"

@@ -142,6 +142,7 @@ if [ ! -f ${fin} ]
 
 = Check if variable is defined =
 if [ -z $SAMPLE ]; then
-    echo "[ERROR] Please provide SAMPLE name."
-    exit
+    echo "[ERROR] Sample NOT defined."
+    else 
+    echo "defined"
 fi

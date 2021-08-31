@@ -1,0 +1,10 @@
+
+find ./  -name *smk
+.//CDconv_BS_pipeline.smk
+
+the * glob will be automatically expanded to a match in current directory
+with 
+
+find .  -name "*smk" 
+
+The quotes will keep the * and search to lower directories
