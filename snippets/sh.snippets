@@ -4,7 +4,7 @@ snippet for@
 	done
 
 snippet sanarg
-	if [ $# -ne ${1:2} ]; then
+	if [ \$# -ne ${1:2} ]; then
 	   echo "Please provide input args 1 and 2"
 	   exit
 	else
@@ -12,4 +12,26 @@ snippet sanarg
 	   ${3:Val2}=\$2  	
 	fi
 
+snippet fileExists
+	if test -e ${\${2:file}}
+	then
+	   echo "\${${file}} exists."
+	   echo "file=\${${file}}  exists "
+	fi
 
+
+snippet loopCLargs
+	for ${1:fin} in "\$@"
+	do
+	echo "--- processing file: \$${1:fin} --- "
+	
+	# ....
+
+	done
+
+snippet vardefined
+	if [ -z \$${1:x} ]; then
+	    echo "[ERROR] \$${1} NOT defined."
+	else 
+	    echo "defined"
+	fi
