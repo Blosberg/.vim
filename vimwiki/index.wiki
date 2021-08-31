@@ -190,6 +190,13 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     * [[Regex/Lookarounds|Lookarounds]]
 
 = Resource_management =
+
+to find whether the installed disk is SSD or normal HDD, just check if the disk is rotational using the following command:
+
+$ cat /sys/block/sda/queue/rotational
+
+If the output is 1, the disk is HDD. If the output is 0 (zero), the disk is SDD. Because, SSDs won't rotate. So the output should be zero if you have SSD in your system.
+
     * [[Resource_management/Mounting|Mounting]] -- Hardware: how to mount/unmount a drive in Unix
         * [[Resource_management/Veracrypt|Veracrypt]]
     * [[Resource_management/fileformats|File_formats]] -- Tradeoffs between file formatting standards (OS-compatibility, Size limits, etc.)
