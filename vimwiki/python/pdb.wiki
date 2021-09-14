@@ -30,8 +30,13 @@ n(ext)                  execute the current statement (step over)
 s(tep)                  execute and step into function
 r(eturn)                continue execution until the current function returns
 c(ontinue)              continue execution until a breakpoint is encountered
-u(p)                    move one level up in the stack trace
-d(own)                  move one level down in the stack trace
+
+== Frame (function/scope/etc.)  ==
+# Think of the current frame as the current function where pdb has stopped execution. In other words, the current frame is where your application is currently paused and is used as the “frame” of reference for pdb commands like p (print).
+Command 	Syntax 	Description
+u 	u(p) [count] 	Move the current frame count (default one) levels up in the stack trace (to an older frame).
+d 	d(own) [count] 	Move the current frame count (default one) levels down in the stack trace (to a newer frame).
+
 
 # Conditional breakpoints
 b [File]:line, condition Set a breakpoint
