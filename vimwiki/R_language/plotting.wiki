@@ -45,27 +45,60 @@ pheatmap(test, annotation = annotation, annotation_colors = anno_colors)
 Also check out complex heat map package:
 https://jokergoo.github.io/ComplexHeatmap-reference/book/introduction.html
 
+= ideogram (along chrosomes, etc.) =
+
+require(RIdeogram)
+library(stringr)
+# using
+# human_karyotype
+# as a template from the following:
+# data(human_karyotype, package="RIdeogram")
+# https://cran.r-project.org/web/packages/RIdeogram/vignettes/RIdeogram.html
+
+Killi_karyo=data.frame( cbind( seq(1,19) , 0 )  )
+colnames( Killi_karyo ) <- c("Chr", "Start")
+sizes=read.table("NFZv2IuN_canon.chrom.sizes",sep="\t")
+Killi_karyo$End=sizes[,2]
+
+CGImap=read.table("cgiMap.bed", sep="\t", header = TRUE )
+CGImap$Chr= as.numeric( str_replace( CGImap$Chr, "chr", ""  ))
+
+#ideogram( karyotype = Killi_karyo, overlaid = gene_density)
+ideogram( karyotype = Killi_karyo,
+          overlaid = CGImap,
+          colorset1 = rgb(0,0,1),
+          output = "Furz_cgiMap_Heat.svg")
+convertSVG("Furz_cgiMap_Heat.svg", device = "png")
+
+ideogram( karyotype = Killi_karyo,
+          label = CGImap,
+          label_type = "marker",
+          colorset1 = rgb(0,0,1),
+          #output = "Furz_cgiMap_symbol.svg"
+          )
+convertSVG( "chromosome.svg", device = "png")
+
 
 = add legend =
 legend( 3.0,
-        0.1, 
+        0.1,
 	legend=c("E14.5-CreCtrl", "E14.5-DKO", "E13.5-CreCtrl", "E13.5-DKO"),
-	col=c("black", "red", "blue","green"), 
-	pch=c(1,5,6,7), 
-	lty=1:2, 
-	cex=1.0, 
+	col=c("black", "red", "blue","green"),
+	pch=c(1,5,6,7),
+	lty=1:2,
+	cex=1.0,
 	lwd=3 )
- 
+
 = Set custom tic marks =
-plot(..., 
-     xaxt="n", 
+plot(...,
+     xaxt="n",
      )
 
 axis(1,                         # Define x-axis manually, y=2
-     at = 1:5,                  # positions 
+     at = 1:5,                  # positions
      labels = row.names( mCfrac_E145 ) ) # labels
 
-      
+
 = multiple plots, mfrow par =
 
 par(mfrow=c(1,2))    # set the plotting area into a 1*2 array
