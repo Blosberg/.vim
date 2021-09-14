@@ -13,10 +13,10 @@ snippet sanarg
 	fi
 
 snippet fileExists
-	if test -e ${\${2:file}}
+	if test -e \$${1:file}
 	then
-	   echo "\${${file}} exists."
-	   echo "file=\${${file}}  exists "
+	   echo "\$${1} exists."
+	   echo "file=\$${1}  exists "
 	fi
 
 
