@@ -1,0 +1,9 @@
+
+= formatting (e.g. line length) =
+    fasta_formatter comes with
+    It is suggested to visit
+
+http://hannonlab.cshl.edu/fastx_toolkit/commandline.html
+
+to get a better layout as well as an overview about connected
+FASTX tools.

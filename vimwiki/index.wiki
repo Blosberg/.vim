@@ -190,6 +190,12 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     * [[Regex/Lookarounds|Lookarounds]]
 
 = Resource_management =
+
+    check drive label numbers with:
+    sudo efibootmgr
+    set boot order with:
+    sudo efibootmgr -o 0,1,2,etc
+
     * [[Resource_management/Mounting|Mounting]] -- Hardware: how to mount/unmount a drive in Unix
         * [[Resource_management/Veracrypt|Veracrypt]]
     * [[Resource_management/fileformats|File_formats]] -- Tradeoffs between file formatting standards (OS-compatibility, Size limits, etc.)
@@ -222,6 +228,7 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     * [[git/fugitive|fugitive]]
 = Bioinformatics =
 
+    * [[BioInfo/fasta|fasta]] -- formatting fasta, line length (to add: indexing)
     * [[BioInfo/gtf|gtf_files]] -- convert gtf files to bed
     * [[BioInfo/bedtools|bedtools]] -- map and manipulate bedfiles onto each other; make windows,
     * [[BioInfo/metilene|metilene]]
