@@ -1,4 +1,20 @@
- =  create an environment =
+= Basic info =
+
+conda info
+# outputs information to screen
+
+
+echo $CONDA_DEFAULT_ENV
+echo $CONDA_PREFIX
+# path prefix and environment name
+
+conda config --show channels
+
+conda config --add channels bioconda
+# add a channel (such as bioconda)
+
+
+=  create an environment =
  # e.g. with conda for Python development, run:
 
 $ conda create --name conda-env python
