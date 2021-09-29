@@ -1,6 +1,6 @@
 Wildcards in regex tend to follow the capitalization-negation convention:
 
-\w == Any set of alphanumeric characters [124gavry6nASDB]
+\w == Any set of alphanumeric characters or underscores [124gavry6nASDB]
 \W == Any NON-alphanumeric characters [ @#$	;']
 
 # (combined) ranges:
