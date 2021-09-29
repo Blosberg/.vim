@@ -89,6 +89,11 @@ legend( 3.0,
 	cex=1.0,
 	lwd=3 )
 
+= label specific points =
+
+# After plotting:
+text ( x= xpos, y=ypos, labels=labels )
+
 = Set custom tic marks =
 plot(...,
      xaxt="n",
