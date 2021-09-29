@@ -4,6 +4,9 @@
 #---to print columns 1,2,3 from filename
  awk '{ print $1, $2, $3 }' filename.txt
 
+# DON'T print columns 6,8; print everything else:
+awk '{$6=$8=""; print $0}' file
+
    == Check number of columns ==
 
 awk -F"\t" '{print NF;exit}'  DZ11.AT.methyCalling.bed

@@ -1,0 +1,12 @@
+
+--debug-dag lists the rules called, their wildcards, and a bunch of other info to make it clear where things are breaking.
+
+--reason is also helpful, but doesn't work for missing inputs.
+
+
+
+from IPython.core.debugger import Tracer
+...
+Tracer()()
+
+//get into a pdb session

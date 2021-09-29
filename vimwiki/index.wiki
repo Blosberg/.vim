@@ -68,6 +68,7 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
          * [[c++/vectors|vectors]] -- cheat sheet for vectors in c++
          * [[c++/classes|classes]] -- define/derive classes, syntax
          * [[c++/switch|switch]] -- switch statement
+         * [[Resource_management/valgrind|valgrind]] -- profile your c++ code
 
     = R =
 
@@ -134,7 +135,12 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
          - [[python/Exceptions|Exceptions]]
 
     = Snakemake =
-         * [[python/Snakemake_inputLists|SM_inputLists]] -- trace over inputs with wildcards that reference some dict.
+
+    --reason
+    --debug-dag
+
+         * [[Snakemake/Snakemake_inputLists|SM_inputLists]] -- trace over inputs with wildcards that reference some dict.
+	 * [[Snakemake/debug|debug]] -- debug-dag, reason, etc Tracer()()
 	 * [[Snakemake/SM_regex|SM_regex]]
     = CSS =
     * - [[css/External|]]
@@ -191,26 +197,18 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
 
 = Resource_management =
 
-    check drive label numbers with:
-    sudo efibootmgr
-    set boot order with:
-    sudo efibootmgr -o 0,1,2,etc
+    == Hardware ==
 
-
-to find whether an installed disk is SSD or normal HDD, just check if the disk is rotational using the following command:
-
-$ cat /sys/block/sda/queue/rotational
-
-If the output is 1, the disk is HDD. If the output is 0 (zero), the disk is SDD. Because, SSDs won't rotate. So the output should be zero if you have SSD in your system.
-
+    * [[hardware/Drives|hard drive info]] Hard drive management
     * [[Resource_management/Mounting|Mounting]] -- Hardware: how to mount/unmount a drive in Unix
         * [[Resource_management/Veracrypt|Veracrypt]]
-    * [[Resource_management/fileformats|File_formats]] -- Tradeoffs between file formatting standards (OS-compatibility, Size limits, etc.)
-    * [[Resource_management/guix|guix]] -- how to manage environments+manifests, etc.
-    * [[Resource_management/valgrind|valgrind]] -- profile your c++ code
-    * [[Resource_management/dmesg|dmesg]] -- Get info about a task submitted on a local machine (without SGE queueing), find out why it died, etc.
     * [[Resource_management/du|du]]    -- disk usage
     * [[Resource_management/Filesharing|Filesharing]]
+    * [[Resource_management/fileformats|File_formats]] -- Tradeoffs between file formatting standards (OS-compatibility, Size limits, etc.)
+
+    * [[Resource_management/guix|guix]] -- how to manage environments+manifests, etc.
+    * [[Resource_management/dmesg|dmesg]] -- Get info about a task submitted on a local machine (without SGE queueing), find out why it died, etc.
+
     = Cluster =
         - [[Resource_management/SGE_submission|SGE_submission]]  -- example script
         - [[Resource_management/check_cluster_status|check_cluster_status]]
