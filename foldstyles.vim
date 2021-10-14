@@ -51,6 +51,8 @@ function! FoldSnakemake() "{{{1
   let thisline = getline(v:lnum)
   if match(thisline, '^rule .*:') >= 0
     return ">1"
+  elseif match(thisline, '^def .*') >= 0
+    return ">1"
   elseif match(thisline, '^# *--- \w\+') >= 0
     return ">1"
   elseif match(thisline, '^## *--- \w\+') >= 0
