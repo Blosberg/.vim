@@ -1,0 +1,16 @@
+[using guide at https://genome.ucsc.edu/training/vids/transcript08.pdf ]
+
+
+To begin, we will navigate to the browser at genome.ucsc.edu. In the upper left hand corner, you can find two 
+links that lead to the Browser database. 
+[0:33] pick mouse mm10 database. 
+Using the pull-down menu at the top of the graphic, we go to the Table Browser (or just type " tt ").  The 
+Table Browser defaults to the genes and gene prediction group, the UCSC genes track, and the 
+primary table of known gene for that track. 
+
+The Table Browser gives us a choice of a number of different output formats. Select "BED (Browser Extensible Display)" output format. 
+The “get output” button gives us a page where we can choose a number of 
+different options.  
+We will take the “Exons” option, give it a name and then and “get BED.” 
+Right click -> save page as...
+

@@ -234,6 +234,7 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
 = Bioinformatics =
 
     * [[BioInfo/fasta|fasta]] -- formatting fasta, line length (to add: indexing)
+    * [[BioInfo/ranges_exons|ranges_exons]] -- download ranges like exons/introns/etc. from ucsc
     * [[BioInfo/gtf|gtf_files]] -- convert gtf files to bed
     * [[BioInfo/bedtools|bedtools]] -- map and manipulate bedfiles onto each other; make windows,
     * [[BioInfo/metilene|metilene]]
