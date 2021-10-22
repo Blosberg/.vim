@@ -1,4 +1,26 @@
 
+Human reference genome assemblies:
+Human
+	hg38	Dec. 2013	Genome Reference Consortium GRCh38	Available
+	hg19	Feb. 2009	Genome Reference Consortium GRCh37	Available
+	hg18	Mar. 2006	NCBI Build 36.1	Available
+	hg17	May 2004	NCBI Build 35	Available
+	hg16	Jul. 2003	NCBI Build 34	Available
+	hg15	Apr. 2003	NCBI Build 33	Archived
+	hg13	Nov. 2002	NCBI Build 31	Archived
+	hg12	Jun. 2002	NCBI Build 30	Archived
+	hg11	Apr. 2002	NCBI Build 29	Archived (data only)
+	hg10	Dec. 2001	NCBI Build 28	Archived (data only)
+	hg8	Aug. 2001	UCSC-assembled	Archived (data only)
+	hg7	Apr. 2001	UCSC-assembled	Archived (data only)
+	hg6	Dec. 2000	UCSC-assembled	Archived (data only)
+	hg5	Oct. 2000	UCSC-assembled	Archived (data only)
+	hg4	Sep. 2000	UCSC-assembled	Archived (data only)
+	hg3	Jul. 2000	UCSC-assembled	Archived (data only)
+	hg2	Jun. 2000	UCSC-assembled	Archived (data only)
+	hg1	May 2000	UCSC-assembled	Archived (data only)
+
+
 = formatting (e.g. line length) =
     fasta_formatter comes with
     It is suggested to visit

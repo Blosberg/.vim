@@ -1,6 +1,5 @@
-chr1	0	10	2	12
-chr1	10	20	3	13
-chr1	20	30	4	15
-chr1	30	40	5	15
-chr2	40	50	6.	16
-chr2	50	60	7.	17
+chr1	10	20	NameA	13	+
+chr1	20	30	NameB	15	-
+chr1	30	40	NameC	15	-
+chr2	40	50	NameD	16	-
+chr2	50	60	NameE	17	+
