@@ -1,4 +1,8 @@
 
+= Convert bed to tsv =
+
+awk '{printf "%s:%d-%d", $1,$2+1,$3}{ for(i=4; i<=NF; i++){ printf "\t%s",$i}; print ""}'  UnionMF_samples_CpG_NFZv2IuNNORv2ps_10-150X_intersectNFZNORv2ps.bed > UnionMF_samples_CpG_NFZv2IuNNORv2ps_10-150X_intersectNFZNORv2ps.tsv
+
 = Summary =
 The BED format consists of one line per feature, each containing 3-12 columns of data, plus optional track definition lines.
 
@@ -11,12 +15,19 @@ The BED format consists of one line per feature, each containing 3-12 columns of
 chr1  213941196  213942363
 chr1  213942363  213943530
 
- == Optional fieldsi ==
+ == Optional fields ==
 Nine additional fields are optional. Note that columns cannot be empty - lower-numbered fields must always be populated if higher-numbered ones are used.
 
     name - Label to be displayed under the feature, if turned on in "Configure this page".
     score - A score between 0 and 1000. See track lines, below, for ways to configure the display style of scored data.
     strand - defined as + (forward) or - (reverse).
+
+    e.g.
+    BED6: A BED file where each feature is described by chrom, start, end, name, score, and strand.
+    For example:
+    chr1 11873 14409 uc001aaa.3 0 +
+
+
     thickStart - coordinate at which to start drawing the feature as a solid rectangle
     thickEnd - coordinate at which to stop drawing the feature as a solid rectangle
     itemRgb - an RGB colour value (e.g. 0,0,255). Only used if there is a track line with the value of itemRgb set to "on" (case-insensitive).
@@ -25,7 +36,7 @@ Nine additional fields are optional. Note that columns cannot be empty - lower-n
     blockStarts - the start coordinate of each sub-element
 
 Bedtools Read The docs:
-[[https://bedtools.readthedocs.io/en/latest/content/bedtools-suite.html|BedTools:ReadTheDocs]]
+[[https://bedtools.readthedocs.io/en/latest/content/general-usage.html|BedTools:ReadTheDocs]]
 
 = Input examples =
 # $cat  a.bed
@@ -130,7 +141,7 @@ chr1    150     250     3       0.25
 chr1    160     260     4       0.3
 
 
-bedfime_a      |      bedfile_b        |    output
+bedfile_a      |      bedfile_b        |    output
 ---------------+------------------------------------------
                |  chr1  101 102  0.1  \
 chr1  100  200 |  chr1  150 151  0.2   > chr1 100 200 0.2
@@ -146,6 +157,7 @@ chr1  160  260 |  chr1  165 166  0.3   > chr1 160 260 0.3
 ---------------+---------------------<
 chrX 100   200 |                      > NA
 ---------------+---------------------/
+
 
 
 = Make windows =
@@ -198,3 +210,11 @@ less tmp | grep -i CG | perl -ane '$F[1]=~s/g/G/g; $F[1]=~s/c/C/g; my $c = () = 
 bedtools intersect -wa -u -a a.bed -b b.bed
 #                       ^ once
 #                   ^ exact a
+
+= namecheck =
+
+fix this warning:
+***** WARNING: File left.bed has inconsistent naming convention for record:
+chr1 3216958 3216960 JUNC00000001 1 -
+with
+-nonamecheck

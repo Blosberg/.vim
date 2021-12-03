@@ -17,6 +17,16 @@ Short way: prefix, then dollar sign:
 
 Ctrl + B, $
 
+
+== tmux resurrect, restore and save sessions:  ==
+
+see: https://github.com/tmux-plugins/tmux-resurrect
+# note set -g @plugin 'tmux-plugins/tmux-resurrect'
+  # in .tmux.conf
+    prefix + Ctrl-s - save
+    prefix + Ctrl-r - restore
+
+
 = Change directory  =
 # Detach from a session and then reattach to it with the "c" option specifying new starting directory:
 

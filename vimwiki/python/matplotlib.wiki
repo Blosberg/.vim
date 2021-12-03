@@ -1,7 +1,10 @@
 # Check for templates at: https://matplotlib.org/devdocs/gallery/
 
-= setup fig, ax =
 import matplotlib.pyplot as plt
+%matplotlib inline
+%matplotlib notebook
+# ^ necessary for notebook plotting
+= setup fig, ax =
 # pyplot is a collection of
 # functions that make matplotlib work like matlab
 

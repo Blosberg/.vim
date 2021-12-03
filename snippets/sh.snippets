@@ -3,6 +3,12 @@ snippet for@
 		${0:${VISUAL}}
 	done
 
+snippet awkColSum
+	awk '{s+=\$${1:col}}END{print s}' ${2:fin}
+
+snippet awkColAvg
+	awk '{s+=\$${1:col}}END{print s/NR}' ${2:fin}
+
 snippet sanarg
 	if [ \$# -ne ${1:2} ]; then
 	   echo "Please provide input args 1 and 2"

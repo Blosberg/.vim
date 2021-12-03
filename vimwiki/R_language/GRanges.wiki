@@ -1,3 +1,5 @@
+https://bioconductor.org/packages/release/bioc/vignettes/GenomicRanges/inst/doc/GenomicRangesIntroduction.html
+
 = read/write from bed =
 
 BiocManager::install("plyranges")
@@ -13,6 +15,38 @@ df_out$strand=NULL
 
 # rtracklayer::export.bed( CT_profile, con=CT_ProFile_out )
 readr::write_tsv( df_out, na="NA", path=CT_ProFile_out )
+
+https://rdrr.io/bioc/rtracklayer/man/export.html
+rtracklayer::import(con, format, text, ...)
+
+
+
+read_bed_to_GR   <- function ( FilePath=stop("must be provided"),
+                               HeaderBool=TRUE
+)
+{
+  tmp_table = read.table( FilePath, header = HeaderBool )
+  if( HeaderBool){
+    if( ! all( colnames( tmp_table )[1:3] == c("chr", "start", "end") ) ){
+      stop("ERROR:header supplied, but is not valid.")
+    }
+  }
+  else {
+    colnames( tmp_table )[1:3]=c("chr", "start", "end")
+    if( dim( tmp_table)[2] >= 6 ){
+      # is there a 6th col?
+      if( all( tmp_table[,6] %in% c("+","-","*") ) ){
+        # all entries in 6th col are valid strand indicators, make this the "strand"
+        colnames( tmp_table )[6] = "strand"
+      }
+    }
+  }
+
+  result = as( tmp_table, "GRanges")
+  start( result ) = start( result ) + 1
+
+  return (result)
+}
 
 = Order =
 
@@ -43,8 +77,8 @@ getOverlapPairs(a,b) --> GRobjects themselves.
 # subtract ranges but don't reduce them
 GRanges_subtract <- function( gr1, gr2 )
 {
-  # Subtract GRange object gr2 from gr1, but unlike setdiff, preserve individual
-  # ranges in gr1
+  # Subtract GRange object gr2 from gr1, but unlike setdiff
+  # preserve individual  ranges in gr1
   df_1 = data.frame( seqnames=seqnames(gr1), start=start(gr1)-1, end=end(gr1), strand=strand(gr1), mcols( gr1 ) )
   df_2 = data.frame( seqnames=seqnames(gr2), start=start(gr2)-1, end=end(gr2), strand=strand(gr2), mcols( gr2 ) )
   #                                                          ^ -1 --> convert to base-0 start for bedtools
