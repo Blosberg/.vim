@@ -76,8 +76,9 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
          * install specific versions with:
                install.packages("devtools")
                devtools::install_github("PhanstielLab/bedtoolsr@v2.29.0-3")
+	 * [[R_language/CommandLineArgs|Command_line_args]] -- command line arguments for Rscripts
          * [[R_language/Env_files|Env_files]] save and load image files of RData for the working space.
-	 * [[R_language/IOreadWrite|IO_Read/write]] -- read/write files, csvs etc.
+	 * [[R_language/IOreadWrite|IO_Read/write]] -- read/write files, csvs etc. create directories, paths
          * [[R_language/logicals|logicals]] ifelse, any, all
          * [[R_language/eval|eval]]       -- evaluate strings as expressions
          * [[R_language/sorting|sorting]] -- sort, rank, order, etc.
@@ -125,7 +126,7 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
          - [[python/strings|strings]]
          - [[python/dictionaries|dictionaries]]
          - [[python/Generators|Generators]]
-         - [[python/Lists|Lists]] -- basic syntax and implementation
+         - [[python/Lists|Lists]] -- basic syntax and implementation; list comprehensions
          - [[python/Sets|Sets]] --intersection, difference, union, overlap
          - [[python/batch_operations|batch_operations]] --map,filter,reduce; operations
 
@@ -185,7 +186,8 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
 
 = OSX =
     * [[OSX/shortcut_keys|shortcut_keys]]
-    * [[OSX/booting|booting]]
+    * [[OSX/booting|booting_OSX]]
+    * [[ubuntu/boot|booting_ubuntu]]
 
 = Regex =
         -- regular expressions --

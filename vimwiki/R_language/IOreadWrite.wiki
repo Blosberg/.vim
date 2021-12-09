@@ -1,4 +1,46 @@
 
+more info: 
+http://theautomatic.net/2018/07/11/manipulate-files-r/
+
+# get current working directory
+getwd()
+ 
+# set working directory
+setwd("C:/Users")
+
+# create a new folder, or directory, can be created in R using the dir.create function, like this:
+dir.create("new_folder")
+file.create("new_word_file.docx")
+file.create("new_csv_file.csv")
+
+
+
+# delete a file
+unlink("some_file.csv")
+ 
+# delete another file
+file.remove("some_other_file.csv")
+ 
+# delete a directory -- must add recursive = TRUE
+unlink("some_directory", recursive = TRUE)
+
+	
+# list all files in current directory
+list.files()
+ 
+# list all files in another directory
+list.files("C:/path/to/somewhere/else")
+
+
+# If you want to get just the created time stamp of a file, call file.ctime:
+file.ctime("C:/path/to/file/some_file.txt")
+
+# Getting the last modified time stamp is similar to above, except we use file.mtime:
+	
+file.mtime("C:/path/to/file/some_file.txt")
+
+
+
 = tsv =
 from tsv file:
 df <- read.csv( file, sep = "\t", )  # first line is header by default, otherwise set header=FALSE
@@ -9,3 +51,7 @@ write.table(x, file = "", append = FALSE, quote = TRUE, sep = " ",
             eol = "\n", na = "NA", dec = ".", row.names = TRUE,
             col.names = TRUE, qmethod = c("escape", "double"),
             fileEncoding = "")
+	    
+	    
+# read in all the CSV files
+all_data_frames <- lapply(list.files(pattern = ".csv"), read.csv)

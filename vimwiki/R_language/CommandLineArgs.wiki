@@ -1,0 +1,31 @@
+
+args <- commandArgs(TRUE)
+
+## Default setting when no arguments passed
+if(length(args) < 1) {
+  args <- c("--help")
+}
+
+## Help section
+if("--help" %in% args) {
+  cat("
+
+      Arguments:
+      Arg1       -- 
+      Arg2       --
+
+      Example:
+      Rscript Rmain... --AllsampU_CT=AU.bed --CT_ProFile_out='Aoutput.bed' --LogFile=log \n\n")
+
+  q(save="no")
+}
+
+## Parse arguments (we expect the form --arg=value)
+parseArgs <- function(x) strsplit(sub("^--", "", x), "=")
+argsDF    <- as.data.frame(do.call("rbind", parseArgs(args)))
+argsL     <- as.list(as.character(argsDF$V2))
+names(argsL) <- argsDF$V1
+
+# --- Define vars -----------------------------------------------------------
+Arg1   = argsL$Arg1
+

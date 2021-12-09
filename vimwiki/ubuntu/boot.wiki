@@ -1,0 +1,5 @@
+
+# https://askubuntu.com/questions/599208/how-to-list-grubs-menuentries-in-command-line
+
+awk -F\' '/menuentry / {print $2}' /boot/grub/grub.cfg 
+

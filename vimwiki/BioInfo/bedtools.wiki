@@ -213,8 +213,9 @@ bedtools intersect -wa -u -a a.bed -b b.bed
 
 = namecheck =
 
-fix this warning:
+# fix this warning:
 ***** WARNING: File left.bed has inconsistent naming convention for record:
 chr1 3216958 3216960 JUNC00000001 1 -
-with
+# with this option:
+
 -nonamecheck
