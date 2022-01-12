@@ -1,0 +1,16 @@
+snippet rule
+        rule ${1:rulename}:
+            input:
+               ${2:inName}  = ${3:InPath}
+            output:
+               ${4:outName} = ${5:outPath}
+            params:
+               ${6:paramName} = ${7:ParamVal}
+            log:
+               ${8:logFile}   = ${9:logPath}
+            message:
+               ${10:message}  = ${11:messageContent}
+            shell:
+               ${12:shellExec}
+
+snippet anotherSnip

@@ -8,6 +8,14 @@ getwd()
 # set working directory
 setwd("C:/Users")
 
+
+# check if a file exists
+file.exists("C:/path/to/file/some_file.txt")
+# check if a folder exists
+file.exists("C:/path/to/file/some_folder")
+# alternatively, check if a folder exists with dir.exists
+dir.exists("C:/path/to/file/some_folder")
+
 # create a new folder, or directory, can be created in R using the dir.create function, like this:
 dir.create("new_folder")
 file.create("new_word_file.docx")

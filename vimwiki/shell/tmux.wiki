@@ -43,6 +43,12 @@ f  find window
 
 == Move windows  ==
 
+# move current window to earliest free spot
+:movew
+# renumber all the windows at once.
+movew -r
+
+# or move to particular index
 swap-window
 
 "Prefix :" (that is Ctrl+B, : by default) brings you to the tmux-command prompt. There you enter:
