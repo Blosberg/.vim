@@ -18,6 +18,7 @@ done
 
 or
 
+= Arrays =
 tmpArr=( val1 val2 val3)
 for f in ${tmpArr[@]}"
 

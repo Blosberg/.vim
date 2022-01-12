@@ -1,5 +1,40 @@
 https://bioconductor.org/packages/release/bioc/vignettes/GenomicRanges/inst/doc/GenomicRangesIntroduction.html
 
+
+seqdat_temp = read.csv(seqlengths_path, sep="\t", header=FALSE)
+Sinfo <- Seqinfo(seqnames   = as.character(seqdat_temp[,1]),
+                 seqlengths = seqdat_temp[,2],
+                 genome     = assembly)
+
+seqlevels( gtf_raw_Grz )
+ChromSizesPath="/Users/bosberg/Desktop/Science/2020_postdoc_MPIMG/data/Killifish/reference/NFZv2IuN.chrom.sizes"
+seqdat_temp = read.csv( ChromSizesPath,
+                        sep="\t",
+                        header=FALSE)
+Sinfo <- Seqinfo(seqnames   = as.character(seqdat_temp[,1]),
+                 seqlengths = seqdat_temp[,2],
+                 genome     = "NFZv2IuN")
+
+gtf_raw_Grz   <- import.gff( gtf_path_Grz )
+seqlevels( gtf_raw_Grz ) <- seqlevels(Sinfo)
+# ensure the full set of seqnames
+# from the ref-genome are included
+# (even if this data set is low-
+# coverage and missing chrom's)
+
+
+
+G1            <- as(m1 , "GRanges")            # convert it to a GRanges object
+
+seqlevels(G1) <- seqlevels(Sinfo)              # ensure the full set of seqnames 
+                                               # from the ref-genome are included
+                                               # (even if this data set is low-
+                                               # coverage and missing chrom's)
+
+
+
+
+
 = read/write from bed =
 
 BiocManager::install("plyranges")

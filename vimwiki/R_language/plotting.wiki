@@ -17,6 +17,20 @@ plot( x, y,
 
 # add points on top:
 points(mCfrac_E145[,"DKO"],  pch=5, lwd=3, col="red" )
+
+= bar plot =
+
+lengths = c(3200000000, 140000000 , 100000000,  12000000)
+names(lengths) = c("human", 'fly', 'worm',  'yeast' )
+
+barplot( lengths,                                       # Horizontal barchart
+#         space=c(0,0,0),
+         width=c(0.1,0.1,0.1, 0.1),
+         horiz = TRUE,
+         xlab  = "bp",
+         las=1,
+         main  = "Genome Length")
+
 = heat map =
 
 #=======================

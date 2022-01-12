@@ -17,6 +17,10 @@ awk 'OFS="\t" { ...
 # DON'T print columns 6,8; print everything else:
 awk '{$6=$8=""; print $0}' file
 
+
+# rounding:
+awk ' {printf "%s\t%d\t%d\t%d\t%.f\n", $1,$2,$3,$5,$5*$4}'
+
    == Check number of columns ==
 
 awk -F"\t" '{print NF;exit}'  DZ11.AT.methyCalling.bed
