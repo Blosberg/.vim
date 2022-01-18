@@ -10,7 +10,12 @@ type(var)
 df = pd.read_csv( "WindowMapOutput_w200_s50_table_noNA.tsv" , sep="\t")
 
 # write
-df.to_csv(file_name, sep='\t')
+df.to_csv( file_name,
+sep='\t'
+header=None,
+index=False
+)
+# by default both index and header are added
 
 = Series =
 
