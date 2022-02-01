@@ -14,6 +14,16 @@ is the same as this:
 fig = plt.figure()
 ax = fig.add_subplot(111)
 
+
+# To obtain side-by-side subplots, pass parameters 1, 2 for one row and two columns.
+
+fig, (ax1, ax2) = plt.subplots(1, 2)
+fig.suptitle('Horizontally stacked subplots')
+ax1.plot(x, y)
+ax2.plot(x, -y)
+
+
+
 # Set the current plot axis:
 plt.axes(axs[0])
 
@@ -172,6 +182,13 @@ ax_persist_p05_pos.set_title("DKO-CreCtrl pos sigdiff; p=0.05, D=0.15\n persiste
 
    ax.set_title('lalala')
    plt.show()
+
+= Hex plot =
+g = sns.jointplot(x=MethLinFunc.iloc[ 0:(Npoints-1),1],
+              y= MethLinFunc.iloc[ 1: Npoints, 1],
+              kind="hex",
+              color="#4CB391")
+
 
 = 3d plot  =
 
