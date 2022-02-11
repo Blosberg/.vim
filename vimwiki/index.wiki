@@ -100,6 +100,7 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     Ternary op:
       Y = trueValue if cond else falseValue
       Z = (falseValue,trueValue)[cond]
+    [[python/recursion|recursion_ex]] -- a few exercises in recursion
 
          == tutorials ==
          - https://docs.python.org/
