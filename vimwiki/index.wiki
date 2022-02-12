@@ -158,6 +158,9 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
 
     * [[ML/data_sets|data_sets]]
 
+   == Naive Bayes Classifier ==
+    * [[python/Naive_Bayes|NaiveBayes]] 
+
    == Regression, classification ==
     * [[python/OLS_regression|OLS_regression]]
 
