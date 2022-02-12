@@ -1,0 +1,16 @@
+
+
+# zip up two arrays to create pairs of tuples:
+	# 
+	 A=[0,1,2,3,4]
+>>> pairs=zip( A, A[1:])
+# n.b. unmatched elements just get omitted
+>>> for i,j in pairs:
+...    print( str(i) + "--->" + str(j) )
+... 
+0--->1
+1--->2
+2--->3
+3--->4
+
+

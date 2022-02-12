@@ -100,7 +100,6 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     Ternary op:
       Y = trueValue if cond else falseValue
       Z = (falseValue,trueValue)[cond]
-    [[python/recursion|recursion_ex]] -- a few exercises in recursion
 
          == tutorials ==
          - https://docs.python.org/
@@ -134,6 +133,7 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
          - [[python/Generators|Generators]]
          - [[python/Lists|Lists]] -- basic syntax and implementation; list comprehensions
          - [[python/Sets|Sets]] --intersection, difference, union, overlap
+	 - [[python/zip|zip]]
          - [[python/batch_operations|batch_operations]] --map,filter,reduce; operations
 
          == Debugging: pdb, Exceptions, testing ==
