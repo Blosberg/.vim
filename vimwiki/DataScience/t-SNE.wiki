@@ -1,0 +1,5 @@
+
+# Pen/paper notes on t-SNE method:
+	 
+{{file:images/t-SNE_1.png|tSNE_notes_p1}}
+{{file:images/t-SNE_2.png|tSNE_notes_p2}}
