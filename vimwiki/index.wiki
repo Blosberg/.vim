@@ -225,6 +225,7 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
 
     * [[Resource_management/guix|guix]] -- how to manage environments+manifests, etc.
     * [[Resource_management/dmesg|dmesg]] -- Get info about a task submitted on a local machine (without SGE queueing), find out why it died, etc.
+    * [[Resource_management/Audio|audio]] -- Audio sound card settings microphone issue distortion sound.
 
     = Cluster =
         - [[Resource_management/SGE_submission|SGE_submission]]  -- example script

@@ -1,0 +1,8 @@
+
+# Distortion on mic sound input:
+
+sudo apt-get install qasmixer
+View -> Show Device Selection -> hw: Card
+# then run qasmixer and turn down "Internal Mic Boost"
+
+# 
