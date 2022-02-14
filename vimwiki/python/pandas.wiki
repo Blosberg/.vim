@@ -229,6 +229,19 @@ NOT : ~
 df[(df.First <3.5) & (df.Fourth > 4 )]
 # also: df.colname.str.contains("substring")-->bool
 
+= regression on columns =
+
+model = LinearRegression()
+
+x = df.colName.values
+y = ( df[ "col1"]-df["col2"]).values
+
+x = x.reshape( x.shape[0], 1)
+y = y.reshape( y.shape[0], 1)
+
+model.fit( x, y)
+
+
 = Sort =
 # sort by multiple hierarchical criteria:
 df.sort_values( by=["most-important col",
