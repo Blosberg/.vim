@@ -1,4 +1,8 @@
 
+= import csv file =
+
+np.genfromtxt(datafile, skip_header=1).
+
 = random sampling =
 numpy.random.choice(a, size=None, replace=True, p=None)
 https://docs.scipy.org/doc/numpy-1.14.0/reference/routines.random.html
@@ -27,6 +31,26 @@ array([[0., 0., 0., 0.],
 
 # init with random values
 numpy.random.random((nMatrices, nRows, nCols))
+
+ == Dot product ==
+# use the "@" character for dot products:
+# The @ operator does the same job as the function called np.dot(x, c).
+
+x = np.array([66, 5, 15, 2, 500])
+c = np.array([3000, 200 , -50, 5000, 100])
+
+x @ c
+
+# also works with 2-D arrays dot-producting 1-D:
+	#
+x = np.array([[66, 5, 15, 2, 500],
+...               [21, 3, 50, 1, 100]])
+>>> c = np.array([3000, 200 , -50, 5000, 100])
+>>>
+>>> x@c
+array([258250,  76100])
+
+
 
  == linalg: transpose, reshape, invert, matrix mult ==
 np.matmul

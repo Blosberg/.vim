@@ -8,6 +8,7 @@ type(var)
 
 # read
 df = pd.read_csv( "WindowMapOutput_w200_s50_table_noNA.tsv" , sep="\t")
+# numpy version of this is  np.genfromtxt(datafile, skip_header=1).
 
 # write
 df.to_csv( file_name,

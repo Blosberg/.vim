@@ -1,3 +1,10 @@
+# online notes:
+
+https://towardsdatascience.com/naive-bayes-classifier-how-to-successfully-use-it-in-python-ecf76a995069
+# also:
+https://buildingai.elementsofai.com/Dealing-with-Uncertainty/naive-bayes-classifier
+
+ 
 # Example using (loaded?) dice:
 
 import numpy as np
