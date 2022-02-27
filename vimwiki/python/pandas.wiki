@@ -78,7 +78,7 @@ d    4.0     7.0
 e    NaN     8.0
 # Note the missing fields in b, and e
 
-   = index of the df =
+   = set the index (row names), colnames of the df, rename them =
 
 # change the first column define the index of the df (previous index is lost)
 df.set_index("First", inplace=True)
@@ -89,12 +89,23 @@ df.reset_index()
 # sort it by that criteria
 df.sort_index()
 
-   = Access rows (+boolean select)=
+countries = pd.DataFrame({
+'country': ['United States', 'The Netherlands', 'Spain', 'Mexico', 'Australia'],
+'capital': ['Washington D.C.', 'Amsterdam', 'Madrid', 'Mexico City', 'Canberra'],
+'continent': ['North America', 'Europe', 'Europe', 'North America', 'Australia'],
+'language': ['English', 'Dutch', 'Spanish', 'Spanish', 'English']})
 
-df.loc["b"]  # gets rows (or columns) from labels.
-df.iloc[2]   # gets rows (or columns) at positions (only takes integers).
-df.ix[2,3]        # First tries to be like loc, but if it fails,
-            # it then falls back to iloc
+# get col names:
+list(df)
+countries.columns = [...]
+countries.rename({'capital': 'capital_city', 'language': 'most_spoken_language'}, axis='columns', inplace=True)
+
+   = Access (select)  rows and columns (+boolean select); index for largest/smallest, slicing=
+
+df.loc["b":"d"]  # select columns b through.
+df.iloc[2, 4]    # gets rows (or columns) at positions (only takes integers).
+df.ix[2,3]       # First tries to be like loc, but if it fails,
+                 # it then falls back to iloc
 
 df.iloc[[0,4,5],[1]]
 df.ix[0:2,0:5]
@@ -104,18 +115,33 @@ df.ix[0:2,0:5]
 # automatically switch to integer indexing and will not include the last
 # value (i.e. 0:2 = [0,1])
 
-   = Access columns =
-# get col names:
-list(df)
 
+# the location of largets/smallest value by index
+# using idxmin() and idxmax() functions:
+x=pd.Series([1,3,5,2,76,43])
+x.idxmin()
+x.idxmax()
+
+# select based on whether language is one thing _or_ another:
+countries[ countries.language.isin(['Dutch', 'English'])]
 
 df["First"] or df.First
 # Latter only works if the col name has no spaces.
+
+# Select the rows of a df based on where the value of "col_3" are the nsmallest largest
+df.nsmallest(3,"col_3")
+test.nlargest(2,"col_2")
+
+
 
 # Access multiple cols by creating a list [ , ]
 # within the dereferencing braces -hence, double braces
 `df[["First","Second"]]`
 df.index    # to get list a-f
+
+   = create a "dummy" 1/0 array of columns ones and zeros for each variable now combined =
+
+   pd.get_dummies( countries, drop_first=True)
 
    = clean out NaNs =
 
@@ -221,6 +247,12 @@ gb.mean()/min()/max() #
 # here, while groupby is grouped by ColName, you can operated on ColName2,3
 # using functions specified in the corresponding dict.
 
+ == concatenate  ==
+
+ df = pd.DataFrame({'col_1': [1, 0], 'col_2': [0, 1], 'col_3': [1, 0]})
+ df_1 = pd.DataFrame({'col_1': [6, 7, 8], 'col_2': [1, 2, 3], 'col_3': [5, 6, 7]})
+
+pd.concat([df, df_1]).reset_index(drop=True)
 
 = Boolean indexing =
 AND : &
