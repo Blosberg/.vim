@@ -1,0 +1,76 @@
+
+RNA-Seq analysis
+Preparations
+Go to https://usegalaxy.eu and make an account.
+Go to https://usegalaxy.eu/join-training/molmed and log into your account.
+Open https://usegalaxy.eu/u/eddagschulz/h/rna-seq-data . This Galaxy history contains the FASTQ files of the RNA-Seq experiment in XX and XO mESCs (3 replicates each) and a file with gene annotation in the mouse genome (gtf). The gtf file contains information on all the genes in the genome, including the genomic coordinates of each exon. This information will later be used to count the reads that map to each gene.
+Click on “Import History” in the upper right corner. In this way you create a new history where you will perform the analysis of the RNA-Seq data set.
+Mapping
+Find RNA STAR, an alignment tool for RNA-Seq data
+As input select paired end (collection), which means that each fragment in the library is sequenced from both ends
+As input select your paired FASTQ collection
+Under “Custom or build-in reference genome” select “Use a built-in index”. This means that you will use one of the genome sequences that are already uploaded to Galaxy.
+Select  “use genome reference without builtin gene model” and select Mouse mm10 full.
+As gene model file select the gtf file that you imported.
+Under “Per gene/transcript output” select “Per gene read counts (GeneCounts)”. This means that after alignment, STAR will count the number of reads that fall into each gene)
+Execute (can take up to one hour)
+You can visualize the alignment (BAM file) in a genome browser (optional).
+IGV (local): For this step you need to install the IGV genome browser on your computer. Open a terminal and type IGV to start the browser. Then navigate to one of the BAM files in Galaxy and click on “IGV local”
+Search for some of the genes that you learned about in your lecture, which should be expressed in embryonic stem cells. Where do the reads align, what is their pattern? Save a few screen shots (...)
+Now look at the gene quantification "reads per gene". The first 4 lines give the number reads that were not used for the expression quantification because they did not map at all to the genome (unmapped), because they mapped to multiple locations (multimapping), because they didn't map to an annotated gene (noFeature) or because they mapped to multiple genes (ambiguous). Starting from row 5 you have one line per gene with the gene ID in the first column and number of reads for different types of library preparations in column 2-4 (2:unstranded, 3:Read1 maps to reverse strand, 4: Read1 maps to forward strand). We have to use column 4. Download the “reads per gene” data.
+Gene expression analysis in R
+1. Read the gene quantification into R
+Import the results from the mapping / gene quantification into R. You can read in the data using `read.table` and look at the data using head(). We will use the fourth column for quantification. Combine all samples into one data frame with 7 columns in total (gene names and counts for 6 samples). Select the column names in a way that you can put the cell line and replicate information in separate columns later.
+2. Extract mapping statistics
+The first 4 rows contain reads that were not used for gene quantification. Extract those to a new data frame (mapping statistics) and remove them from the gene quantification. Now calculate the sum of the correctly mapped reads, using colSums and add them to the mapping statistics. You might have to change the class of the annotation column.
+3. Analyze mapping statistics
+First convert the mapping statistics to the long format (=one read count per row) and make sure all columns have the correct class. Plot the read numbers as a stacked bar graph, with different colors for the different read classes. How many reads are used for the gene quantification? Next calculate the percentage of reads in each class. For this create a new data frame with the total counts for each sample. Add the total reads as a new column to the mapping statistics and calculate the fraction of counts in each class. Plot the results as a stacked bar graph. How do you interpret the results?
+4. Simplify gene IDs
+When looking at the gene IDs you’ll see that they look like ENSMUSG00000102693.1, they are ENSEMBl Mus Musculus Gene IDs. Remove the dot (.) and the numbers after the dot. This step is required because we will later retrieve additional information about the genes from a database that uses the Gene IDs without the last part.
+Hint: When using separate without specifying the separator, it will take the dot by default.
+5. Remove lowly expressed genes
+Convert the gene expression data frame to the long format. Transform expression to log scale (add a pseudocount of 1 to the counts to avoid log(0)). Plot the distribution as a histogram. Do you see two populations of genes? Select a threshold and filter out the genes in the lowly expressed group. How many genes remain? Use the remaining genes for all subsequent analyses.
+6. Normalize expression values
+To be able to compare expression between the different samples we have to normalize for different sequencing depth between the libraries. For this we will use CPM = counts per million. Sum up all counts for each sample, then divide the counts for each gene by the sum and multiply by 1 Mio.
+
+7a. Optional: Annotate genes with gene name and chromosome
+To find the gene names that correspond to the gene IDs we will use the Biomart database. First install and load the biomaRt package. Then create a mart object for the mouse database with the following command  
+mart = useMart(host = "ensembl.org", biomart = "ENSEMBL_MART_ENSEMBL", dataset = "mmusculus_gene_ensembl")
+You can download the annotation for the created list of geneIDs with the command   
+getBM(attributes=..., filters = 'ensembl_gene_id', values = [list of gene IDs], mart = mart)
+You can have a look at the available attributes with listAttributes(mart). Extract the following attributes: mgi_symbol (=gene name), chromosome_name, ensembl_gene_id. The download might take a few minutes. Rename the columns and add the annotation to the data frame with the gene counts using left_join.
+7b. Import gene annotation
+Download the file “gene_annotation.txt” from the following link:
+https://keeper.mpdl.mpg.de/f/7cfa60f2e0414f638962/?dl=1	
+Import the gene annotation file and add the annotation to the data frame with the gene counts.
+8. Analyze expression of Nanog and some other genes you have learned about during the course
+Make a dot plot (geom_point) of the CPM values comparing expression levels in XX and XO. Additionally, use stat_summary with fun = "mean" and geom = "crossbar" to plot the means of the replicates. Then calculate the average fold change between XX and XO cells for each gene.
+9. Analyze expression from each chromosome
+First average the CPM values across replicates and transform them to log2. Add a pseudo-count of 1 to the cpm values to avoid log(0). Then use a boxplot or a violin plot to show expression from each chromosome in XX and XO cells. What do you see?
+10. Find differentially expressed genes
+Calculate the log2 fold change between the mean expression in  XX and XO cells for all genes and look at the fold change distribution with a histogram. Which genes have the biggest fold change? How many genes are >2 fold higher or lower in XX compared to XO cells.
+11. Generate MA plot
+Calculate the mean expression (log2(CPM)) for each gene across all samples and generate a scatter plot with the mean expression on the x-axis and the log2 fold change on the y-axis. What do you see? Can you show the genes on the X-chromosome in a different color?
+12. Optional: Differential expression analysis
+Perform a statistical analysis to identify differentially expressed genes between the two cell lines using the DEseq2 package. Example code is given below. How many differentially expressed genes do you find? How many of them show a more than 2-fold difference between the cell lines? Make an MA plot with coloring differentially expressed genes. Can you make a vulcano plot (log2FC on the x-axis, -log10(p-value) on the y-axis)?
+# Install and load the DEseq2 package.
+# Generate count matrix as input for the DEseq analysis and add the gene IDs as rownames. Use the raw (not normalized) counts!
+counts = data[,2:7]
+rownames(counts) = data$geneID
+# Generate a data frame with sample meta data (in our case cell line), the rownames should be the sample IDs
+coldata = data.frame(line = c("XO","XO","XO","XX","XX","XX"))
+rownames(coldata) <- colnames(counts)
+# Generate the dds object  
+dds <- DESeqDataSetFromMatrix(countData = counts,
+                                	colData = coldata,
+                                	design = ~ line)
+# Run the differential expression analysis
+dds = DESeq(dds)
+# Summarize results
+summary(results(dds))
+# Write results in a data frame
+res = results(dds, tidy=TRUE)
+
+
+
+

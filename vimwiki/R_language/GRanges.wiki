@@ -26,7 +26,7 @@ seqlevels( gtf_raw_Grz ) <- seqlevels(Sinfo)
 
 G1            <- as(m1 , "GRanges")            # convert it to a GRanges object
 
-seqlevels(G1) <- seqlevels(Sinfo)              # ensure the full set of seqnames 
+seqlevels(G1) <- seqlevels(Sinfo)              # ensure the full set of seqnames
                                                # from the ref-genome are included
                                                # (even if this data set is low-
                                                # coverage and missing chrom's)
@@ -132,5 +132,40 @@ GRanges_subtract <- function( gr1, gr2 )
     return ( GRanges( result ) )
   }
 
+}
+= Map mcol data onto ranges =
+
+# Do what "map" for bed tools does, but for GRanges
+# Absolutely not optimized; come back to this later
+
+Map_to_ranges <- function( Ranges_in, observable_in )
+{
+  # Input = 2 sets of GRanges
+  # map all mcols from observable to Ranges_in
+  if ( dim( mcols( observable_in ) )[2] == 0  ){
+    stop("Sanity Fail: no mcols to average over in observable")
+  }
+
+  Olaps = findOverlaps( Ranges_in, observable_in )
+  # GRL_tmp = split( observable_in[ subjectHits( Olaps ) ], queryHits ( Olaps )  )
+  # ^ a more elegant solution is probably possible with lapply, but I
+  # can't get the table formatted properly.
+
+  Npeaks = length( Ranges_in )
+  Nsamples = dim( mcols( observable_in ) )[2]
+
+  MapResult_out=data.frame(matrix(0, Npeaks, Nsamples ) )
+  colnames( MapResult_out ) <- colnames( mcols( observable_in ) )
+
+  for ( i in c(1:Npeaks)){
+    olaps_this_peak   = subjectHits( Olaps[ queryHits( Olaps ) == i  ] )
+    if( length( olaps_this_peak ) == 0 ){
+      MapResult_out[i,] = NA
+    } else{
+      MapResult_out[i,] = colMeans( data.frame( mcols( observable_in[ subjectHits( Olaps[ queryHits( Olaps ) == i  ] ) ] ) ) , na.rm = TRUE )
+    }
+  }
+
+  return ( MapResult_out )
 }
 

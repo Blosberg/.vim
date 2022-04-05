@@ -88,6 +88,8 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
          * [[R_language/prcomp|prcomp]]   -- the usual principle-components script (pca/PCA)
          * [[R_language/plotting|plotting]] -- smoothScatter, regular plot, histograms, transparent,  options, ideogram
          * [[R_language/split|split]] -- split arrays into lists of arrays
+	 * [[R_language/tidyverse|tidyverse]] --ggplot, %>% commands, notes from MolMed course
+
          == Bioconductor  ==
              if (!require("BiocManager", quietly = TRUE))
                  install.packages("BiocManager")
@@ -100,6 +102,7 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     Ternary op:
       Y = trueValue if cond else falseValue
       Z = (falseValue,trueValue)[cond]
+    [[python/recursion|recursion_ex]] -- a few exercises in recursion
 
          == tutorials ==
          - https://docs.python.org/
@@ -117,7 +120,7 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
          - [[python/import_exec|import_exec]]: sourcing, importing, etc.
          - [[python/numpy|numpy]]
          - [[python/random|random]]
-         - [[python/pandas|pandas]] -- tidy rearrange melt
+         - [[python/pandas|pandas]] -- tidy rearrange melt --regression on columns
 	 == visualizaiont, plotting: pca, matplotlib ==
          - [[python/PCA|PCA]] : principle components in python pca
          - [[python/matplotlib|matplotlib]] : plot examples: beeswarm, 3d, histogram, Dendrogram (hierarchical clustering), heatmap, Venn
@@ -260,3 +263,4 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     * [[BioInfo/Datasets|Datasets]]
     * [[BioInfo/Experiment_types|Experiment_types]]
     * [[BioInfo/pyranges|pyranges]]
+    * [[BioInfo/Galaxy|Galaxy]]

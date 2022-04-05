@@ -1,0 +1,59 @@
+# From Edda's notes:
+	# 
+Tidyverse
+%>% -> "Pipes" an input into the next command
+select() -> Selects the specified columns of a dataframe
+filter() -> Filters the row of a dataframe based on the conditions in a column
+unite() -> Unites the selected columns into a single column
+separate() -> Seperates a single column into multiple columns
+rename() -> Renames a column in a dataframe
+mutate() -> Performs an operation and adds a new column
+arrange() -> Arranges a dataframe based on the values in a column (use -col for reverse order)
+group_by() -> Groups dataframe based on values in the selected column(s)
+summarize() -> Summarizes a column based on a specified function (group your rows before!)
+pivot_wider() -> Turns a dataframe from long into wide format. Specify columns with names_from and values_from. An alternative is spread.
+pivot_longer() -> Turns a dataframe from a wide format into long format. Specify the target columns with names_to and values_to. Alternative is gather.
+left_join() -> Combines two dataframes based on common variables
+
+
+
+Data visualization
+ggplot(aes()) -> Initiates a ggplot object, specify the variables mapped to visual aesthetics  in aes
+geom_point() -> Creates a scatterplot or dot plot
+geom_line() -> Creates a lineplot
+geom_bar(stat=’identity’) -> creates a bar plot
+geom_histogram() -> Creates a histogram
+geom_boxplot() -> Creates a boxplot
+geom_errorbar() -> Creates errorbars on a plot (specify borders with ymin and ymax)
+stat_summary(fun='mean',geom='crossbar') -> Plots a vertical bar corresponding to the mean of the data points
+ylab(), xlab() -> Set axis label
+facet_wrap(), facet_grid() -> Splits plots according to one or two variables
+ggsave() -> Save plot as a pdf file
+
+
+
+
+
+R Exercises
+Make sure that you have R and RStudio installed.
+Install and load the tidyverse and package using install.packages().
+We will use the built-in data set mpg. Type "mpg" in the console to have a first look at the dataframe. Also try summary() and head().
+Check the length of the cyl column using the length() function.
+Extract the first column using the [] operators.
+Subset mpg again on the manufacturer column, but this time use the $ operator
+Subset mpg on the first row of the dataframe using the [] operators. Use , to select rows instead of columns
+Subset mpg for the first 3 rows of the first using the [] operators. Use x:y to select multiple columns
+Subset mpg for all but rows 4 and 7. Use c() to select multiple columns that are not adjacent.
+Use class and $ to return the class of the year column
+Use as.character() to change the class of the year column into "character". Save the result in a new variable called "mpg_year_character". Check the class of "mpg_year"
+Use the cbind() function to create a new dataframe consisting only of the model and year columns
+Use the rbind() function to create a dataframe consisting of row 5 and 9 of mpg
+Next we are going to return to the mpg dataframe and use the tidyverse package to manipulate the data. Use the %>% operator and the select() function to subset mpg on the manufacturer, model, displ, year, trans, cty and hwy columns. Save the result to a dataframe called "mpg_selected"
+Use the filter() function to filter mpg_selected on cars produced in the 2000's. Save the result to a dataframe called "mpg_filtered".
+Transform the cty column into a log2 and save it as a log_cty column using mutate(). Save the result to a dataframe called mpg_mutated
+Group mpg_mutated by the producer. Afterwards calculate the mean of the cty column using summarize in a new column called "mean_cty". Save the result to mpg_summarized.
+Make the same plot again, but show only cars that were produced  in 2008  
+Calculate the mean and standard deviation of cty for each producer. Save the results to a dataframe called mpg_cty.
+Create a dotplot with the mean cty on the y-axis and the manufacturer on the x-axis. Add errorbars using geom_errorbar and the standard deviation you calculated previously.
+Create a boxplot of mpg with cty on the y-axis and cyl on the x-axis. Plot the X-axis as discrete values (Transform cyl into a factor). Split the plot according to the year using facet_wrap()
+

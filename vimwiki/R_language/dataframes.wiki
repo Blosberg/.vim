@@ -35,6 +35,27 @@ grades <- data.frame( names = c( "Alice","Bob", "Eve", "Mallory", "Mike"),
 2     Eve     1     4
 3 Mallory     7   100
 
+= ordering/sorting dataframes =
+
+# sort by one column, and then by another:
+> head( y )
+  Reference   Start     End Gene.Name            Gene.ID Strand       TPM
+1     sgr01 1056968 1070178   FAM199X ENSNFUG00015000397      + 33.450886
+2     sgr01   41982   58178         - ENSNFUG00015000041      +  1.580108
+3     sgr01   70441  136983      fmr1 ENSNFUG00015000047      + 28.882427
+4     sgr01   76383   78236         - ENSNFUG00015000053      -  1.445131
+5     sgr01  148392  551733      AFF2 ENSNFUG00015000055      +  9.864146
+6     sgr01  583286  584518         - ENSNFUG00015000056      -  0.410203
+> head( y[ with( y, order( Reference, Start)) , ]  )
+       Reference  Start    End Gene.Name            Gene.ID Strand       TPM
+21588 LN600519.1 209626 377431         - ENSNFUG00015017460      -  5.803848
+21589 LN600519.1 558098 572220     wdr43 ENSNFUG00015017465      - 42.105186
+21590 LN600519.1 577141 579187   TRMT61B ENSNFUG00015017478      +  9.347797
+21591 LN600519.1 580579 583259     spdya ENSNFUG00015017485      -  0.000000
+21592 LN600519.1 583785 588389         - ENSNFUG00015017559      +  0.243292
+21593 LN600519.1 630400 631524         - ENSNFUG00015017563      -  0.241366
+
+
 = Counting entries and values =
 
 # get the unique values with unique:
