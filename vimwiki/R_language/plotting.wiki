@@ -31,6 +31,14 @@ barplot( lengths,                                       # Horizontal barchart
          las=1,
          main  = "Genome Length")
 
+= plot to file =
+  png( paste0( path_out,
+                "/",
+                 "ExampleFig",
+                 ".png") )
+  plot( ...)
+  dev.off()
+
 = heat map =
 
 #=======================

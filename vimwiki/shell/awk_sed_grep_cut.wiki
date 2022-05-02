@@ -83,6 +83,23 @@ awk '!($3="")' file
 
 = sed =
 
+  == substitute ==
+sed 's/old/new/[flag]'
+
+ see manual:  https://www.gnu.org/software/sed/manual/html_node/The-_0022s_0022-Command.html
+
+# if either old or new contains the "/" character, you can use any delimiter (including control characters):
+sed "s~old~new~g" ${str}
+or
+sed "sAoldAnewA" ${str}
+
+
+  == modify files in place ==
+  # sed -i is fine for unix systems, but for OSX you need some prefix nonsense:
+  sed -i '' -e  '1s/range/Ranges/' UnionMF_samples_CpG_NFZv2IuN+NORv2ps_10-150X_NoNA.tsv
+
+  == file lists  ==
+
 # check for individual subject pseudonyms in a paired-end database
 ls *.fq.gz  | sed "s/_.\.fq\.gz//g" | uniq  | wc -l
 
