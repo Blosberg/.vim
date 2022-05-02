@@ -18,6 +18,15 @@ plot( x, y,
 # add points on top:
 points(mCfrac_E145[,"DKO"],  pch=5, lwd=3, col="red" )
 
+= plot to file =
+  png( paste0( path_out,
+                "/",
+                 "ExampleFig",
+                 ".png") )
+  plot( ...)
+  dev.off()
+
+
 = bar plot =
 
 lengths = c(3200000000, 140000000 , 100000000,  12000000)
@@ -30,14 +39,6 @@ barplot( lengths,                                       # Horizontal barchart
          xlab  = "bp",
          las=1,
          main  = "Genome Length")
-
-= plot to file =
-  png( paste0( path_out,
-                "/",
-                 "ExampleFig",
-                 ".png") )
-  plot( ...)
-  dev.off()
 
 = heat map =
 
