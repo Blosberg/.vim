@@ -1,8 +1,8 @@
 
  The motion ]m jumps forward to the next method or function. Jumping back can be carried out with [m.
  [/]M to go to end of method.
- 
- 
+
+
 = Operate until pattern=
 
     dtX – deletes everything up until the first X. The X can be any character at all.
@@ -14,3 +14,33 @@ With a pattern rather than a single character. Simply use /some_pattern and then
     d/foo<Enter> – delete up until foo is found
     c/bar<Enter> – change everything up until bar
     y/pattern<Enter> – yank everything up until pattern
+
+
+
+    Motion command reference
+
+    j: move down one line
+    k: move up one line
+    h: move left one character
+    l: move right one character
+    0: move to the beginning of the line
+    $: move to the end of the line
+    w: move forward one word
+    b: move back one word
+    e: move to the end of your word
+    ): move forward one sentence
+    }: move forward one paragraph
+    :line_number: move to a given line number
+    H[igh]: move to the top of the screen
+    M[iddle]: move to the middle of the screen
+    L[ow]: move to the bottom of the screen
+    ^E: scroll up one line
+    ^Y: scroll down one line
+    gg: go to the top of the file
+    G: go to the bottom of the file
+    ^U: move up half a page
+    ^D: move down half a page
+    ^F: move down a page
+    ^B: move up a page
+    Ctrl-i: jump to your previous navigation location
+    Ctrl-o: jump back to where you were
