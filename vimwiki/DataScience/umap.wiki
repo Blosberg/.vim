@@ -1,4 +1,15 @@
 
+
+# conceptual description+implementation in python:
 https://towardsdatascience.com/umap-dimensionality-reduction-an-incredibly-robust-machine-learning-algorithm-b5acb01de568
 
 
+# implementation in R:
+https://cran.r-project.org/web/packages/umap/vignettes/umap.html
+
+library(umap)
+iris.umap = umap(iris.data)
+
+iris.umap
+
+head(iris.umap$layout, 3)
