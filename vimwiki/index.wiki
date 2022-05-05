@@ -76,6 +76,33 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
          * install specific versions with:
                install.packages("devtools")
                devtools::install_github("PhanstielLab/bedtoolsr@v2.29.0-3")
+
+
+         === updating/ installing R ===
+         https://cran.r-project.org/
+         recommends:
+
+         Run these lines (as root or by prefixing sudo) to tell Ubuntu about the R binaries at CRAN.
+
+         # update indices
+         apt update -qq
+         # install two helper packages we need
+         apt install --no-install-recommends software-properties-common dirmngr
+         # add the signing key (by Michael Rutter) for these repos
+         # To verify key, run gpg --show-keys /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+         # Fingerprint: 298A3A825C0D65DFD57CBB651716619E084DAB9
+         wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+         # add the R 4.0 repo from CRAN -- adjust 'focal' to 'groovy' or 'bionic' as needed
+         add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+
+         Here we use lsb_release -cs to access which Ubuntu flavor you run: one of “impish”, “hirsute”, “focal”, “bionic”, …
+
+         Then run
+
+         apt install --no-install-recommends r-base
+
+         = programming in R =
+
 	 * [[R_language/CommandLineArgs|Command_line_args]] -- command line arguments for Rscripts
          * [[R_language/Env_files|Env_files]] save and load image files of RData for the working space.
 	 * [[R_language/IOreadWrite|IO_Read/write]] -- read/write files, csvs etc. create directories, paths
@@ -216,6 +243,10 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     * [[Regex/Lookarounds|Lookarounds]]
 
 = Resource_management =
+
+    == Networking ==
+
+    * [[hardware/ssh|ssh_hosting]]
 
     == Hardware ==
 

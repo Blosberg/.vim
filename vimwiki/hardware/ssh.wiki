@@ -1,0 +1,36 @@
+
+= setup firewall with ufw =
+
+https://www.youtube.com/watch?v=9dXdmJCHAGQ
+
+https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands
+
+
+apt-get install ufw
+sudo ufw allow 22/tcp
+
+( difference between tcp and udp: https://www.twingate.com/blog/tcp-vs-udp/  )
+
+$sudo ufw limit 22
+Rules updated
+Rules updated (v6)
+$sudo ufw enable 
+Command may disrupt existing ssh connections. Proceed with operation (y|n)? y
+Firewall is active and enabled on system startup
+$sudo ufw status verbose
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW IN    Anywhere                  
+22                         LIMIT IN    Anywhere                  
+22/tcp (v6)                ALLOW IN    Anywhere (v6)             
+22 (v6)                    LIMIT IN    Anywhere (v6)             
+
+= setup port-forwarding on Fritzbox =
+
+
+https://www.edpnet.be/en/support/installation-and-usage/internet/manage-fritz!box/how-to-set-up-a-port-forwarding-on-a-fritzbox.html
+
+Internet -> Freigaben -> add device -> new sharing
+
+
