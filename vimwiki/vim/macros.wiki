@@ -20,9 +20,16 @@ To do it over a range
 
 Editing the register visually
 
-    :let @q=' open the q register
-    <Cntl-r><Cntl-r>q paste the contents of the q register into the buffer
-    ^ add the missing motion to return to the front of the line
-    ' add a closing quote
-    <Enter> finish editing the macro
+    :let @q='<NEW_contents_of_macro>'
+     ^       ^                      ^    ^
+     |       |                      |    |
+     |       |                      |    |
+     ^       |                      |    |
+"   :let @q=' open the q register   |    |
+"            |                      |    |
+"            ^ <Cntl-r><Cntl-r>q paste the contents of the q register into the buffer
+"	                            |    |
+"                                   ^  add a closing quote
+"				         |
+"                                        ^  <Enter> finish editing the macro0
 
