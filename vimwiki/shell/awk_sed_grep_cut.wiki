@@ -37,12 +37,39 @@ awk '{printf "%s:%d-%d", $1,$2+1,$3}{ for(i=4; i<=NF; i++){ printf "\t%s",$i}; p
 
 
    == sum/average a column ==
+
+# sum
 awk '{s+=$3}END{print s}' file
 
+# mean
 awk '{s+=$3}END{print s/NR}' file
 
-
+# mean of multiple cols
 awk '{ for (i = 1; i <= NF; i++){ sum[i-1]=sum[i-1]+$i } END  { for (i = 1; i <= NF; i++){ printf "%g\t", vals[i-1]/NR}'
+
+# take sum and average of values in a column:
+ColSum() {
+   # Check that there is only 1 input arg:
+   if [ $# -ne 2 ]; then
+     echo "HALT: ColSum takes two arguments: input file and column number"
+   else
+     fin=$1
+     col=$2
+     awk -v c="${col}"  '{s+=$c}END{print s}' $fin
+   fi
+}
+
+ColMean() {
+   # Check that there is only 1 input arg:
+   if [ $# -ne 2 ]; then
+     echo "HALT: ColAvg takes two arguments: input file and column number"
+   else
+     fin=$1
+     col=$2
+     awk -v c="${col}"  '{s+=$c}END{print s/NR}' $fin
+   fi
+}
+
 
    == sum/average rows ==
 awk '{sum=0; for(i=1; i<=NF; i++){sum+=$i}; sum/=NF; print sum}' file
