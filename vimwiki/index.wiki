@@ -247,6 +247,7 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     == Networking ==
 
     * [[hardware/ssh|ssh_hosting]]
+    * [[hardware/DDNS|ddns]]
 
     == Hardware ==
 

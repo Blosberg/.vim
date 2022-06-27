@@ -1,0 +1,7 @@
+
+
+https://www.dynu.com/DynamicDNS/IPUpdateClient/Fritzbox
+
+
+https://en.avm.de/service/knowledge-base/dok/FRITZ-Box-7590/30_Setting-up-dynamic-DNS-in-the-FRITZ-Box/
+
