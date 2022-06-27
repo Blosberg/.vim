@@ -18,9 +18,11 @@ gr_b  = GRanges(as.data.frame( read.table( "example_dataFiles/b.bed",
                                              sep="\t",
                                              stringsAsFactors=FALSE,
                                              quote="")))
+# Instead use rtracklayer as described below:
 
 = rtracklayer =
-do this:
+# The right way to do it.
+
 DMRs_tmp = rtracklayer::import.bedGraph( con=DMR_bed_files[Di] )
 rtracklayer::export.bedGraph(DMRs_gr,  con =  DMRpermute_Ranges )
 
