@@ -1,4 +1,4 @@
-Annotating exons, from [[UCSC guide|https://genome.ucsc.edu/training/vids/transcript08.pdf]]
+Annotating exons, from [[https://genome.ucsc.edu/training/vids/transcript08.pdf|UCSC guide]]
 
 
 To begin, navigate to the browser at genome.ucsc.edu. In the upper left hand corner, you can find two 
