@@ -153,6 +153,35 @@ sns.boxplot(x="day", y="total_bill", data=tips,
 # also
 ax.boxplot
 
+= Violin plot =
+
+from matplotlib.backends.backend_pdf import PdfPages
+import seaborn as sns
+
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(14, 8))
+
+sns.violinplot( x     = <columnName for split>,
+                y     = <columnName for hist>,
+                hue   = <colname for subgroups>,
+                split = True,
+                data  = <Pandas Dataframe>,
+                order = <specify order of x in list> )
+
+plt.title("Title", fontsize=22)
+# ax.set_xlabel( "x-axis", fontsize=22)
+
+ax.set_ylim([0.,1.])
+ax.set_ylabel( "Mean Meth", fontsize=22)
+
+ax.tick_params( axis = 'both', which = 'major', labelsize = 14)
+ax.set_xlabel( "CG Density", fontsize=22)
+nplt.legend( bbox_to_anchor = (0.93, 0.4), fontsize=18)
+
+PathFigOut='path/to/file/'
+plt.savefig( PathFigOut,
+            format="pdf")
+
+
 = heatmap =
 xx1, xx2 = np.meshgrid( np.arange(min,max,step), np.arange(min,max,step) )
 ... Z = [prob prediction reshaped to that same matrix shape...]
