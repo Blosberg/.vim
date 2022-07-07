@@ -70,6 +70,33 @@ https://jokergoo.github.io/ComplexHeatmap-reference/book/introduction.html
 
 = ideogram (along chrosomes, etc.) =
 
+  === Minimal example ===
+
+require(RIdeogram)
+library(stringr)
+
+sizes=c( 3, 4, 2, 1, 0.9 )*10000
+# Made-up hypothetical chromosome sizes.
+# Generally, get these proper values from read.table("/reference/[genome].chrom.sizes",sep="\t")[,2]
+karyo=data.frame( Chr   = seq(1,5) ,
+                  Start = 0,
+                  End   = sizes )
+
+ValueMap= data.frame( Chr = as.character( 2:6 ),
+                      Start = seq(1:5) * 1000,
+                      End   = seq(1:5) * 1000 + 1000,
+                      Value = seq(1:5) * 10 )
+# ^ These are locations and values of your mapping -"Value" will be color-coded, can also be binary 1/0
+
+ideogram( karyotype = karyo,
+          overlaid = ValueMap,
+          output = "example.svg" )
+convertSVG( svg="example.svg",
+            file="example.png",
+            device = "png")
+
+
+  === Killifish ===
 require(RIdeogram)
 library(stringr)
 # using
