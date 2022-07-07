@@ -293,6 +293,6 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     * [[BioInfo/metilene|metilene]]
     * http://rosalind.info/problems/locations/
     * [[BioInfo/Datasets|Datasets]]
-    * [[BioInfo/Experiment_types|Experiment_types]]
+    * [[BioInfo/Experiment_types|Experiment_types]] -- e.g. Cut_n_run
     * [[BioInfo/pyranges|pyranges]]
     * [[BioInfo/Galaxy|Galaxy]]

@@ -1,0 +1,22 @@
+CUT&RUN stands for Cleavage Under Targets and Release Using Nuclease, and CUT&Tag refers to Cleavage Under Targets and Tagmentation. These methods use protein A and protein G (pAG) to “tether” enzymatic domains to antibody-bound chromatin in immobilized cells (or nuclei) for controlled and site-selective cleavage in situ (Figure 1).
+
+ChIP-seq is a notoriously challenging approach, in which target fragments are enriched from excess pools of sheared chromatin. Despite rigorous optimization and washing, these steps are highly inefficient and subject to high background, factors which can only be overcome by increasing cell input and sequencing depths.
+
+CUT&RUN and CUT&Tag assays, enabled by EpiCypher’s CUTANA™ platform, bypass these issues by direct cleavage and release of specific chromatin into solution. The result is highly efficient and streamlined isolation of target fragments for ultra-sensitive chromatin mapping.
+
+ 
+
+CUT&RUN and CUT&Tag have distinct advantages compared to ChIP-seq:
+
+1. Compatible with reduced cell inputs. Low input and single-cell technologies are important applications of chromatin research, but ChIP-seq lacks the sensitivity to profile these populations. CUT&RUN and CUT&Tag have both been successfully adapted to ultra-low and single-cell inputs. Furthermore, EpiCypher’s robust CUTANA CUT&Tag and CUT&RUN protocols are compatible with as few as 1,000 and 5,000 cells, respectively, allowing you to examine low inputs without strenuous optimization. CUT&Tag is particularly well suited for low inputs, as sequencing adaptors are directly ligated onto DNA fragments, thus bypassing library prep and allowing the entire reaction to be performed in a single tube.
+
+2. Lower costs. By reducing antibody usage, library prep, and sequencing depth requirements, CUT&RUN and CUT&Tag assays cost ~10-fold less than ChIP-seq. CUTANA assays produce high-quality data with only 3–8 million reads per sample, compared to the 30 million or more reads required for ChIP-seq (Figure 2). Together, these improvements enable scientists to examine additional timepoints, controls, and drug treatments, making discoveries that were impossible using ChIP-seq assays.
+ 
+3. Higher-quality data. In addition to lower cell inputs and sequencing costs, CUT&RUN and CUT&Tag assays are more reliable than ChIP-seq, generating data with improved signal over background
+
+Tutorial vid on Cut_n_run/Cut_n_Tag/ advantages compared to ChIPseq:
+
+https://www.youtube.com/watch?v=aYXblNoP4rc
+
+
+[[cut-tag-workflow.png]]
