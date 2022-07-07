@@ -12,8 +12,8 @@
 
 = strip, replace characters in string =
 
->>> sentence = 'Python is cool!'
->>> str_1 = sentence.strip()
+>>> sentence = '   Python is cool!'
+>>> str_1 = sentence.strip()  # strip away leading and trailing whitespace
 >>> str_2 = sentence.replace('','')
 >>> str_2 = sentence.replace('oo','-')
 >>> str_2
