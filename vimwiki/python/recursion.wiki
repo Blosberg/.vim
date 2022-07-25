@@ -1,7 +1,21 @@
 
+= Genetics bases: =
+def seqListGen( N, SeqList=[""], BaseSet=["A", "C", "G", "T"] ):
+   """ Generate every genetic sequence of length N """
+   assert type(N)==int and N >=0, "Invalid N="+str(N)
+
+   if (N==0):
+       return SeqList
+   else:
+       newSeqList = [ seq+x for x in BaseSet for seq in SeqList ]
+       return seqListGen ( N-1, newSeqList )
+
+
+= Other random examples =
+
 some notes about [[recursion]]
 portnames = ["PAN", "AMS", "CAS", "NYC", "HEL"]
- 
+
 def permutations( route, ports):
     # Write your recursive code here
     if( len(ports) > 1 ):
@@ -29,7 +43,7 @@ def permutations(route, ports):
     else:
         for i in range(len(ports)):
             permutations(route+[ports[i]], ports[:i]+ports[i+1:])
- 
+
 permutations([0], list(range(1, len(portnames))))
 
 

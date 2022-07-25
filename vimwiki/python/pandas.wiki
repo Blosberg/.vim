@@ -150,7 +150,27 @@ df.index    # to get list a-f
    # filtered df
     Prom_bc_nunulls = Prom_bc_paired.loc[ Row_has_no_col_null, :]
 
-   = Tidy, rearrange, melt =
+   = Tidy, rearrange, melt; combing/cat/merge columns =
+
+# Starting with a bedfile:
+>>> bedU_df
+	chrom 	start 	end 	E135_S0-CreCtrl 	E135A_S0-T23DKO
+0 	chr1 	3000826 	3000828 	0.917 	0.958
+1 	chr1 	3001006 	3001008 	0.903 	0.958
+2 	chr1 	3001017 	3001019 	0.893 	0.920
+3 	chr1 	3001276 	3001278 	0.947 	0.905
+4 	chr1 	3001628 	3001630 	0.862 	0.958
+
+Meth_df=bedU_df.set_index( bedU_df['chrom'].astype(str)
+                          +":"+ bedU_df["start"].astype(str)
+                          +"-"+ bedU_df["end"].astype(str)   ).drop(["chrom","start", "end"], axis=1)
+
+# if you have a tsv with "Range" column, you can reverse this with:
+tmp=tsvU_df["Range"].str.split(r":|-", expand=True )
+tmp.columns=["chr", "start", "end"]
+tmp.join( tsvU_df )
+
+
 # puts a table into single-observable column-wise format
 # e.g. Starting off with a metilene output file (converted to tsv)
 >>> df
