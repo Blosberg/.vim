@@ -14,17 +14,17 @@ sudo ufw allow 22/tcp
 $sudo ufw limit 22
 Rules updated
 Rules updated (v6)
-$sudo ufw enable 
+$sudo ufw enable
 Command may disrupt existing ssh connections. Proceed with operation (y|n)? y
 Firewall is active and enabled on system startup
 $sudo ufw status verbose
 
 To                         Action      From
 --                         ------      ----
-22/tcp                     ALLOW IN    Anywhere                  
-22                         LIMIT IN    Anywhere                  
-22/tcp (v6)                ALLOW IN    Anywhere (v6)             
-22 (v6)                    LIMIT IN    Anywhere (v6)             
+22/tcp                     ALLOW IN    Anywhere
+22                         LIMIT IN    Anywhere
+22/tcp (v6)                ALLOW IN    Anywhere (v6)
+22 (v6)                    LIMIT IN    Anywhere (v6)
 
 = setup port-forwarding on Fritzbox =
 
@@ -32,5 +32,36 @@ To                         Action      From
 https://www.edpnet.be/en/support/installation-and-usage/internet/manage-fritz!box/how-to-set-up-a-port-forwarding-on-a-fritzbox.html
 
 Internet -> Freigaben -> add device -> new sharing
+
+
+
+= Ports =
+
+
+
+
+# from:  https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands
+
+
+sudo ufw allow 22/tcp
+sudo ufw limit 22
+
+# make internetting possible
+sudo ufw allow proto tcp from any to any port 80,443
+
+
+# to allow X11 connections, which use ports 6000-6007, use these commands:
+
+sudo ufw allow 6000:6007/tcp
+sudo ufw allow 6000:6007/udp
+
+
+# for rsync:
+
+the rsync documentation says
+
+    There are two different ways for rsync to contact a remote system: using a remote-shell program as the transport (such as ssh or rsh) or contacting an rsync daemon directly via TCP. The remote-shell transport is used whenever the source or destination path contains a single colon (:) separator after a host specification. Contacting an rsync daemon directly happens when the source or destination path contains a double colon (::) separator after a host specification, OR when an rsync:// URL is specified.
+
+Port 22 is the SSH port; it’s used when you tell rsync to connect via SSH, with a single colon (the “remote-shell” case above). Port 873 is the rsync dæmon port; it’s used when rsync is used with a double colon or a rsync:// URL.
 
 
