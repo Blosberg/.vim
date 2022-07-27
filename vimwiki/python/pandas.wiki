@@ -100,12 +100,25 @@ list(df)
 countries.columns = [...]
 countries.rename({'capital': 'capital_city', 'language': 'most_spoken_language'}, axis='columns', inplace=True)
 
-   = Access (select)  rows and columns (+boolean select); index for largest/smallest, slicing=
+   = Access (select)  rows and columns (+boolean logical indexing selection); index for largest/smallest, slicing=
 
+     == Specific locations  ==
+     
 df.loc["b":"d"]  # select columns b through.
 df.iloc[2, 4]    # gets rows (or columns) at positions (only takes integers).
 df.ix[2,3]       # First tries to be like loc, but if it fails,
                  # it then falls back to iloc
+
+`df[["FirstColName","SecondColName"]]`
+# n.b. if you pass an array of indices you get another df, (even if the array has only one element)
+`df.loc[ : , ["FirstColName"]  ]`   #  --> df
+# but with a single index you get a series.
+df["First"] or df.First           #  --> series
+
+# 
+# Access multiple cols by creating a list [ , ]
+# within the dereferencing braces -hence, double braces
+
 
 df.iloc[[0,4,5],[1]]
 df.ix[0:2,0:5]
@@ -115,6 +128,22 @@ df.ix[0:2,0:5]
 # automatically switch to integer indexing and will not include the last
 # value (i.e. 0:2 = [0,1])
 
+   == Logical indexing (boolean) ==
+
+# logical indexing requires "loc" (iloc won't work)
+   df.loc[ df["val"] > 0, : ]
+#             ^ single index yields series, the length of which must match number of rows.
+#  Here you'll get the rows for which condition is satisfied.
+
+
+# select based on whether language is one thing _or_ another:
+countries[ countries.language.isin(['Dutch', 'English'])]
+
+    ==  min/max  ==
+# 
+# Select the rows of a df based on where the value of "col_3" are the nsmallest largest
+df.nsmallest(3,"col_3")
+test.nlargest(2,"col_2")
 
 # the location of largest/smallest value by index
 # using idxmin() and idxmax() functions:
@@ -122,21 +151,7 @@ x=pd.Series([1,3,5,2,76,43])
 x.idxmin()
 x.idxmax()
 
-# select based on whether language is one thing _or_ another:
-countries[ countries.language.isin(['Dutch', 'English'])]
 
-df["First"] or df.First
-# Latter only works if the col name has no spaces.
-
-# Select the rows of a df based on where the value of "col_3" are the nsmallest largest
-df.nsmallest(3,"col_3")
-test.nlargest(2,"col_2")
-
-
-
-# Access multiple cols by creating a list [ , ]
-# within the dereferencing braces -hence, double braces
-`df[["First","Second"]]`
 df.index    # to get list a-f
 
    = create a "dummy" 1/0 array of columns ones and zeros for each variable now combined =
