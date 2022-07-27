@@ -1,4 +1,4 @@
-This is my Vim/vimwiki repository of notes; I occasionally type things here that are relevant to my work once I've searched for the answer and would like to avoid searching again. Over time, it's become an indispensible part of my workflow, and perhaps it might be of use to others (perhaps not?).
+This is my Vim/vimwiki repository of notes; I occasionally type things here that are relevant to my work once I've searched for the answer and would like to avoid searching again. Over time, it's become a part of my workflow, and perhaps it might be of use to others (perhaps not?).
 
 Perusing this repo on github will not give you the same experience as incorporating it into your vim workflow (e.g. ascii art will not line-up properly, links will not always be clickable, etc.), if you use neither vim nor emacs, then this won't be of much use to you.
 
