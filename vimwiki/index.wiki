@@ -234,6 +234,11 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     * [[OSX/booting|booting_OSX]]
     * [[ubuntu/boot|booting_ubuntu]]
 
+= Ubuntu =
+
+how to reset the compiz settings (in case you bork them):
+$ dconf reset -f /org/compiz/
+
 = Regex =
         -- regular expressions --
     * [[Regex/Tutorials|Tutorials]]
@@ -243,6 +248,7 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     * [[Regex/Lookarounds|Lookarounds]]
 
 = Resource_management =
+
 
     == Networking ==
 
