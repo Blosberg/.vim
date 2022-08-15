@@ -1,6 +1,10 @@
  = use the package "rename" =
 $ sudo apt-get install rename
 
+# in linux:
+rename -nv old new fileList
+
+# in OSX:
 $ rename "s/[old]/[new]/g" [**__**]
           ^ sed script
                         ^ global (all occurances)

@@ -7,7 +7,11 @@ type(var)
 = read/ write =
 
 # read
-df = pd.read_csv( "WindowMapOutput_w200_s50_table_noNA.tsv" , sep="\t")
+df = pd.read_csv( "WindowMapOutput_w200_s50_table_noNA.tsv" ,
+                  sep="\t"
+		  header = None,
+		  index_col=0
+		  )
 # numpy version of this is  np.genfromtxt(datafile, skip_header=1).
 
 # write
@@ -26,7 +30,7 @@ S = pd.Series( [1,2,3],
 S.loc["a":"c"]
 S.iloc[0:2]
 
-   = processing data: counts, sorting, etc. =
+   = processing data : value_counts() (similar to table), sorting, etc. =
 
 # check frequencies of occurance of each index
 S.value_counts()
@@ -104,6 +108,7 @@ countries.rename({'capital': 'capital_city', 'language': 'most_spoken_language'}
 
      == Specific locations  ==
      
+# Latter only works if the col name has no spaces.
 df.loc["b":"d"]  # select columns b through.
 df.iloc[2, 4]    # gets rows (or columns) at positions (only takes integers).
 df.ix[2,3]       # First tries to be like loc, but if it fails,

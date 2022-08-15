@@ -108,6 +108,7 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
 	 * [[R_language/IOreadWrite|IO_Read/write]] -- read/write files, csvs etc. create directories, paths
          * [[R_language/logicals|logicals]] ifelse, any, all
          * [[R_language/eval|eval]]       -- evaluate strings as expressions
+	 * [[R_language/strings|Rstrings]] -- gsub string replace
          * [[R_language/sorting|sorting]] -- sort, rank, order, etc.
          * [[R_language/dataframes|dataframes]]   -- dplyer, filter, select, mutate, boxplot,  table unique values (how many of each)
          * [[R_language/plotting|plotting]] -- hist, heatmap, trendline, title, multiple plots mf par
@@ -137,6 +138,12 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
 
          == System interface: venv, pip, FILE I/O ==
          id(var)  returns the location of a data
+
+	 # list directory contents:
+	 from os import walk
+	 filenames = next(walk(FisherDir), (None, None, []))[2]
+         #                                                   ^
+	 # 0--> absolute path;  1--> subdirectories
 
          - [[python/venv|venv]] --Virtual environment management
          - [[python/pip|pip]] pip package management
@@ -248,7 +255,6 @@ $ dconf reset -f /org/compiz/
     * [[Regex/Lookarounds|Lookarounds]]
 
 = Resource_management =
-
 
     == Networking ==
 

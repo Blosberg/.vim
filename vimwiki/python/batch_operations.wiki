@@ -6,7 +6,8 @@ apply function to each element in iterables*
 >>> my_pets = ['alfred', 'tabitha', 'william', 'arla']
 >>> uppered_pets = list(map(str.upper, my_pets))
 
-# it produces a generator and stops when it runs out of elements
+# map produces a generator and stops when it runs out of elements
+# wrapping "list" around it forces execution to generate the array.
 # Likewise if it has more than one iterable:
 
 circle_areas = [3.56773, 5.57668, 4.00914, 56.24241, 9.01344, 32.00013]

@@ -8,6 +8,12 @@ os.path.isdir()/isfile()
 
 # list subdirs, files
 root, dirs, files in os.walk(".", topdown=False):
+from os import walk
+
+filenames = next(walk(FisherDir), (None, None, []))[2]
+#                                                   ^
+# 0--> absolute path;  1--> subdirectories
+
 
 # create paths, handling potential "/" separation
 path = os.path.join(basepath, fname)
