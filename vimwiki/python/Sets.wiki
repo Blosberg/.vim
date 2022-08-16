@@ -16,3 +16,10 @@ a-b
 
 print(a.union(b))
 print( a | b )
+
+# you can find match between two iterables (lists,  whatever) by converting to set, and:
+
+set(data1) & set(data2)
+
+# The & operator means "give me the intersection of these two sets"; alternatively you can use the .intersection method:
+
