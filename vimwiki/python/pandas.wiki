@@ -18,8 +18,14 @@ df = pd.read_csv( "WindowMapOutput_w200_s50_table_noNA.tsv" ,
 df.to_csv( file_name,
 sep='\t'
 header=None,
-index=False
+index=False,
+float_format='%.3f'
 )
+
+# or, if you don't want 0.0001 to be rounded to zero:
+df.to_csv('pandasfile.csv', float_format='%g')
+
+
 # by default both index and header are added
 
 = Series =
@@ -41,7 +47,7 @@ S.sort_values(["first","second",...] inplace = False )
 # str. attributes are available to every Series
 S.str.[contains/startswith/isnumeric]()
 
-= Data Frames =
+= Data Frames: create them and access their contents =
 
 There is a [[numpy]] array inside every data frame.
 Access it with .values
@@ -82,6 +88,10 @@ d    4.0     7.0
 e    NaN     8.0
 # Note the missing fields in b, and e
 
+# Add a column with a single value:
+df['ColName'] = pd.Series(  'Value', index=df.index )
+
+
    = set the index (row names), colnames of the df, rename them =
 
 # change the first column define the index of the df (previous index is lost)
@@ -99,15 +109,47 @@ countries = pd.DataFrame({
 'continent': ['North America', 'Europe', 'Europe', 'North America', 'Australia'],
 'language': ['English', 'Dutch', 'Spanish', 'Spanish', 'English']})
 
+>>> countries
+
+ 	country 	capital 	continent 	language
+0 	United States 	Washington D.C. 	North America 	English
+1 	The Netherlands 	Amsterdam 	Europe 	Dutch
+2 	Spain 	Madrid 	Europe 	Spanish
+3 	Mexico 	Mexico City 	North America 	Spanish
+4 	Australia 	Canberra 	Australia 	English
+
+
 # get col names:
-list(df)
-countries.columns = [...]
+list( countries )
+countries.columns
+
+# Rename columns specifically:
 countries.rename({'capital': 'capital_city', 'language': 'most_spoken_language'}, axis='columns', inplace=True)
+>>> countries
+
+ 	country 	capital_city 	continent 	most_spoken_language
+0 	United States 	Washington D.C. 	North America 	English
+1 	The Netherlands 	Amsterdam 	Europe 	Dutch
+2 	Spain 	Madrid 	Europe 	Spanish
+3 	Mexico 	Mexico City 	North America 	Spanish
+4 	Australia 	Canberra 	Australia 	English
+
+# Set columns in order:
+>>> countries.columns = ["a", "b", "c", "d" ]
+>>> countries
+
+ 	a 	b 	c 	d
+0 	United States 	Washington D.C. 	North America 	English
+1 	The Netherlands 	Amsterdam 	Europe 	Dutch
+2 	Spain 	Madrid 	Europe 	Spanish
+3 	Mexico 	Mexico City 	North America 	Spanish
+4 	Australia 	Canberra 	Australia 	English
+
 
    = Access (select)  rows and columns (+boolean logical indexing selection); index for largest/smallest, slicing=
 
      == Specific locations  ==
-     
+
 # Latter only works if the col name has no spaces.
 df.loc["b":"d"]  # select columns b through.
 df.iloc[2, 4]    # gets rows (or columns) at positions (only takes integers).
@@ -120,7 +162,7 @@ df.ix[2,3]       # First tries to be like loc, but if it fails,
 # but with a single index you get a series.
 df["First"] or df.First           #  --> series
 
-# 
+#
 # Access multiple cols by creating a list [ , ]
 # within the dereferencing braces -hence, double braces
 
@@ -145,7 +187,7 @@ df.ix[0:2,0:5]
 countries[ countries.language.isin(['Dutch', 'English'])]
 
     ==  min/max  ==
-# 
+#
 # Select the rows of a df based on where the value of "col_3" are the nsmallest largest
 df.nsmallest(3,"col_3")
 test.nlargest(2,"col_2")
@@ -169,10 +211,21 @@ df.index    # to get list a-f
    Row_has_no_col_null = Prom_bc_paired.loc[:,["promoter","barcode"]].isnull().astype(int).sum(axis=1) == 0
    # filtered df
     Prom_bc_nunulls = Prom_bc_paired.loc[ Row_has_no_col_null, :]
+   = Boolean indexing =
+AND : &
+OR  : |
+NOT : ~
 
-   = Tidy, rearrange, melt; combing/cat/merge columns =
+df[(df.First <3.5) & (df.Fourth > 4 )]
+# also: df.colname.str.contains("substring")-->bool
 
-# Starting with a bedfile:
+df.loc[ boolArray, : ]
+#   ^ select locations where truth is found
+
+= Tidy, rearrange, manipulate: melt stack/unstack, groupby; combing/cat/merge columns; split columns =
+
+   == split/ recombine columns ==
+	# Starting with a bedfile:
 >>> bedU_df
 	chrom 	start 	end 	E135_S0-CreCtrl 	E135A_S0-T23DKO
 0 	chr1 	3000826 	3000828 	0.917 	0.958
@@ -187,11 +240,17 @@ Meth_df=bedU_df.set_index( bedU_df['chrom'].astype(str)
 
 # if you have a tsv with "Range" column, you can reverse this with:
 tmp=tsvU_df["Range"].str.split(r":|-", expand=True )
+
+# rename the columns:
 tmp.columns=["chr", "start", "end"]
+
+# and then add-back together the other stuff
 tmp.join( tsvU_df )
 
+	=== Melt ===
 
-# puts a table into single-observable column-wise format
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.melt.html
+# Melt puts a table into single-observable column-wise format
 # e.g. Starting off with a metilene output file (converted to tsv)
 >>> df
 	                q-value  ... p_2DKS 	mean_g1 	mean_g2
@@ -201,8 +260,14 @@ chr1:9680142-9680354 	0.023021 ... 8.969600e-06 	0.194800 	0.31956
 chr1:14242645-14242713 	0.007769 ... 1.750300e-06 	0.054915 	0.18143
 ... 	... 	... 	... 	... 	... 	... 	...
 
+
 # "Melt" converts table with many columns into single-observable rows with just one value:
->>>df.loc[:, [ "mean_g1", "mean_g2"] ].melt(var_name='AgeGroup', value_name='MethFrac')
+>>>df.loc[:, [ "mean_g1", "mean_g2"] ].melt( var_name='AgeGroup', value_name='MethFrac')
+
+var_name='AgeGroup'   # col that will be created, populated by values to hold the previously separated columns
+value_name='MethFrac' # <-- col that will be kept
+id_vars   = "CGtype" # <-- cols that will be preserved
+
 # or, alternatively:
 pd.melt( df )
 
@@ -215,9 +280,26 @@ pd.melt( df )
 ... 	... 	...
 
 
-   = Groupby =
+df_melted = df.melt( value_name= "MethFrac",
+                     var_name  = "sample",
+                     id_vars   = "CGtype" )
 
-# Group by values with the same ColName
+
+   == stack() ==
+# Return a taller df
+# stack Column subset --> into hierarchical index labels for rows (within  existing row index labels)
+
+   == unstack() ==
+# return a wider df
+# unstack hierarchical index labels into Column subsets
+
+# N.B. In both stacking, unstacking you can't go lower than the first set of
+# columns and rows. This is just for pivotting subgroups within those
+# columns/rows.
+
+   == Groupby ==
+
+# produces a set of dataframes, grouped by categorical values in a provided ColName
 gb = df.groupby("ColName")
 # Then gb is a set of tuples with the 1rst entry the ColName
 # group label, and  the second being a dataframe (subset of the original).
@@ -262,19 +344,8 @@ gb.count() # ^ Same as above but num entries preserved in cols
 gb.first()/last()     # first/last entry in each group
 gb.mean()/min()/max() #
 
-   == stack() ==
-# Return a taller df
-# stack Column subset --> into hierarchical index labels for rows (within  existing row index labels)
 
-   == unstack() ==
-# return a wider df
-# unstack hierarchical index labels into Column subsets
-
-# N.B. In both stacking, unstacking you can't go lower than the first set of
-# columns and rows. This is just for pivotting subgroups within those
-# columns/rows.
-
-  == agg()  ==
+   == agg()  ==
 
 # apply a named func to all remaining columns
   gb.agg(["min","max",...])
@@ -287,20 +358,12 @@ gb.mean()/min()/max() #
 # here, while groupby is grouped by ColName, you can operated on ColName2,3
 # using functions specified in the corresponding dict.
 
- == concatenate  ==
+   == concatenate  ==
 
  df = pd.DataFrame({'col_1': [1, 0], 'col_2': [0, 1], 'col_3': [1, 0]})
  df_1 = pd.DataFrame({'col_1': [6, 7, 8], 'col_2': [1, 2, 3], 'col_3': [5, 6, 7]})
 
 pd.concat([df, df_1]).reset_index(drop=True)
-
-= Boolean indexing =
-AND : &
-OR  : |
-NOT : ~
-
-df[(df.First <3.5) & (df.Fourth > 4 )]
-# also: df.colname.str.contains("substring")-->bool
 
 = regression on columns =
 
