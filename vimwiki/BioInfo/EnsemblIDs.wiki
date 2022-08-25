@@ -1,0 +1,12 @@
+
+Interpreting Ensemble ID codes:
+
+An Ensembl stable ID consists of five parts: ENS(species)(object type)(identifier).(version).
+
+    The first part, 'ENS', tells you that it's an Ensembl ID
+    The second part is a three-letter species code. For human, there is no species code so IDs are in the form ENS(object type)(identifier).(version). A list of the other species codes can be found here.
+    The third part is a one- or two-letter object type. For example E for exon, FM for protein family, G for gene, GT for gene tree, P for protein, R for regulatory feature and T for transcript.
+    The identifier is the number to that object. Combinations of prefixes and identifiers are unique.
+    Versions indicate how many times that model has changed during its time in Ensembl. [[http://www.ensembl.org/info/genome/stable_ids/index.html|This document]] explains how we determine that a model has changed sufficiently to update version number. History pages for features show you when these changes took place.
+
+

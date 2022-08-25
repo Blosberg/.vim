@@ -298,8 +298,14 @@ $ dconf reset -f /org/compiz/
     * [[git/fugitive|fugitive]]
 = Bioinformatics =
 
+    Tutorials:
+    * [[https://github.com/sib-swiss/training-collection|Swiss SIB training collection]]
+    * [[https://statquest.org/video-index/|Statquest]]
+
+    Other notes:
     * [[BioInfo/fasta|fasta]] -- formatting fasta, line length (to add: indexing)
     * [[BioInfo/ranges_exons|ranges_exons]] -- download ranges like exons/introns/etc. from ucsc
+    * [[BioInfo/EnsemblIDs|EnsemblIDs]]
     * [[BioInfo/gtf|gtf_files]] -- convert gtf files to bed
     * [[BioInfo/bedtools|bedtools]] -- map and manipulate bedfiles onto each other; make windows,
     * [[BioInfo/metilene|metilene]]
