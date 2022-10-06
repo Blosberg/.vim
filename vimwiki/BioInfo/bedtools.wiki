@@ -2,6 +2,7 @@
 = Summary =
 The BED format consists of one line per feature, each containing 3-12 columns of data, plus optional track definition lines.
 
+chrom	start	end	name	score	strand	thickstart	thickEnd	itemRgb	blockCount	blockSizes	blockStarts
  == Required fields ==
 
     chrom - name of the chromosome or scaffold. Any valid seq_region_name can be used, and chromosome names can be given with or without the 'chr' prefix.
