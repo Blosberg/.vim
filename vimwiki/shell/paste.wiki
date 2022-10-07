@@ -1,0 +1,37 @@
+
+https://linuxhandbook.com/paste-command/
+
+see also "join" : https://linux.die.net/man/1/join
+
+
+printf "%s\n" {a..e} | tee letters
+a
+b
+c
+d
+e
+
+paste letters digits | tee tmp
+a	1
+b	2
+c	3
+d	4
+e	5
+
+# transpose the paste
+$paste -s letters digits
+a	b	c	d	e
+1	2	3	4	5
+
+
+cat tmp
+a	1
+b	2
+c	3
+d	4
+e	5
+
+cat tmp  | paste -s -d ":"  -
+a	1:b	2:c	3:d	4:e	5
+
+# multiple delimiters will be cycled through 

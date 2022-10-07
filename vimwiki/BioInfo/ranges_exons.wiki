@@ -1,7 +1,7 @@
-Annotating exons, from [[https://genome.ucsc.edu/training/vids/transcript08.pdf|UCSC guide]]
+[using guide at https://genome.ucsc.edu/training/vids/transcript08.pdf ]
 
 
-To begin, navigate to the browser at genome.ucsc.edu. In the upper left hand corner, you can find two 
+To begin, we will navigate to the browser at genome.ucsc.edu. In the upper left hand corner, you can find two 
 links that lead to the Browser database. 
 [0:33] pick mouse mm10 database. 
 Using the pull-down menu at the top of the graphic, we go to the Table Browser (or just type " tt ").  The 

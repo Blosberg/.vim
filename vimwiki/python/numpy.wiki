@@ -19,6 +19,17 @@ np.arange(initial, final, step_size)
 N.B. Slices create *Views* onto the same object. modifying the
 output slice WILL CHANGE THE ORIGINAL OBJECT
 
+= count occurances  =
+
+# To count occurances of values
+# Use numpy.unique with return_counts=True (for NumPy 1.9+):
+
+import numpy as np
+
+x = np.array([1,1,1,2,2,2,5,25,1,1])
+unique, counts = np.unique(x, return_counts=True)
+
+
 = arrays =
  == initialize: ==
 np.linspace(start, stop, NumEntries)

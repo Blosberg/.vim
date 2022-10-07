@@ -28,6 +28,16 @@ False
 # split "Hellow world!" into two words:
 twowords = astring.split(" ")
 
+# split with regex:
+[ re.split('[:-]', x) for x in list( lociList ) ]
+
+[['chr1', '33574581', '33574583'],
+ ['chr1', '33574671', '33574673'],
+ ['chr1', '33574737', '33574739'],
+ ['chr1', '33574744', '33574746']
+ ...
+ ]
+
 
  = Formatting, printing: =
 

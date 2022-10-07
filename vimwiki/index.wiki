@@ -24,6 +24,7 @@ Use at your own risk.
     * [[shell/Profile|Profile]] -- change look/colorscheme/etc. of terminal
         - [[shell/prompt_values|prompt_values]] --PS1, PS2, etc. the characters that appear before the "$" prompt on terminal
     * [[shell/awk_sed_grep_cut|awk_sed_grep_cut]] -- one-liners sum column
+    * [[shell/paste|paste]] --invert tables, paste columns join
     * [[shell/find|find]] -- find files
     * [[shell/sort|sort]]  -- sort files by column -k options, etc.
     * [[shell/wc|wc]] -- count line numbers/ char numbers
@@ -165,7 +166,7 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
          - [[python/datetime|datetime]]
 
          == Containers: strings, dicts, lists, sets  ==
-         - [[python/strings|strings]]
+         - [[python/strings|strings]] --split with regex
          - [[python/dictionaries|dictionaries]]
          - [[python/Generators|Generators]]
          - [[python/Lists|Lists]] -- basic syntax and implementation; list comprehensions

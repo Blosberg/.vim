@@ -70,6 +70,7 @@ ColMean() {
    fi
 }
 
+awk '{ for (i = 1; i <= NF; i++){ sum[i-1]=sum[i-1]+$i } END  { for (i = 1; i <= NF; i++){ printf "%g\t", vals[i-1]/NR}'
 
    == sum/average rows ==
 awk '{sum=0; for(i=1; i<=NF; i++){sum+=$i}; sum/=NF; print sum}' file
