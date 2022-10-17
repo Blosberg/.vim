@@ -1,0 +1,8 @@
+    To install WSL2: https://www.youtube.com/watch?v=_fntjriRe48
+
+    to completely remove  a wsl installation:
+    [1] Open up PowerShell.
+    [2] To get the exact name for the distro you want, enter wsl -l -v.
+    [3] wsl --unregister <distro name>.
+
+
