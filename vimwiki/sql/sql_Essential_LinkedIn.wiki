@@ -1,4 +1,6 @@
 
+for postgresql, see: https://www.postgresqltutorial.com/
+
 == Select/ Filter rows with "WHERE" ==
 
 select Name, Continent, Region
@@ -6,10 +8,17 @@ select Name, Continent, Region
   WHERE Population > 100000000 AND Continent = 'Europe'
   ORDER BY Name1 DESC, Name2 ASC, Name3 ...,
   LIMIT 10
+  OFFSET 12
 
-# order of commands: first  FROM, then WHERE, ORDER BY , and LIMIT last
+# order of commands: first  FROM, then WHERE, ORDER BY , LIMIT, and OFFSET last
+# ^ this will give results 12-22
 # DESC[ending] reverses order, ASC[ending] is the default
 
+=== FETCH  ===
+# postgresql also allows fetch: (non-standard)
+FETCH { FIRST | NEXT } [ row_count ] { ROW | ROWS } ONLY
+
+===   ===
 # count number of rows:
 SELECT COUNT(*) FROM Country;
 
@@ -50,6 +59,15 @@ SELECT Name, Continent, Population FROM Country
 AND/OR precedence ??
 left to right?
 
+== comparison (postgresQL)  ==
+value BETWEEN low AND high;
+
+You can rewrite the BETWEEN operator by using the greater than or equal ( >=)
+or less than or equal ( <=) operators like this:
+
+value >= low and value <= high
+
+== CASES If/ELSE ==
 # for every row check the values of booltest (which has fields a,b)
 # and assign boolA, boolB fields in the output according to the following logic:
 SELECT
