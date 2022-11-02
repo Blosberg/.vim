@@ -192,6 +192,10 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     * - internal
     * - inline
 
+    = SQL =
+
+    * [[sql/sql_Essential_LinkedIn|sqlIntro]] -- some notes may be specific to SQLite; from linkedIn Learning coarse
+
 = Data Science, Machine/Statistical Learning, regression, stats, =
 
     * [[ML/data_sets|data_sets]]
