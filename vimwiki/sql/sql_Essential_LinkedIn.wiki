@@ -14,11 +14,6 @@ select Name, Continent, Region
 # ^ this will give results 12-22
 # DESC[ending] reverses order, ASC[ending] is the default
 
-=== FETCH  ===
-# postgresql also allows fetch: (non-standard)
-FETCH { FIRST | NEXT } [ row_count ] { ROW | ROWS } ONLY
-
-===   ===
 # count number of rows:
 SELECT COUNT(*) FROM Country;
 
@@ -32,6 +27,43 @@ SELECT LifeExpectancy FROM Country;
 
 # Get only distinct (or unique) values (or distinct combinations  when providing multiple inputs)
 SELECT DISTINCT Region, Continent FROM Country;
+
+=== FETCH  ===
+# postgresql also allows fetch: (non-standard)
+FETCH { FIRST | NEXT } [ row_count ] { ROW | ROWS } ONLY
+
+
+== SET operations: (postgresql)  ==
+
+== UNION ==
+#   Union – combine result sets of multiple queries into a single result set.
+#   removes duplicates but keeps both entries
+
+SELECT * FROM top_rated_films
+UNION
+SELECT * FROM most_popular_films;
+
+
+==  Intersect ==
+# combine the result sets of two or more queries and returns a single result set that has the rows appear in both result sets.
+
+SELECT *
+FROM most_popular_films 
+INTERSECT
+SELECT *
+FROM top_rated_films;
+
+
+
+== Except ==
+# return the rows in the first query that does not appear in the output of the second query.
+    
+
+SELECT * FROM top_rated_films
+EXCEPT 
+SELECT * FROM most_popular_films;
+
+
 
 === LIKE is for string matching.  wildcard matching, ===
 
@@ -180,6 +212,31 @@ JOINs will only give you results where there is a match, unless you specify "LEF
 That will preserve all entries in the original table (but you will likely see more results
 that will be "null"
 
+== Cross join  ==
+# permutes through all of the values
+
+T1	T2
+A       1
+B       2
+        3
+
+SELECT *
+FROM T1
+CROSS JOIN T2;
+
+label | score
+-------+-------
+ A     |     1
+ B     |     1
+ A     |     2
+ B     |     2
+ A     |     3
+ B     |     3
+
+== natural join ==
+
+every column with same name between two tables
+
 = Data Types =
 
 SELECT TYPEOF('panda')
@@ -289,6 +346,10 @@ SELECT Region,
 # or count the number of distinct values:
 SELECT COUNT(DISTINCT HeadOfState) FROM Country;
 
+ == more complicated groupings ==
+ Cube – define multiple grouping sets that include all possible combinations of dimensions.
+ Rollup – generate reports that contain totals and subtotals.
+#  see https://www.postgresqltutorial.com/
 
 = Transactions =
 
