@@ -192,10 +192,6 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     * - internal
     * - inline
 
-    = SQL =
-
-    * [[sql/sql_Essential_LinkedIn|sqlIntro]] -- some notes may be specific to SQLite; from linkedIn Learning coarse
-
 = Data Science, Machine/Statistical Learning, regression, stats, =
 
     * [[ML/data_sets|data_sets]]
@@ -296,6 +292,8 @@ $ dconf reset -f /org/compiz/
 = git =
     * [[git/setup|setup]] -- settings, config, etc.
     * [[git/inspect|inspect]] -- review and tidy up repo. blame, diff, log, bisect, clean etc.
+
+    [[git/tokens|tokens]]
 
     * [[git/preset_changes|preset_changes]] -- create and apply diff files, patches, cherry pick commits
     * [[git/committing|committing]] -- unstage, interactive staging...

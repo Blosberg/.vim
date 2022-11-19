@@ -1,0 +1,50 @@
+
+= Generating personal access tokens =
+
+https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+    
+
+	* In the upper-right corner of any page, click your profile photo, then click Settings.
+	* In the left sidebar, click Developer settings.
+	* In the left sidebar, click Personal access tokens.
+	* Click Generate new token.
+	* Give your token a descriptive name.
+
+
+= Using tokens =
+
+git remote set-url origin https://[USERNAME]:[TOKEN]@github.com/[Group]/[Repo]
+
+# or for a new one:
+git clone [^same as above]
+
+
+
+somehow I've got a "credential helper" installed on Crick that uses my gpg key
+$ git config --global credential.helper
+
+I think I did this:
+git config --global credential.helper cache
+
+(To store it permanently, one can do this: 
+$git config credential.helper store )
+The next time you are prompted for your GitHub user name and token, the information will be stored permanently in a .git-credentials
+
+
+
+= Other useful info: (links to peruse if you're desperate) =
+ https://mgimond.github.io/Colby-summer-git-workshop-2021/authenticating-with-github.html
+
+I may have used this:
+https://github.com/GitCredentialManager/git-credential-manager
+via:
+https://github.com/GitCredentialManager/git-credential-manager/blob/release/docs/install.md
+
+
+
+
+https://www.youtube.com/watch?v=IJf_Tryhzic
+
+
+https://stackoverflow.com/questions/66231282/how-to-add-a-github-personal-access-token-to-visual-studio-code
+
