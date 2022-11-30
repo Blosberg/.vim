@@ -252,6 +252,10 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
 how to reset the compiz settings (in case you bork them):
 $ dconf reset -f /org/compiz/
 
+= Raspberry pi raspi =
+
+    * [[raspbi/nextcloud|nextcloud]]
+
 = Regex =
         -- regular expressions --
     * [[Regex/Tutorials|Tutorials]]
