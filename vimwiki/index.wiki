@@ -73,11 +73,15 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
 
     = R =
 
+         === managing environment === 
          * .libPaths() # tells you where packages are saved to and accessed.
          * install specific versions with:
                install.packages("devtools")
                devtools::install_github("PhanstielLab/bedtoolsr@v2.29.0-3")
 
+        * set proxy
+	* Sys.setenv(http_proxy="http://proxy.charite.de:8080") #nolint
+	* Sys.setenv(https_proxy="https://proxy.charite.de:8080") #nolint
 
          === updating/ installing R ===
          https://cran.r-project.org/
@@ -191,6 +195,10 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     * - [[css/External|]]
     * - internal
     * - inline
+
+    = SQL/sql =
+
+    * [[sql/sql_Essential_LinkedIn|sqlIntro]] -- some notes may be specific to SQLite; from linkedIn Learning coarse
 
 = Data Science, Machine/Statistical Learning, regression, stats, =
 
