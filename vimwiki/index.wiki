@@ -74,11 +74,15 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
 
     = R =
 
+         === managing environment === 
          * .libPaths() # tells you where packages are saved to and accessed.
          * install specific versions with:
                install.packages("devtools")
                devtools::install_github("PhanstielLab/bedtoolsr@v2.29.0-3")
 
+        * set proxy
+	* Sys.setenv(http_proxy="http://proxy.charite.de:8080") #nolint
+	* Sys.setenv(https_proxy="https://proxy.charite.de:8080") #nolint
 
          === updating/ installing R ===
          https://cran.r-project.org/
@@ -193,6 +197,10 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     * - internal
     * - inline
 
+    = SQL/sql =
+
+    * [[sql/sql_Essential_LinkedIn|sqlIntro]] -- some notes may be specific to SQLite; from linkedIn Learning coarse
+
 = Data Science, Machine/Statistical Learning, regression, stats, =
 
     * [[ML/data_sets|data_sets]]
@@ -243,10 +251,19 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     * [[OSX/booting|booting_OSX]]
     * [[ubuntu/boot|booting_ubuntu]]
 
+
+= Windows =
+
+    * [[windows/wsl|wsl(2)]]
+
 = Ubuntu =
 
 how to reset the compiz settings (in case you bork them):
 $ dconf reset -f /org/compiz/
+
+= Raspberry pi raspi =
+
+    * [[raspbi/nextcloud|nextcloud]]
 
 = Regex =
         -- regular expressions --
@@ -288,6 +305,8 @@ $ dconf reset -f /org/compiz/
 = git =
     * [[git/setup|setup]] -- settings, config, etc.
     * [[git/inspect|inspect]] -- review and tidy up repo. blame, diff, log, bisect, clean etc.
+
+    [[git/tokens|tokens]]
 
     * [[git/preset_changes|preset_changes]] -- create and apply diff files, patches, cherry pick commits
     * [[git/committing|committing]] -- unstage, interactive staging...

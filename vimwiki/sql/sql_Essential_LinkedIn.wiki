@@ -1,0 +1,423 @@
+
+for postgresql, see: https://www.postgresqltutorial.com/
+
+== Select/ Filter rows with "WHERE" ==
+
+select Name, Continent, Region
+  FROM Country
+  WHERE Population > 100000000 AND Continent = 'Europe'
+  ORDER BY Name1 DESC, Name2 ASC, Name3 ...,
+  LIMIT 10
+  OFFSET 12
+
+# order of commands: first  FROM, then WHERE, ORDER BY , LIMIT, and OFFSET last
+# ^ this will give results 12-22
+# DESC[ending] reverses order, ASC[ending] is the default
+
+# count number of rows:
+SELECT COUNT(*) FROM Country;
+
+# or select only where there is data:
+SELECT COUNT(LifeExpectancy) FROM Country;
+
+# Note that if you do this:
+SELECT LifeExpectancy FROM Country;
+# you get "Nulls" in your output
+
+
+# Get only distinct (or unique) values (or distinct combinations  when providing multiple inputs)
+SELECT DISTINCT Region, Continent FROM Country;
+
+=== FETCH  ===
+# postgresql also allows fetch: (non-standard)
+FETCH { FIRST | NEXT } [ row_count ] { ROW | ROWS } ONLY
+
+
+== SET operations: (postgresql)  ==
+
+== UNION ==
+#   Union – combine result sets of multiple queries into a single result set.
+#   removes duplicates but keeps both entries
+
+SELECT * FROM top_rated_films
+UNION
+SELECT * FROM most_popular_films;
+
+
+==  Intersect ==
+# combine the result sets of two or more queries and returns a single result set that has the rows appear in both result sets.
+
+SELECT *
+FROM most_popular_films 
+INTERSECT
+SELECT *
+FROM top_rated_films;
+
+
+
+== Except ==
+# return the rows in the first query that does not appear in the output of the second query.
+    
+
+SELECT * FROM top_rated_films
+EXCEPT 
+SELECT * FROM most_popular_films;
+
+
+
+=== LIKE is for string matching.  wildcard matching, ===
+
+% is a wildcard for anything ( like .* )
+_ is a single-character wildcard (like ?/. )
+
+# e.g. select "island" or "islands"
+SELECT Name, Continent, Population FROM Country
+  WHERE Name LIKE '%island%' ORDER BY Name;
+
+== Select Columns: ==
+
+# assign alias in resulting table using "AS":
+select Name, LifeExpectancy AS "LE",
+  Region AS "WhereAtBro?"
+  FROM Country
+  ORDER BY Name;
+
+IN compares to a list
+SELECT Name, Continent, Population FROM Country
+  WHERE Continent IN ( 'Europe', 'Asia' ) ORDER BY Name
+
+
+== Boolean logic, selection based on columns ==
+AND/OR precedence ??
+left to right?
+
+== comparison (postgresQL)  ==
+value BETWEEN low AND high;
+
+You can rewrite the BETWEEN operator by using the greater than or equal ( >=)
+or less than or equal ( <=) operators like this:
+
+value >= low and value <= high
+
+== CASES If/ELSE ==
+# for every row check the values of booltest (which has fields a,b)
+# and assign boolA, boolB fields in the output according to the following logic:
+SELECT
+    CASE WHEN a THEN 'true' ELSE 'false' END as boolA,
+    CASE WHEN b THEN 'true' ELSE 'false' END as boolB
+    ...
+    n
+    FROM booltest
+;
+
+== Create Tables and define schema ==
+
+CREATE TABLE test (
+  a INTEGER PRIMARY KEY,  # <-- SQLlite syntax (may vary on other systems.)
+  b INTEGER,
+  c TEXT DEFAULT 'puppy',
+  d TEXT NOT NULL,
+  e TEXT DEFAULT 'ONLYONE' UNIQUE
+);
+-- missing value behaviour:
+    -- "a" --> assigned index according to row position.
+    -- "b" --> assigned NULL
+    -- "c" --> assigned "puppy"
+    -- "d" --> STOP! Must be assigned a value, or insert fails.
+    -- "e" --> assigned Default, but only once (subsequent attempts fail)
+
+-- Repeated values
+    -- "a" --> STOP! ids must be unique.
+    -- "b/c/d" --> fine
+    -- "d" --> STOP! values must be unique. (can combine with default)
+-- [ n.b. whether multiple NULLs are allowed depends on implementation ]
+
+# delete a table (DANGER!)
+-- eliminate the whole table (if it exists).
+DROP TABLE IF EXISTS test
+
+
+== ADD Rows  (even if data is incomplete) or change existing ones ==
+INSERT INTO customer (name, address, city, state, zip)
+  VALUES ('Fred Flintstone', '123 Cobblestone Way', 'Bedrock', 'CA', '91234');
+
+# dont need to list all of them:
+INSERT INTO customer (name, city, state)
+  VALUES ('Jimi Hendrix', 'Renton', 'WA');
+
+# change existing entries with UPDATE:
+UPDATE customer SET address = '123 Music Avenue', zip = '98056' WHERE id = 5;
+
+# REMOVE rows with DELETE:
+DELETE FROM customer WHERE id = 5;
+DELETE from test where a = 1;
+# use SELECT * first to check:
+SELECT * from test where a = 1;
+
+
+CREATE TABLE test ( a TEXT, b TEXT, c TEXT );
+INSERT INTO test ( b, c ) VALUES ( 'Over THARRR', 'YARRR!!!' );
+INSERT INTO test ( a, c ) VALUES ( 42, 'Forever' );
+-- Just provide values for some columns, others are NULL
+
+INSERT INTO test DEFAULT VALUES;
+-- All columns "Null", unless default specified.
+
+-- insert selected values from another db
+INSERT INTO test (a, b, c) SELECT id, name, description FROM item
+
+-- Find rows where col a is (not) a null values
+SELECT * FROM test WHERE a IS (NOT) NULL;
+
+== Add Columns with ALter ==
+
+ALTER TABLE test ADD d TEXT;
+-- columns will be filled with NULL
+
+ALTER TABLE test ADD e TEXT DEFAULT 'panda';
+-- DEFINE col with preset default
+
+
+== Joining tables ==
+
+# joining tables A and B:
+SELECT A.colName, B.colName, ... [Whatever columns you want]
+  FROM  A JOIN B                 [the two tables being joined (here A=left is implied)]
+  on A.ConditionFieldA = B.ConditionFieldB [ condition to obtain matching results.]
+
+#you can also shorten table names with aliases:
+# Assuming we have two tables
+# sale
+# item
+# and the sale table already happens to have a Foreign id column called "item_id"
+
+SELECT s.id, i.name, s.price
+    FROM sale AS s JOIN item AS i ON s.item_id = i.id;
+
+# and one more layer of aliasing for the final output with
+SELECT s.id as "newSaleName", i.name as "NewNameName", s.price as "newPriceName"
+    FROM sale AS s JOIN item AS i ON s.item_id = i.id;
+
+
+# you can do multiple joins: (junction tables)
+
+SELECT c.name AS Cust, c.zip, i.name AS Item, i.description, s.quantity AS Quan, s.price AS Price
+  FROM sale AS s
+  JOIN item AS i ON s.item_id = i.id
+  JOIN customer AS c ON s.customer_id = c.id
+  ORDER BY Cust, Item
+;
+
+JOINs will only give you results where there is a match, unless you specify "LEFT JOIN"
+That will preserve all entries in the original table (but you will likely see more results
+that will be "null"
+
+== Cross join  ==
+# permutes through all of the values
+
+T1	T2
+A       1
+B       2
+        3
+
+SELECT *
+FROM T1
+CROSS JOIN T2;
+
+label | score
+-------+-------
+ A     |     1
+ B     |     1
+ A     |     2
+ B     |     2
+ A     |     3
+ B     |     3
+
+== natural join ==
+
+every column with same name between two tables
+
+= Data Types =
+
+SELECT TYPEOF('panda')
+"text"
+SELECT TYPEOF(1)
+"text"
+SELECT TYPEOF(1+1.0)
+"text"
+
+
+=== Strings ===
+
+# functions for length of string not standard, but usually included as:
+SELECT LENGTH('string');
+SUBSTR(Name, n, L )
+^ starting from "n", collect string of length L characters
+
+==== Trim away characters indicated by "^" (default whitespace) ====
+
+SELECT TRIM('   string   ');
+             ^^^      ^^^
+SELECT LTRIM('   string   ');
+              ^^^
+SELECT RTRIM('   string   ');
+                       ^^^
+SELECT TRIM('...string...', '.');
+             ^^^      ^^^
+concatenate with ||
+SELECT ( 'apple' || 'banana' )
+
+   === convert to upper/lower case ===
+SELECT 'StRiNg' = 'string';
+SELECT LOWER('StRiNg') = LOWER('string');
+SELECT UPPER('StRiNg') = UPPER('string');
+SELECT UPPER(Name) FROM City ORDER BY Name;
+SELECT LOWER(Name) FROM City ORDER BY Name;
+
+=== Numbers ===
+
+1. + 2 = 1+2
+# ^ FALSE! (Integer arithmetic.)
+
+SELECT CAST(1 AS REAL) / 2;
+# ^ 0.5
+
+# Use modulo operator % to get remainder
+SELECT 17 / 5, 17 % 5;
+3  2
+
+# round to nearest integer
+SELECT ROUND(2.55555);
+# or 3rd decimal place (default 0 -> integer)
+SELECT ROUND(2.55555, 3);
+
+=== Dates and times ===
+
+# Get dates and times (with possible offsets):
+SELECT DATETIME('now');
+SELECT DATE('now');
+SELECT TIME('now');
+SELECT DATETIME('now', '+1 day');
+SELECT DATETIME('now', '+3 days');
+SELECT DATETIME('now', '-1 month');
+SELECT DATETIME('now', '+1 year');
+SELECT DATETIME('now', '+3 hours', '+27 minutes', '-1 day', '+3 years');
+
+
+= Aggregates =
+
+SELECT Region, COUNT(*)
+  FROM Country
+  GROUP BY Region
+;
+
+# results grouped by Region first.
+# Count (*) gives number of entries, but everything else just takes the first entry
+
+SELECT a.title AS Album, COUNT(t.track_number) as Tracks
+  FROM track AS t
+  JOIN album AS a
+    ON a.id = t.album_id
+  WHERE a.artist = 'The Beatles'
+  GROUP BY a.id
+  HAVING Tracks >= 10
+  ORDER BY Tracks DESC, Album
+;
+
+# Having is like "where", but for aggregation.
+# so this selects for albums by the Beatles with at least 10 tracks.
+
+SELECT COUNT(*) FROM Country;
+SELECT COUNT(Population) FROM Country;
+SELECT AVG(Population) FROM Country;
+SELECT Region, AVG(Population) FROM Country GROUP BY Region;
+SELECT Region, MIN(Population), MAX(Population) FROM Country GROUP BY Region;
+SELECT Region, SUM(Population) FROM Country GROUP BY Region;
+
+ == Aggregate operations  Min/max/sum/count/==
+SELECT Region,
+  MIN(Population),
+  AVG(Population),
+  SUM(Population),
+  Count(Population),
+  MAX(Population)
+  FROM Country GROUP BY Region;
+
+# or count the number of distinct values:
+SELECT COUNT(DISTINCT HeadOfState) FROM Country;
+
+ == more complicated groupings ==
+ Cube – define multiple grouping sets that include all possible combinations of dimensions.
+ Rollup – generate reports that contain totals and subtotals.
+#  see https://www.postgresqltutorial.com/
+
+= Transactions =
+
+# Perform multiple operations at once. If any one fails,
+# then they are all abandoned and db is returned to original state.
+
+BEGIN TRANSACTION;
+INSERT INTO widgetSales ( inv_id, quan, price ) VALUES ( 1, 5, 500 );
+UPDATE widgetInventory SET onhand = ( onhand - 5 ) WHERE id = 1;
+
+END TRANSACTION;
+# COMMIT can substitute for END TRANSACTION
+ROLLBACK
+# ^ abandones the transaction
+
+= Triggers =
+
+# A trigger is a set of code that is evaluated when a data change is made to a table.
+# Triggers may be defined to execute on INSERT, UPDATE, DELETE, or any combination of
+# those operations.
+# Stored with the table.
+# automatically initiate operations after certain operations are done
+CREATE TRIGGER TriggerName [BEFORE/AFTER/INSTEAD OF] [INSERT/UPDATE/DELETE] ON widgetSale
+    BEGIN
+        UPDATE widgetCustomer SET last_order_id = NEW.id WHERE widgetCustomer.id = NEW.customer_id;
+    END
+
+# Remove triggers by "drop"-ing them:
+DROP TRIGGER IF EXISTS newWidgetSale;
+
+# here if reconciled=1, then this trigger halts the update and initiates "ROLLBACK"
+CREATE TRIGGER updateWidgetSale BEFORE UPDATE ON widgetSale
+    BEGIN
+        SELECT RAISE(ROLLBACK, 'cannot update table "widgetSale"') FROM widgetSale
+            WHERE id = NEW.id AND reconciled = 1;
+    END
+;
+
+= subselect (nested query) =
+
+# a SELECT produces a query which itself can be treated as a table
+# you can put  parenthesis around that and then select from it too.
+
+SELECT co.Name, ss.CCode FROM (
+    SELECT SUBSTR(a, 1, 2) AS State, SUBSTR(a, 3) AS SCode,
+      SUBSTR(b, 1, 2) AS Country, SUBSTR(b, 3) AS CCode FROM t
+  ) AS ss
+  JOIN Country AS co
+    ON co.Code2 = ss.Country
+;
+
+
+= Views =
+
+# temporary storage points for selection queries
+
+== create a view ==
+CREATE VIEW trackView AS
+  SELECT id, album_id, title, track_number,
+    duration / 60 AS m, duration % 60 AS s FROM track;
+SELECT * FROM trackView;
+
+== and then select from it as any table ==
+SELECT a.title AS album, a.artist, t.track_number AS seq, t.title, t.m, t.s
+  FROM album AS a
+  JOIN trackView AS t
+    ON t.album_id = a.id
+  ORDER BY a.title, t.track_number
+;
+== and delete it as any table ==
+DROP VIEW IF EXISTS trackView;
