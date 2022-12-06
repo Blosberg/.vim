@@ -184,6 +184,14 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
 
          - [[python/Exceptions|Exceptions]]
 
+         = python database API =
+
+	 - [[python/sql_api|sql_api]]
+	 - connection = connect( parameters )
+	 - connection.commit()
+	 - connection.rollback()
+	 - connection.close()
+
     = Snakemake =
 
     --reason
