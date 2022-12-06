@@ -15,6 +15,7 @@ Use at your own risk.
 # Strange characters appear in terminal when you click with mouse? this is because of [[https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-Mouse-Tracking|mouse tracking mode]]  Enter command "reset"
 
     * [[shell/conda|conda]] -- Conda: manage environments, recipes.
+    * [[shell/cron|cron]]
 
     * [[shell/shell_variables|shell_variables]] -- string subsets, length, basename, dirname of filepaths partial subsets with #, %
     * [[shell/shell_scripting|shell_scripting]] -- parse command line args for shell scripts; if/else, control flow; compare files; check if file exists

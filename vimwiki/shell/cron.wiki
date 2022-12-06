@@ -1,0 +1,35 @@
+
+# crontab to schedule tasks at particular times:
+# To start/stop/etc:
+
+service cron {start|stop|status|restart|reload|force-reload}
+
+# OR:
+
+sudo /etc/init.d/cron start
+
+= Manage tasks =
+# Edit
+crontab -e 
+# List
+crontab -l
+
+# ===============================================
+# ┌───────────── minute (0 - 59)
+# │ ┌───────────── hour (0 - 23)
+# │ │ ┌───────────── day of month (1 - 31)
+# │ │ │ ┌───────────── month (1 - 12)
+# │ │ │ │ ┌───────────── day of week (0 - 6) (Sunday to Saturday;
+# │ │ │ │ │                                       7 is also Sunday on some systems)
+# │ │ │ │ │
+# │ │ │ │ │
+# * * * * *  command_to_execute
+
+# =======
+# Examples:
+# Empty temp folder every Friday at 5pm
+#    8  *     *   *    *    echo "It is now 2 past the hour"                             > dummy_out
+#    0  12    *   *   6,7   echo "It is noon on the weekend (either saturday or sunday)  > dummy_out
+# */10  *     *   *    *    echo "I print every 10 minutes"                              > dummy_out
+#    0  12    *  6-8   *    echo "It is noon on a summer day (June,July,Aug)"            > dummy_out
+# */30  9-17  *   *   1-5   echo "Print every 30 min. Mon-Fri, 9-5"                      > dummy_out
