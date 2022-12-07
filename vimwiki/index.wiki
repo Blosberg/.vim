@@ -12,7 +12,9 @@ Use at your own risk.
 = Notes:  =
 
 = shell/bash + packaging =
-# Strange characters appear in terminal when you click with mouse? this is because of [[https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-Mouse-Tracking|mouse tracking mode]]  Enter command "reset"
+	# Strange characters appear in terminal when you click with mouse? this is because of [[https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-Mouse-Tracking|mouse tracking mode]]  Enter command "reset"
+
+    * [[shell/top|]](h)top -- top and htop to view processes
 
     * [[shell/conda|conda]] -- Conda: manage environments, recipes.
     * [[shell/cron|cron]]
@@ -74,7 +76,7 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
 
     = R =
 
-         === managing environment === 
+         === managing environment ===
          * .libPaths() # tells you where packages are saved to and accessed.
          * install specific versions with:
                install.packages("devtools")
