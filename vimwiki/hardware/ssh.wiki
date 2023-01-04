@@ -33,11 +33,7 @@ https://www.edpnet.be/en/support/installation-and-usage/internet/manage-fritz!bo
 
 Internet -> Freigaben -> add device -> new sharing
 
-
-
 = Ports =
-
-
 
 
 # from:  https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands

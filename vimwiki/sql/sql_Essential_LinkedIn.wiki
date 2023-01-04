@@ -44,7 +44,7 @@ UNION
 SELECT * FROM most_popular_films;
 
 
-==  Intersect ==
+== Intersect ==
 # combine the result sets of two or more queries and returns a single result set that has the rows appear in both result sets.
 
 SELECT *
