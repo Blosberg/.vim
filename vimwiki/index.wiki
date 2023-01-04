@@ -211,13 +211,10 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
 
     = SQL/sql =
 
-backup/ restore:
-https://stackoverflow.com/questions/37271402/pg-restore-error-role-xxx-does-not-exist
 
-[on local machine]:
-pg_restore --no-privileges --no-owner -h localhost -p 5433 -U  postgres  -d Test_3 Npath_TumorBank_postgres_lab_2022-12-28-1138.backup
+    * [[sql/sqLite_Essential_LinkedIn|sqlIntro]] -- some notes may be specific to SQLite; from linkedIn Learning coarse
+    * [[sql/postgres|postgres]] -- Notes specific to postgres
 
-    * [[sql/sql_Essential_LinkedIn|sqlIntro]] -- some notes may be specific to SQLite; from linkedIn Learning coarse
 
 = Data Science, Machine/Statistical Learning, regression, stats, =
 
