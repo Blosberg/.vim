@@ -13,6 +13,7 @@ Use at your own risk.
 
 = shell/bash + packaging =
 
+    * [[shell/top|]](h)top -- top and htop to view processes
 # to see what shell you're using:
 echo $0
 
@@ -190,6 +191,11 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
 
          = python database API =
 
+		https://peps.python.org/pep-0249/
+		
+		for postgress:
+		[[python/pySQL/psycopg2|psycopg2]]
+		
 	 - [[python/sql_api|sql_api]]
 	 - connection = connect( parameters )
 	 - connection.commit()
@@ -210,7 +216,6 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     * - inline
 
     = SQL/sql =
-
 
     * [[sql/sqLite_Essential_LinkedIn|sqlIntro]] -- some notes may be specific to SQLite; from linkedIn Learning coarse
     * [[sql/postgres|postgres]] -- Notes specific to postgres
