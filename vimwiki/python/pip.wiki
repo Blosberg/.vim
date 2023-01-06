@@ -5,3 +5,7 @@ Usage:
 
 Commands:
   install                     Install packages.
+
+
+# proxy:
+pip3 install psycopg2-binary --proxy=http://proxy.charite.de:8080

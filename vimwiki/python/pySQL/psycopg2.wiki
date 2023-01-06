@@ -1,5 +1,0 @@
-https://pypi.org/project/psycopg2/
-
-s.g. psycopg2.connect("dbname=world user=bill password=pa55w0rd" )
-
-

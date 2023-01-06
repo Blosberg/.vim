@@ -192,16 +192,18 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
          = python database API =
 
 		https://peps.python.org/pep-0249/
-		
+
 		for postgress:
 		[[python/pySQL/psycopg2|psycopg2]]
-		
+
 	 - [[python/sql_api|sql_api]]
 	 - connection = connect( parameters )
 	 - connection.commit()
 	 - connection.rollback()
 	 - connection.close()
 
+    * [[python/psycopg2|psycopg2]]  -- sql with python via psycopg2
+    * [[python/sqlalchemy|sqlalchemy]]  -- sql with python via sqlalchemy
     = Snakemake =
 
     --reason
@@ -297,11 +299,31 @@ $ dconf reset -f /org/compiz/
 
     == Networking ==
 
-    * [[hardware/ssh|ssh_hosting]]
+    Fritzbox: https://avm.de/service/wissensdatenbank/dok/FRITZ-Box-7490/1_Benutzeroberflache-der-FRITZ-Box-aufrufen/
+
+    * [[hardware/ssh|ssh_hosting]] -- firewall with ufw ("uncomplicated firewall"); Everything about hosting a machine that faces the internet
     * [[hardware/DDNS|ddns]]
+
+	[[https://pi-hole.net/|pi-hole]]
+
+
+    * configure your router to have [[Network/DHCP|DHCP]] clients use Pi-hole as their DNS server
+
+   https://www.youtube.com/watch?v=gQXMAe9bEgw
+
+   On Fritzbox:
+   goto Fritz.box ( or http://192.168.178.1/   or  http://169.254.1.1/   )
+   --> Heimnetz
+   --> Netzwerkeinstellungen
+   --> weitere optionen
+   [... scroll way down ...]
+   --> IPv4 Einstellungen
+
 
     == Hardware ==
 
+    * [[raspbi/nextcloud|nextcloud]]  ---  Raspberry pi raspi
+    *
     * [[hardware/Drives|hard drive info]] Hard drive management
     * [[Resource_management/Mounting|Mounting]] -- Hardware: how to mount/unmount a drive in Unix
         * [[Resource_management/Veracrypt|Veracrypt]]
@@ -313,6 +335,8 @@ $ dconf reset -f /org/compiz/
     * [[Resource_management/dmesg|dmesg]] -- Get info about a task submitted on a local machine (without SGE queueing), find out why it died, etc.
     * [[Resource_management/Audio|audio]] -- Audio sound card settings microphone issue distortion sound.
 
+    * [[hardware/pihole|pihole]]
+    * Resource_management/router|
     = Cluster =
         - [[Resource_management/SGE_submission|SGE_submission]]  -- example script
         - [[Resource_management/check_cluster_status|check_cluster_status]]
