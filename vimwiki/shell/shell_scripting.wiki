@@ -65,7 +65,7 @@ done
 
 = IF/ELSE =
 read -p "Enter your marks: " marks
-
+# compare numbers:
 if [ $marks -ge 80 ]
 then
     echo "Very Good"
@@ -74,7 +74,8 @@ elif [ $marks -ge 50 ]
 then
     echo "Good"
 
-elif [ $marks -ge 33 ]
+# compare strings
+elif [ $marks = "Some_string" ]
 then
     echo "Just Satisfactory"
 
@@ -144,6 +145,6 @@ if [ ! -f ${fin} ]
 = Check if variable is defined =
 if [ -z $SAMPLE ]; then
     echo "[ERROR] Sample NOT defined."
-    else 
+    else
     echo "defined"
 fi

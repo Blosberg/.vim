@@ -1,0 +1,113 @@
+= sql alchemy core =
+from sqlalchemy import create_engine
+from sqlalchemy import Table, Column, String, MetaData
+
+engine = create_engine('postgresql://postgres:[password]@localhost:5433/red30')
+#                       ^ Type       |         |        |       |    |    [mysql|postgresql|...]
+#                                    ^Username |        |       |    |
+#                                              ^ Password       |    |
+#                                                       ^ Host  |    |
+#                                                               ^ Port #
+#                                                                    ^ Database Name
+
+( Charite):
+engine = create_engine('postgresql://[user]:[password]@[address]:[port]/database')
+
+with engine.connect() as connection:
+    meta = MetaData(engine)
+    sales_table = Table('sales', meta, autoload=True, autoload_with=engine)
+
+    # Create
+    insert_statement = sales_table.insert().values(order_num=6562993,
+                                                order_type='Retail',
+                                                cust_name='Max Musterman',
+                                                prod_number='123124',
+                                                prod_name='GarBO The OK',
+                                                quantity=6,
+                                                price=666.5,
+                                                discount=0.6,
+                                                order_total=568.5)
+    connection.execute(insert_statement)
+
+    # Read
+    select_statement = sales_table.select().limit(10)
+    result_set = connection.execute(select_statement)
+    for r in result_set:
+        print(r)
+
+    # Update
+    update_statement = sales_table.update().where(sales_table.c.order_num==6562993).values(quantity=99, order_total=99)
+    connection.execute(update_statement)
+
+    # Confirm Update: Read
+    reselect_statement = sales_table.select().where(sales_table.c.order_num==6562993)
+    updated_set = connection.execute(reselect_statement)
+    for u in updated_set:
+        print(u)
+
+    # Delete
+    delete_statement = sales_table.delete().where(sales_table.c.order_num==6562993)
+    connection.execute(delete_statement)
+
+    print ("getting confirmation!")
+    # Confirm Delete: Read
+    not_found_set = connection.execute(reselect_statement)
+    print(not_found_set.rowcount)
+
+= sqlalchemy ORM =
+
+# ORM uses class notation so that you can alter values with [Entry].foo=bar
+
+from sqlalchemy import create_engine, func
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+
+
+
+engine = create_engine('postgresql://postgres:[password]@localhost:[port]/red30')
+Base = declarative_base(engine)
+Base.metadata.reflect(engine)
+
+class Sales(Base):
+    __table__ = Base.metadata.tables['sales']
+
+    def __repr__(self):
+        return '''<Sale(order_num='{0}', order_type'{1}', cust_name='{2}',
+            prod_name='{3}', quantity='{4}',
+            order_total='{5}')>'''.format(self.order_num,
+            self.order_type, self.cust_name, self.prod_name,
+            self.quantity, self.order_total)
+
+def loadSession():
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    return session
+
+if __name__ == "__main__":
+    session = loadSession()
+
+    # Read
+    smallest_sales = session.query(Sales).order_by(Sales.order_total).limit(10)
+    print(smallest_sales[0].cust_name)
+
+    # Insert
+    recent_sale = Sales(order_num=1105910, order_type='Retail', cust_name='Syman Mapstone', prod_number='EB521', prod_name='Understanding Artificial Intelligence', quantity=3, price=19.5, discount=0, order_total=58.5)
+    print(recent_sale)
+    session.add(recent_sale)
+    session.commit()
+
+    # Update
+    recent_sale.quantity = 2
+    recent_sale.order_total = 39
+    session.commit()
+    updated_sale = session.query(Sales).filter(Sales.order_num == 1105910).first()
+    print(updated_sale)
+
+    # Delete
+    returned_sale = session.query(Sales).filter(Sales.order_num == 1105910).first()
+    session.delete(returned_sale)
+    session.commit()
+
+
+
+

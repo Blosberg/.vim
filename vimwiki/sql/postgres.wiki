@@ -1,4 +1,4 @@
-backup/ restore:
+= backup/ restore: =
 https://stackoverflow.com/questions/37271402/pg-restore-error-role-xxx-does-not-exist
 
 [on local machine]:
@@ -8,6 +8,7 @@ pg_restore --no-privileges --no-owner -h localhost -p 5433 -U  postgres  -d Test
 $export PGPASSWORD=[password]
 $pg_restore --no-password --no-privileges --no-owner -h localhost -p 5433 -U  postgres  -d test Npath_TumorBank_postgres_lab_2022-12-17-2314.backup
 
+= interactive sessions =
 # Connect as user postgress on port 5433
 psql -U postgre -p "5433"
 
@@ -19,5 +20,30 @@ psql -U postgre -p "5433"
 
 # list tables with \dt
 \dt
+
+copy data from csv into db
+ \copy sales FROM '/path/to/csv' WITH DELIMITER ',' CSV HEADER;
+ COPY 4976
+
+ # Start the server
+pg_ctl --help
+pg_ctl is a utility to initialize, start, stop, or control a PostgreSQL server.
+
+# connect to it
+psql postgres -p 5433 -U postgres
+Password for user postgres:
+
+# create a database (simple one from LL)
+CREATE DATABASE red30;
+CREATE DATABASE
+
+# list databases:
+\list
+\l
+
+# connect
+\c red30
+https://pypi.org/project/psycopg2/
+
 
 

@@ -1,9 +1,28 @@
+The steps involved in setting up pihole are:
+https://pi-hole.net/
 
-This is to set up a DDNS to host a domain on your router
 
+1. Install a supported operating system
+2. Install Pi-hole
+3. Use Pi-hole as your Domain Name service (DNS) server
 
-https://www.dynu.com/DynamicDNS/IPUpdateClient/Fritzbox
+# 3 is the big commitment, as it blocks your network from any other DNS.
 
+Alternatives for local DNS are:
+
+8.8.8.8  ( Google )
+1.1.1.1  ( CloudFlair )
+
+but the "Default" is to use the DNS provided by your ISP. To do that, use the IP address _of the router itself_
+
+For Fritzbox, this is 192.168.178.1
+In general, most routers use 192.168.1.1
+
+To set this on your Fritzbox, go to the IP address for your router (i.e. above), and then
+
+Home Network -> Network -> Network settings -> IPv4 settings -> Local DNS.
+
+This will re-establish normal internet function.
 
 = Setting up dynamic DNS in the FRITZ!Box =
 
@@ -32,5 +51,4 @@ https://en.avm.de/service/knowledge-base/dok/FRITZ-Box-7590/30_Setting-up-dynami
     Enter in the "Password" field the password of your user account with the provider.
     Click "Apply" to save the settings.
     Now the FRITZ!Box transmits its current IP addresses to the provider every time it connects to the internet so that the FRITZ!Box can always be contacted via its unique dynamic DNS domain name.
-
 
