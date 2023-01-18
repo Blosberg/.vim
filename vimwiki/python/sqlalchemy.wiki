@@ -1,8 +1,8 @@
 = sql alchemy core =
-from sqlalchemy import create_engine  
+from sqlalchemy import create_engine
 from sqlalchemy import Table, Column, String, MetaData
 
-engine = create_engine('postgresql://postgres:8HiC2im@localhost:5433/red30')
+engine = create_engine('postgresql://postgres:[password]@localhost:5433/red30')
 #                       ^ Type       |         |        |       |    |    [mysql|postgresql|...]
 #                                    ^Username |        |       |    |
 #                                              ^ Password       |    |
@@ -10,19 +10,33 @@ engine = create_engine('postgresql://postgres:8HiC2im@localhost:5433/red30')
 #                                                               ^ Port #
 #                                                                    ^ Database Name
 
+engine = create_engine('postgresql://[user]:[password]@[address]:[port]/[database]')
 with engine.connect() as connection:
-    meta = MetaData(engine)  
+    meta = MetaData(engine)
     sales_table = Table('sales', meta, autoload=True, autoload_with=engine)
 
     # Create
-    insert_statement = sales_table.insert().values(order_num=6562993, 
-                                                order_type='Retail', 
-                                                cust_name='Max Musterman', 
-                                                prod_number='123124', 
-                                                prod_name='GarBO The OK', 
-                                                quantity=6, 
-                                                price=666.5, 
-                                                discount=0.6, 
+    insert_statement = sales_table.insert().values(order_num=6562993,
+                                                order_type='Retail',
+                                                cust_name='Max Musterman',
+                                                prod_number='123124',
+                                                prod_name='GarBO The OK',
+                                                quantity=6,
+                                                price=666.5,
+                                                discount=0.6,
+with engine.connect() as connection:
+    meta = MetaData(engine)
+    sales_table = Table('sales', meta, autoload=True, autoload_with=engine)
+
+    # Create
+    insert_statement = sales_table.insert().values(order_num=6562993,
+                                                order_type='Retail',
+                                                cust_name='Max Musterman',
+                                                prod_number='123124',
+                                                prod_name='GarBO The OK',
+                                                quantity=6,
+                                                price=666.5,
+                                                discount=0.6,
                                                 order_total=568.5)
     connection.execute(insert_statement)
 
@@ -61,7 +75,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 
 
-engine = create_engine('postgresql://postgres:8HiC2im@localhost:5433/red30')
+engine = create_engine('postgresql://postgres:[password]@localhost:[port]/red30')
 Base = declarative_base(engine)
 Base.metadata.reflect(engine)
 

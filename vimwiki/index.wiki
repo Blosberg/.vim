@@ -268,25 +268,6 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     * [[math_stats/FDR|FDR]]
 
 
-= OSX =
-    * [[OSX/shortcut_keys|shortcut_keys]]
-    * [[OSX/booting|booting_OSX]]
-    * [[ubuntu/boot|booting_ubuntu]]
-
-
-= Windows =
-
-    * [[windows/wsl|wsl(2)]]
-
-= Ubuntu =
-
-how to reset the compiz settings (in case you bork them):
-$ dconf reset -f /org/compiz/
-
-= Raspberry pi raspi =
-
-    * [[raspbi/nextcloud|nextcloud]]
-
 = Regex =
         -- regular expressions --
     * [[Regex/Tutorials|Tutorials]]
@@ -295,9 +276,32 @@ $ dconf reset -f /org/compiz/
     * [[Regex/Greedy_vs_lazy|Greedy_vs_lazy]]
     * [[Regex/Lookarounds|Lookarounds]]
 
-= Resource_management =
+= Resource_management (hardware/networking/cluster), system=OSX/windows/linux/raspberry pi =
 
-    == Networking ==
+  == OSX ==
+    * [[OSX/shortcut_keys|shortcut_keys]]
+    * [[OSX/booting|booting_OSX]]
+    * [[ubuntu/boot|booting_ubuntu]]
+
+
+  == Windows ==
+
+    * [[windows/wsl|wsl(2)]]
+
+  == Ubuntu ==
+
+how to reset the compiz settings (in case you bork them):
+$ dconf reset -f /org/compiz/
+
+
+  == Raspberry pi raspi ==
+
+    *  [[iraspbi/connect|raspbiConnect]]
+    *  [[raspbi/nextcloud|nextcloud]]
+    *  [[https://pi-hole.net/|pi-hole]]
+
+
+  == Networking ==
 
     Fritzbox: https://avm.de/service/wissensdatenbank/dok/FRITZ-Box-7490/1_Benutzeroberflache-der-FRITZ-Box-aufrufen/
 
@@ -323,7 +327,6 @@ $ dconf reset -f /org/compiz/
     == Hardware ==
 
     * [[raspbi/nextcloud|nextcloud]]  ---  Raspberry pi raspi
-    *
     * [[hardware/Drives|hard drive info]] Hard drive management
     * [[Resource_management/Mounting|Mounting]] -- Hardware: how to mount/unmount a drive in Unix
         * [[Resource_management/Veracrypt|Veracrypt]]

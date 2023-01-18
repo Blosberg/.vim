@@ -1,3 +1,6 @@
+# if you get errors about libpq-fe-h when you try to install psycopg2, try:
+# sudo apt-get install --reinstall libpq-dev
+
 import psycopg2
 
 conn = psycopg2.connect(database="red30",
@@ -27,7 +30,7 @@ cur.execute(''' SELECT CUST_NAME, ORDER_TOTAL FROM SALES WHERE ORDER_NUM=%s''', 
 rows = cur.fetchall()
 for row in rows:
         print( "CUST_NAME=", row[0])
-        print( "ORDER_TOTAL=", row[1], "\n" ) 
+        print( "ORDER_TOTAL=", row[1], "\n" )
 
 
 
@@ -36,23 +39,31 @@ conn.close()
 
 = Charite =
 
+# get colNames:
+sqlCmd = '''SELECT * FROM methylation_arrays_analyses '''
+cursor.execute(sqlCmd)
+column_names = [desc[0] for desc in cursor.description]
+
 
 import psycopg2
-conn = psycopg2.connect( database = "neuropath_tumorbank", 
-                          user="Neuropath_User", 
-                          host="localhost", 
-                          port=5432, 
-                          password="password"  )
-
-
-conn = psycopg2.connect( database = "neuropath_tumorbank", 
-                          user="Neuropath_User", 
-                          host="watson.charite.de", 
-                          port=5432, 
-                          password="password"  )
-
+conn = psycopg2.connect( database = [database],
+                          user=[user],
+                          host=[hosturl],
+                          port=[port],
+                          password=[password]  )
 cursor = conn.cursor()
-cursor.execute(''' SELECT * FROM methylation_arrays_analyses ''')
+cursor.execute( ''' SELECT methylation_arrays_analysis_id FROM methylation_arrays_analyses ''' )
+idList_tup = cursor.fetchall()
+idList=[ int( tup[0] ) for tup in idList_tup ]
+
+Max_current_MethAnalysis_id = np.max( idList )
+
+
+# get colNames:
+sqlCmd = '''SELECT * FROM methylation_arrays_analyses '''
+cursor.execute(sqlCmd)
+column_names = [desc[0] for desc in cursor.description]
+
 
 # ================================================
 # --- Close and cleanup:
