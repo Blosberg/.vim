@@ -296,7 +296,7 @@ $ dconf reset -f /org/compiz/
 
   == Raspberry pi raspi ==
 
-    *  [[iraspbi/connect|raspbiConnect]]
+    *  [[raspbi/connect|raspbiConnect]]  -- ssh hosting, connections
     *  [[raspbi/nextcloud|nextcloud]]
     *  [[https://pi-hole.net/|pi-hole]]
 
@@ -323,6 +323,9 @@ $ dconf reset -f /org/compiz/
    [... scroll way down ...]
    --> IPv4 Einstellungen
 
+  == Domain ==
+
+  [[Network/EmailHosting|Email_hosting]]
 
     == Hardware ==
 
