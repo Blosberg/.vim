@@ -6,6 +6,18 @@ Usage:
 Commands:
   install                     Install packages.
 
+= Can't find modules already installed? --> install to particular location: =
+
+# Running the following will show where python looks for packages:
+import sysconfig;
+print(sysconfig.get_paths()["purelib"])
+
+# Then install to that location:
+pip install --target=/directory/path/you/just/found/   [package_name]
+
+
+= Proxy =
+
 
 # proxy:
 pip3 install psycopg2-binary --proxy=http://proxy.charite.de:8080
