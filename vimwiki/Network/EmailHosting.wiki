@@ -1,0 +1,28 @@
+Currently hosting via tutanota:
+
+how to: https://tutanota.com/faq#how-to-add-domain
+
+
+= Adding DNS records:  =
+e.g. text record, to prove to tutanota that you own the domain:
+
+https://www.dynu.com/Resources/Tutorials/DynamicDNS/CreateTXTRecord
+
+A TXT (text) record is used to hold some text information. You can put virtually any free text you want within a TXT record. The most common uses for TXT records are Sender Policy Framework (SPF), DomainKeys (DK), and Domain Keys Identified Mail (DKIM). 
+
+
+log into https://www.dynu.com
+Log into control panel, go to Dynamic DNS Service Icon DDNS Services   and click on your domain name. 
+
+Go to DNS Records Icon DNS Records   to add TXT record that contains SPF data.
+
+Node Name   Enter the subdomain name, for example, subdomain1. Leave empty for primary domain name.
+Type   Choose "TXT-Text".
+TTL   How long the server should cache the information.
+Text   Enter the SPF data. For example, "v=spf1 a:mail.yourdomain.com ~all". 
+
+... likewise for the other records (MX, s1domain, etc.)
+
+
+
+

@@ -6,7 +6,7 @@ git show [shaID]
 
 = unstaging =
 
-The easiest way to unstage files on Git is to use the “git reset” command and specify the file you want to unstage.
+The easiest way to unstage files on Git is to use the "git reset" command and specify the file you want to unstage.
 
 git reset <commit> -- <path>
 
@@ -25,12 +25,12 @@ git add [--interactive | -i]
 (r)evert -- undoes this
 
 (p)atch mode -- brings up selected changed files
-        Select the one you want by number, then hit enter AGAIN 
-        
+        Select the one you want by number, then hit enter AGAIN
+
         Now you can stage the edits in this file by HUNK
 
         Stage this hunk [y,n,q,a,d,j,J,g,/,e,?]?
-       
+
         ? -- gives you a help list defining these commands, e.g.:
         s - split a hunk by lines
         e - edit a hunk with +/- lines for staging
@@ -43,5 +43,22 @@ git reset [[-p]]
 git checkout -p
 git commit -p
 
-= Commits =
+= Revert a Commit (partially or entirely) =
+
+# Undo all the changes of a commit:
+git revert <sha-of-bad-commit>
+
+# OR:
+
+# You can revert the commit without creating a new one by adding the --no-commit option. This leaves all the reverted files in the staging area.
+
+From there, I'd perform a mixed reset (the default for reset) to un-stage the files, and add in the changes I really wanted. Then, commit, (you can add and commit more files if you want multiple commits), and finally, checkout the current directory to wipe out any uncommitted and un-staged modifications resulting from the revert. For an example workflow:
+
+git revert <sha-of-bad-commit> --no-commit
+git reset   # This gets them out of the staging area
+
+# ...edit bad file to look like it should, if necessary
+git add <bad-file>
+git commit
+git checkout . # This wipes all the undesired reverts still hanging around in the w
 

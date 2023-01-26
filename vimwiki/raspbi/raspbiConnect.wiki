@@ -1,0 +1,13 @@
+enable ssh hosting on raspi with $ sudo raspi-config  --> Interfacing Options --> SSH
+
+= Assign fixed IP address for the device: =
+( on a Fritzbox )
+https://en.avm.de/service/knowledge-base/dok/FRITZ-Box-3272-int/201_Configuring-FRITZ-Box-to-always-assign-the-same-IP-address-to-a-network-device/
+
+*  Configuring assignment of fixed IP addresses for network device
+
+    Click "Home Network" in the FRITZ!Box user interface.
+    Click "Home Network Overview" in the "Home Network" menu.
+    Click on the "Network Connections" tab.
+    Click the (Edit) button next to the device you want to configure.
+    Enable the option "Always assign this network device the same IPv4 address".

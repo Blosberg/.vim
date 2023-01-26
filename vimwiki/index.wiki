@@ -125,6 +125,9 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
 
          apt install --no-install-recommends r-base
 
+         # installing packages from source
+         install.packages(pkgname.tar.gz, repos = NULL, type =‘‘source’’)
+
          = programming in R =
 
 	 * [[R_language/CommandLineArgs|Command_line_args]] -- command line arguments for Rscripts
@@ -309,7 +312,7 @@ $ dconf reset -f /org/compiz/
 
   == Raspberry pi raspi ==
 
-    *  [[raspbi/connect|raspbiConnect]]  -- ssh hosting, connections
+    *  [[raspbi/raspbiConnect|raspbiConnect]]  -- ssh hosting, connections
     *  [[raspbi/nextcloud|nextcloud]]
     *  [[https://pi-hole.net/|pi-hole]]
 
@@ -372,7 +375,7 @@ $ dconf reset -f /org/compiz/
     [[git/tokens|tokens]]
 
     * [[git/preset_changes|preset_changes]] -- create and apply diff files, patches, cherry pick commits
-    * [[git/committing|committing]] -- unstage, interactive staging...
+    * [[git/committing|committing]] -- unstage, interactive staging, reverting...
         * [[git/commit_tree|commit_tree]] --navigate tree of commits: check history, branching, merging, rebase, reset
     * [[git/sharing|sharing]] --pushing and pulling with remotes; sending patches, diffs, etc.
     * [[git/stash|stash]]
