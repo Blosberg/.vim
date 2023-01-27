@@ -236,7 +236,7 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     = SQL/sql =
 
     * [[sql/sqLite_Essential_LinkedIn|sqlIntro]] -- some notes may be specific to SQLite; from linkedIn Learning coarse
-    * [[sql/postgres|postgres]] -- Notes specific to postgres
+    * [[sql/postgres|postgres]] -- Notes specific to postgres; restore, backup, interactive sessions, connect.
 
 
 = Data Science, Machine/Statistical Learning, regression, stats, =

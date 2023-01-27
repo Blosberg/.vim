@@ -1,4 +1,23 @@
 = backup/ restore: =
+
+==  Create backups  ==
+
+pg_dump  --file [target file out]         \
+         --host [IPaddress or link]       \
+         --port [port]                    \
+         --username [username]            \
+         --no-password                    \
+         --verbose                        \
+         --format=c                       \
+         --blobs                          \
+         --section=pre-data               \
+         --section=data                   \
+         --section=post-data 
+	 -d  "[database_name]"
+
+==  Restore from backup  ==
+
+# issues with permissions:
 https://stackoverflow.com/questions/37271402/pg-restore-error-role-xxx-does-not-exist
 
 [on local machine]:
