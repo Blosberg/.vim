@@ -1,0 +1,25 @@
+
+Automate resizing images:
+
+https://www.macrumors.com/how-to/quickly-resize-images-mac-automator/
+
+
+How to Create a Resize Image Service in Automator
+
+    Launch Automator from the Applications folder.
+    Click New Document.
+    Choose Service (or quick action) as the type of your document.
+    Click the Service receives selected dropdown menu and select image files.
+    Select Files and Folders in the Actions sidebar, and drag Get Specified Finder Items to the workflow area.
+    Select Photos in the Actions sidebar, and drag Scale Images to the workflow area.
+    Automator will prompt you to add a Copy Finder Items Action to save the original files in a separate folder. We're sticking to a simple workflow of resizing images here, so we click Don't Add.
+
+    In the Scale Images action panel, type the width that you want to resize your images to. We're going to use 1200 pixels.
+
+    In the Automator menu bar, select File -> Save..., call your new service "Resize Image", and click Save.
+
+    Next time you want to resize an image, simply right-click (or Ctrl-click) the file in Finder and select Services -> Resize Image from the contextual dropdown menu. You can also drag a selection box over several images and resize them all in one go using the service.
+
+
+    
+    
