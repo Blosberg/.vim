@@ -1,0 +1,9 @@
+
+Fritzbox: https://avm.de/service/wissensdatenbank/dok/FRITZ-Box-7490/1_Benutzeroberflache-der-FRITZ-Box-aufrufen/
+
+= setup port-forwarding on Fritzbox =
+
+https://www.edpnet.be/en/support/installation-and-usage/internet/manage-fritz!box/how-to-set-up-a-port-forwarding-on-a-fritzbox.html
+Internet -> Freigaben -> add device -> new sharing
+
+

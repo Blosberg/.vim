@@ -1,20 +1,98 @@
+= Collect info: =
+# Find out the location of your drive
+$ lsblk
 
+# or:
 Look up drives and mount points with:
 sudo fdisk -l
 
-check drive label numbers with:
+
+# check drive label numbers with:
     sudo efibootmgr
-    set boot order with:
+# set boot order with:
     sudo efibootmgr -o 0,1,2,etc
 
+= disk usage =
 
-to find whether an installed disk is SSD or normal HDD, just check if the disk is rotational using the following command:
+get the amount of disk space taken up by the contents of the current directory.
 
+$ du -h  --max-depth=1
+#     ^ human readable
+#        ^ go down 1 dir
+
+== Relabel drives ==
+#Relabel the veracrypt link names:
+
+$ sudo exfatlabel /dev/mapper/veracrypt1 VC1
+
+See: https://sourceforge.net/p/veracrypt/discussion/general/thread/e24a7247/
+
+= Mount/unmount  =
+
+# (in this e.g. lets say the above indicates sda2)
+# 
+# mount a drive to a given folder (provided that folder already exists):
+sudo mount -t auto -o rw /dev/sda2 /media/old_HD_internal
+
+# then add write permissions:
+sudo mount -o remount,rw  /dev/sda2 /media/old_HD_internal
+
+# unmount:
+sudo umount /dev/sda2
+
+# additional options:
+$ sudo   mount -t vfat /dev/sdb1 /media/boon/SSD2_FAT32/ -o rw,uid=1000,gid=1000
+
+# N.B. For HFS file systems, you need to disable journaling from a mac to allow ubuntu to write to it (otherwise it's read-only for ubuntu):
+$ sudo diskutil disableJournal
+
+# to find whether an installed disk is SSD or normal HDD, just check if the disk is rotational using the following command:
 $ cat /sys/block/sda/queue/rotational
 
 If the output is 1, the disk is HDD. If the output is 0 (zero), the disk is SDD. Because, SSDs won't rotate. So the output should be zero if you have SSD in your system.
 
+
+= Persistent (permanent, fixed) mount point: =
+
+add  partitions to /etc/fstab by collection PARTUUID or UUID  value of the partitions/drive
+$ sudo blkid
+
+# then:
+vim /etc/fstab/
+add the partition information in the /etc/fstab. You can add the two lines representing each line for a partition. Write this information separated by TAB.
+
+PARTUUID=VALUE	/mount/path/	ext4	default	0	0
+#^ or: UUID=...
+
+
+= Partition drives from terminal =
+
+sudo parted
+# Type ‘print all’ to see all the drives and their partition Information. 
+  
+# Select the drive to format and create new partitions. Type the ‘select’ command with the drive path.
+(parted) select /dev/sda
+# Create a fresh GPT partition table by typing ‘mklabel gpt’ command. You will get a warning to wipe out all your drive. Type ‘yes’ to continue. Please bear in mind, that it’s just a partition table, not the partitions.
+mklabel gpt
+
+print 
+# (see nothing)
+# now create a ext4 partition that will take up the whole drive:
+mkpart [Name] ext4 0% 100%
+q
+# to leave parted:
+	
+sudo mkfs.ext4 -L [name] /dev/sda
+
+
+= Repair drives =
+# To repair bad superblocks on the drive.
+
+$fsck /dev/sda1 (replace /dev/sda1 with the drive you want to fix).
+
+
 = secure deletion  =
+
 https://code.mendhak.com/securely-wipe-ssd/
 
 sudo apt install hdparm
@@ -25,3 +103,9 @@ sudo hdparm --user-master u --security-erase-enhanced hunter2 /dev/sdX
 
 == write zeros to drive sdX (good for secure erase)  ==
 sudo dd if=/dev/zero of=/dev/sdX bs=1M status=progress
+
+
+
+
+
+

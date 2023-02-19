@@ -1,4 +1,4 @@
-enable ssh hosting on raspi with $ sudo raspi-config  --> Interfacing Options --> SSH
+Enable ssh hosting on raspi with $ sudo raspi-config  --> Interfacing Options --> SSH
 
 = Assign fixed IP address for the device: =
 ( on a Fritzbox )
@@ -11,3 +11,150 @@ https://en.avm.de/service/knowledge-base/dok/FRITZ-Box-3272-int/201_Configuring-
     Click on the "Network Connections" tab.
     Click the (Edit) button next to the device you want to configure.
     Enable the option "Always assign this network device the same IPv4 address".
+
+= setup port-forwarding on Fritzbox =
+
+https://www.edpnet.be/en/support/installation-and-usage/internet/manage-fritz!box/how-to-set-up-a-port-forwarding-on-a-fritzbox.html
+Internet -> Freigaben -> add device -> new sharing
+
+
+= Setting up dynamic DNS (DDNS) in the FRITZ!Box =
+
+This is to set up a DDNS to host a domain on your router
+
+https://www.dynu.com/DynamicDNS/IPUpdateClient/Fritzbox
+
+https://en.avm.de/service/knowledge-base/dok/FRITZ-Box-7590/30_Setting-up-dynamic-DNS-in-the-FRITZ-Box/
+
+
+1 Having your login information ready
+
+    Have the domain name, your username, and the password with which you are registered with your dynamic DNS provider ready.
+    Make note of the update URL of your dynamic DNS provider. For some providers the update URL includes the update request for both the IPv4 address and the IPv6 address. Other providers have separate update URLs for the IPv4 address and for the IPv6 address.
+
+    Important:Further down in this guide you will find examples of update URLs from different providers. If there is no example for your provider, you can create the update URL yourself as described in the section "Creating your own update URL".
+
+2 Setting up dynamic DNS
+
+    Click "Internet" in the FRITZ!Box user interface.
+    Click "Permit Access" in the "Internet" menu.
+    Click on the "DynDNS" tab.
+    Enable the option "Use DynDNS".
+    Enter the update URL for your provider in the "Update URL" field. If the update request is to be performed for both IPv4 and IPv6 and your provider expects different update URLs for IPv4 and IPv6, then write both update URLs separated by a space in the field.
+
+    Note:Further down in this guide you will find examples of update URLs from different providers. If your provider is not mentioned there, you can create the update URL yourself as described in the section "Creating your own update URL".
+    Enter in the "Domain name" field the domain name you specified with your provider.
+    Enter in the "Username" field the username of your user account with the provider.
+    Enter in the "Password" field the password of your user account with the provider.
+    Click "Apply" to save the settings.
+    Now the FRITZ!Box transmits its current IP addresses to the provider every time it connects to the internet so that the FRITZ!Box can always be contacted via its unique dynamic DNS domain name.
+
+
+= https certificate =
+
+[see vault for redacted info]
+Following instructions from: https://pimylifeup.com/raspberry-pi-nextcloud-server/
+but since we have a domain : --> https://pimylifeup.com/raspberry-pi-ssl-lets-encrypt/
+
+
+sudo apt install python3-certbot-apache
+sudo apt install certbot
+sudo certbot --apache
+
+generated https security certificates as follows:
+
+[15:55]boon@gandalfW:~/$date
+Sat 18 Feb 2023 03:56:19 PM EST
+
+[15:55]boon@gandalfW:~/$sudo certbot --apache
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator apache, Installer apache
+No names were found in your configuration files. Please enter in your domain
+name(s) (comma and/or space separated)  (Enter 'c' to cancel): *********
+Requesting a certificate for *********
+Performing the following challenges:
+http-01 challenge for *********
+Enabled Apache rewrite module
+Waiting for verification...
+Cleaning up challenges
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Congratulations! You have successfully enabled https://*********
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Subscribe to the EFF mailing list (email: bosberg@dal.ca).
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   *********************************************
+   Your key file has been saved at:
+   *******************************************
+   Your certificate will expire on 2023-05-19. To obtain a new or
+   tweaked version of this certificate in the future, simply run
+   certbot again with the "certonly" option. To non-interactively
+   renew *all* of your certificates, run "certbot renew"
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+
+
+== Firewalls  ==
+
+
+    * [[hardware/DDNS|ddns]]
+
+	[[https://pi-hole.net/|pi-hole]]
+
+
+
+= setup firewall with ufw =
+
+https://www.youtube.com/watch?v=9dXdmJCHAGQ
+https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands
+
+
+apt-get install ufw
+sudo ufw allow 22/tcp
+
+( difference between tcp and udp: https://www.twingate.com/blog/tcp-vs-udp/  )
+
+$sudo ufw limit 22
+Rules updated
+Rules updated (v6)
+$sudo ufw enable
+Command may disrupt existing ssh connections. Proceed with operation (y|n)? y
+Firewall is active and enabled on system startup
+$sudo ufw status verbose
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW IN    Anywhere
+22                         LIMIT IN    Anywhere
+22/tcp (v6)                ALLOW IN    Anywhere (v6)
+22 (v6)                    LIMIT IN    Anywhere (v6)
+
+
+# --- e.g.
+
+sudo ufw allow 22/tcp
+sudo ufw limit 22
+
+# make internetting possible
+sudo ufw allow proto tcp from any to any port 80,443
+
+
+# to allow X11 connections, which use ports 6000-6007, use these commands:
+
+sudo ufw allow 6000:6007/tcp
+sudo ufw allow 6000:6007/udp
+
+
+# for rsync:
+
+the rsync documentation says
+
+    There are two different ways for rsync to contact a remote system: using a remote-shell program as the transport (such as ssh or rsh) or contacting an rsync daemon directly via TCP. The remote-shell transport is used whenever the source or destination path contains a single colon (:) separator after a host specification. Contacting an rsync daemon directly happens when the source or destination path contains a double colon (::) separator after a host specification, OR when an rsync:// URL is specified.
+
+Port 22 is the SSH port; it’s used when you tell rsync to connect via SSH, with a single colon (the “remote-shell” case above). Port 873 is the rsync dæmon port; it’s used when rsync is used with a double colon or a rsync:// URL.
+
+
+
