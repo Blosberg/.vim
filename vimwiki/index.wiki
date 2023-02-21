@@ -71,7 +71,9 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
 
 = Programming =
     * https://www.codecademy.com/
-    = c++ =
+ = Other Editors =
+         * [[Coding/VScode|VScode]]
+ = c++ =
          * [[c++/vectors|vectors]] -- cheat sheet for vectors in c++
          * [[c++/classes|classes]] -- define/derive classes, syntax
          * [[c++/switch|switch]] -- switch statement

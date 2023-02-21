@@ -1,0 +1,37 @@
+
+Most important menu shortcut : cmd+shift+P
+
+
+
+# Open up your settings.json file:
+Code -> Preferences -> settings -> settings.json
+
+# add this:
+"settings.cycle": [{
+        "id": "lineNumbers",
+        "values":[
+            {
+                "editor.lineNumbers": "off",
+                "editor.folding": false,
+                "editor.glyphMargin": false
+            },
+            {
+                "editor.lineNumbers": "on",
+                "editor.folding": true,
+                "editor.glyphMargin": true
+    
+            }
+        ]
+    }],
+    
+    
+#    Open up your VSCode keybindings.json file:
+Mac: CMD + SHIFT + P > Open Keyboard Shortcuts (JSON)
+
+# // Place your key bindings in this file to override the defaultsauto (inside [] )
+
+{
+    "key": "cmd+l",
+    "command": "settings.cycle.lineNumbers",
+    "when": "editorFocus"
+}   
