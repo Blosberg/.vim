@@ -5,7 +5,7 @@
 e.g.
 sort -k4g,4g fin > fout
 
-( Use -g (long form --general-numeric-sort) instead of -n. The -g option passes the numbers through strtod to obtain their value, and it will recognize this format.  )
+( For Scientific notation ( e.g. 3.14E0 ) Use -g (long form --general-numeric-sort) instead of -n. The -g option passes the numbers through strtod to obtain their value, and it will recognize this format.  )
 
 -r Option: Sorting In Reverse Order (i.e. descending)
 
