@@ -1,5 +1,7 @@
 Instructions starting from:
+https://pimylifeup.com/raspberry-pi-nextcloud-server/
 
+See also:
 https://raspberrytips.com/install-nextcloud-raspberry-pi/
 
 

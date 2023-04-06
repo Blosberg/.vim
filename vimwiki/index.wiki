@@ -102,7 +102,7 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
 
         * set proxy
 	* Sys.setenv(http_proxy="http://proxy.charite.de:8080") #nolint
-	* Sys.setenv(https_proxy="https://proxy.charite.de:8080") #nolint
+	* Sys.setenv(https_proxy="http://proxy.charite.de:8080") #nolint
 
          === updating/ installing R ===
          https://cran.r-project.org/
@@ -314,11 +314,12 @@ $ dconf reset -f /org/compiz/
 
   == Raspberry pi raspi ==
 
-    * [[raspbi/nextcloud|nextcloud]]  ---  Raspberry pi raspi
     * [[raspbi/pihole|pihole]]
 
     === Networking hosting ===
     * [[raspbi/raspbiConnect|raspbiConnect]]  -- ssh hosting, connections; https certificates; ufw firewall; port forwarding; DDNS; DHCP
+    * [[raspbi/nextcloud|nextcloud]]  ---  Raspberry pi raspi
+
     * [[Network/Fritzbox|Fritzbox]]
 
 

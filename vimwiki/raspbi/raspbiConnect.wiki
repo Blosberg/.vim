@@ -1,4 +1,5 @@
 Enable ssh hosting on raspi with $ sudo raspi-config  --> Interfacing Options --> SSH
+Following instructions from: https://pimylifeup.com/raspberry-pi-nextcloud-server/
 
 = Assign fixed IP address for the device: =
 ( on a Fritzbox )

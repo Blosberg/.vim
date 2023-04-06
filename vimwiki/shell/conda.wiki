@@ -34,6 +34,16 @@ conda deactivate
 # remove (delete) an environment with:
 conda env remove -n ENV_NAME
 
+= append to PATH =
+within a conda env, if you want a specific directory to be added to PATH,
+
+conda develop <directory>
+
+This will write a conda.pth file to the environment's site-packages directory ( e.g. /home/brendan/mambaforge/envs/nanoDx/lib/python3.11/site-packages
+ )
+ which will cause your directory to be added to the sys.path. 
+next time you run python and type sys.path, you should see <directory> added
+
 = install packages:=
 
 From inside an active environment.

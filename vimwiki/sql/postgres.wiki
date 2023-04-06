@@ -65,4 +65,8 @@ CREATE DATABASE
 https://pypi.org/project/psycopg2/
 
 
+= php =
 
+# This package may be needed (e.g. for nextcloud) if you want postgres to interact with online stuff
+
+sudo apt-get  install php8.0-pgsql
