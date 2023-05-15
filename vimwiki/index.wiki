@@ -316,20 +316,17 @@ $ dconf reset -f /org/compiz/
 
     * [[raspbi/pihole|pihole]]
 
-    === Networking hosting ===
+  == Networking hosting; domain email osberg.eu  ==
     * [[raspbi/raspbiConnect|raspbiConnect]]  -- ssh hosting, connections; https certificates; ufw firewall; port forwarding; DDNS; DHCP
     * [[raspbi/nextcloud|nextcloud]]  ---  Raspberry pi raspi
 
+    * [[Network/EmailHosting|Email_hosting]] --- DNS records; Tutanota, set mail host
+
     * [[Network/Fritzbox|Fritzbox]]
-
-
-  == Domain ==
-
-  [[Network/EmailHosting|Email_hosting]]
 
     == Hardware ==
 
-    * [[hardware/Drives|hard drive info]] Hard drive management; create partitions w/ parted; mount/ unmount, set persistent mount points via fstab; relabel veracrypt drives; repair bad drives
+    * [[hardware/Drives|hard drive info]] Hard drive disk management; create partitions w/ parted; mount/ unmount, set persistent mount points via fstab; relabel veracrypt drives; repair bad drives
     * [[Resource_management/fileformats|File_formats]] -- Tradeoffs between file formatting standards (OS-compatibility, Size limits, etc.)
     * [[Resource_management/Veracrypt|Veracrypt]]
     * [[Resource_management/Filesharing|Filesharing]]
