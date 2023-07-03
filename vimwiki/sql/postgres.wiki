@@ -12,7 +12,7 @@ pg_dump  --file [target file out]         \
          --blobs                          \
          --section=pre-data               \
          --section=data                   \
-         --section=post-data 
+         --section=post-data
 	 -d  "[database_name]"
 
 ==  Restore from backup  ==
@@ -21,7 +21,7 @@ pg_dump  --file [target file out]         \
 https://stackoverflow.com/questions/37271402/pg-restore-error-role-xxx-does-not-exist
 
 [on local machine]:
-pg_restore --no-privileges --no-owner -h localhost -p 5433 -U  postgres  -d Test_3 Npath_TumorBank_postgres_lab_2022-12-28-1138.backup
+pg_restore --no-privileges --no-owner -h localhost -p 5433 -U  postgres  -d  NPTB_May23Tests  Npath_TumorBank_postgres_lab_2023-05-18-0600.backup
 
 # you can also automatically export the password:
 $export PGPASSWORD=[password]
