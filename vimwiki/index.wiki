@@ -16,6 +16,7 @@ Use at your own risk.
     * [[shell/top|]](h)top -- top and htop to view processes
 # to see what shell you're using:
 echo $0
+   * [[shell/users|manage_users]] -- add/remove users, create home directories
 
 # Strange characters appear in terminal when you click with mouse? this is because of [[https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-Mouse-Tracking|mouse tracking mode]]  Enter command "reset"
 

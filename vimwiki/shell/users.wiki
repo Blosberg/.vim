@@ -1,0 +1,14 @@
+
+
+$ sudo useradd -m bosberg --group sudo
+# The "-m" creates a home directory
+# The --group sudo extends sudo rights to this new user
+
+# Now set the password:
+$ sudo passwd bosberg
+New password:
+Retype new password:
+passwd: password updated successfully
+
+
+
