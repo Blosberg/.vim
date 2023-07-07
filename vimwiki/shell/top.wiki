@@ -1,6 +1,16 @@
 
+# Top and htop are processes that allow you to see what operations are currently being performed on the machine
+# and how busy (or idle) the CPUs are at the moment. It updates in realtime.
+
+# try
+top
+
+# or
+htop
+
 # set refresh rate:
 top -d 100 # delay between updates in tenths of seconds
+
 
 # when output is currently showing what you're insterested in:
 suspend output with <ctrl+s>; unfreeze with <ctrl+q>
