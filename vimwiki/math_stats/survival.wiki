@@ -1,0 +1,10 @@
+
+vido on log-rank test, Kaplan-Meier (estimator/curve)
+https://www.youtube.com/watch?v=FhUkDRzHdHE&t=730s
+
+see also:
+An Introduction to Survival Statistics: Kaplan-Meier Analysis
+WILLIAM N. DUDLEY
+J Adv Pract Oncol 2016;7:91–100 
+Vol 7  No 1  Jan/Feb 2016
+

@@ -1,0 +1,37 @@
+From email on 08.12.22, 17:00
+
+http://docs.hpc.bihealth.org/
+
+Step 1 - Generate and submit an SSH key
+=======================================
+
+To access the cluster, you have to generate an SSH key. The SSH key is your
+cluster access and should be protected by a password. Follow the instructions
+in the wiki:
+
+https://bihealth.github.io/bih-cluster/connecting/generate-key/linux/
+https://bihealth.github.io/bih-cluster/connecting/generate-key/windows/
+
+Once you have created the SSH key, the next step depends on whether you are MDC or
+Charite user:
+
+https://bihealth.github.io/bih-cluster/connecting/submit-key/mdc/
+https://bihealth.github.io/bih-cluster/connecting/submit-key/charite/
+
+Step 2 - Login
+==============
+
+Please follow the instructions in our wiki to proceed to the login. Your
+username is constructed from your MDC/Charite username with an appendix
+distinguishing the two institutes as described here:
+
+https://bihealth.github.io/bih-cluster/connecting/configure-ssh/prerequisites/
+
+Depending on your operating system, please follow the instructions on how
+to configure your SSH client:
+
+https://bihealth.github.io/bih-cluster/connecting/configure-ssh/linux/
+https://bihealth.github.io/bih-cluster/connecting/configure-ssh/windows/
+
+Problem Solving
+
