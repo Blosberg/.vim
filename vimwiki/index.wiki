@@ -54,7 +54,7 @@ git clone https://github.com/k-takata/minpac.git ~/.vim/pack/minpac/opt/minpac
 # " minpac must have {'type': 'opt'} so that it can be loaded with `packadd`.
 : call minpac#add('k-takata/minpac', {'type': 'opt'})
 : call minpac#update()
-# To get minpac. 
+# To get minpac.
 # then exit, restart, and
 : call minpac#update()
 # again, to get the rest of your packages specified in your .vimrc
@@ -88,9 +88,15 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
 
 = Programming =
     * https://www.codecademy.com/
- = Other Editors =
+    = Other Editors =
          * [[Coding/VScode|VScode]]
- = c++ =
+
+    = SQL/sql =
+
+    * [[sql/sqLite_Essential_LinkedIn|sqlIntro]] -- some notes may be specific to SQLite; from linkedIn Learning coarse
+    * [[sql/postgres|postgres]] -- Notes specific to postgres; restore, backup, interactive sessions, connect.
+
+    = c++ =
          * [[c++/vectors|vectors]] -- cheat sheet for vectors in c++
          * [[c++/classes|classes]] -- define/derive classes, syntax
          * [[c++/switch|switch]] -- switch statement
@@ -251,11 +257,6 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     * - [[css/External|]]
     * - internal
     * - inline
-
-    = SQL/sql =
-
-    * [[sql/sqLite_Essential_LinkedIn|sqlIntro]] -- some notes may be specific to SQLite; from linkedIn Learning coarse
-    * [[sql/postgres|postgres]] -- Notes specific to postgres; restore, backup, interactive sessions, connect.
 
 
 = Data Science, Machine/Statistical Learning, regression, stats, =
