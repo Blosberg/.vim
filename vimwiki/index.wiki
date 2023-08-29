@@ -94,7 +94,7 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     = SQL/sql =
 
     * [[sql/sqLite_Essential_LinkedIn|sqlIntro]] -- some notes may be specific to SQLite; from linkedIn Learning coarse
-    * [[sql/postgres|postgres]] -- Notes specific to postgres; restore, backup, interactive sessions, connect.
+    * [[sql/postgres|postgres]] --  INTERACTIVE SESSIONS; Notes specific to postgres; restore, backup,  connect.
 
     = c++ =
          * [[c++/vectors|vectors]] -- cheat sheet for vectors in c++
@@ -179,6 +179,23 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
 	 * [[R_language/biostrings|biostrings]] --biostrings, read in and inspect reference genomes read fasta.
 
     = python =
+
+# Debugging: Ipython scope error with list comprehensions:
+interact
+
+# check python path  with:
+>>> import sys
+>>> print(sys.path)
+
+# check which file is being sourced, and what version with the following:
+>>> import sqlalchemy
+>>> sqlalchemy.__file__
+'/home/brendan/mambaforge/envs/epic/lib/python3.8/site-packages/sqlalchemy/__init__.py'
+>>> sqlalchemy.__version__
+'1.4.46'
+
+
+
     Ternary op:
       Y = trueValue if cond else falseValue
       Z = (falseValue,trueValue)[cond]
