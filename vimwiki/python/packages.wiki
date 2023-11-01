@@ -1,0 +1,22 @@
+# check python path  with:
+>>> import sys
+>>> print(sys.path)
+
+# check which file is being sourced, and what version with the following:
+>>> import sqlalchemy
+>>> sqlalchemy.__file__
+'/home/brendan/mambaforge/envs/epic/lib/python3.8/site-packages/sqlalchemy/__init__.py'
+>>> sqlalchemy.__version__
+'1.4.46'
+
+# import function definitions from specific file
+# get directory of that file:
+sys.path.insert(0,   os.path.join( PATH )  )
+from funcDefs_NPC_EPIC import  func_a, func_b, func_c 
+
+
+
+# update pip with specific instances:
+/Library/Developer/CommandLineTools/usr/bin/python3 -m pip install --upgrade pip 
+/Users/bosberg/Library/Python/3.9/bin/pip install pandas --upgrade
+

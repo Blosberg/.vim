@@ -137,7 +137,7 @@ CREATE TABLE test (
 DROP TABLE IF EXISTS test
 
 
-== ADD, remove (delete) Rows  (even if data is incomplete) or change existing ones ==
+== ADD, remove (delete) Rows  (even if data is incomplete) or change existing ones using UPDATE ==
 INSERT INTO customer (name, address, city, state, zip)
   VALUES ('Fred Flintstone', '123 Cobblestone Way', 'Bedrock', 'CA', '91234');
 

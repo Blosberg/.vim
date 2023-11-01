@@ -12,3 +12,19 @@ passwd: password updated successfully
 
 
 
+== groups ==
+
+# list groups on a machine
+$ groups
+
+# Create a new group
+$ sudo groupadd  bioinfo
+
+# list members of a group
+getent group  bioinfo
+
+# add members to group
+sudo usermod -a -G  bioinfo  christin
+
+# change ownership including group
+chown [OPTIONS] USER[:GROUP] FILE(s)

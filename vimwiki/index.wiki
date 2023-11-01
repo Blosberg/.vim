@@ -16,7 +16,7 @@ Use at your own risk.
     * [[shell/top|]](h)top -- top and htop to view processes
 # to see what shell you're using:
 echo $0
-   * [[shell/users|manage_users]] -- add/remove users, create home directories
+   * [[shell/users|manage_users]] -- add/remove users, create home directories, create groups, add users to groups, etc.
 
 # Strange characters appear in terminal when you click with mouse? this is because of [[https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-Mouse-Tracking|mouse tracking mode]]  Enter command "reset"
 
@@ -94,7 +94,7 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     = SQL/sql =
 
     * [[sql/sqLite_Essential_LinkedIn|sqlIntro]] -- some notes may be specific to SQLite; from linkedIn Learning coarse
-    * [[sql/postgres|postgres]] --  INTERACTIVE SESSIONS; Notes specific to postgres; restore, backup,  connect.
+    * [[sql/postgres|postgres]] --  INTERACTIVE interactive SESSIONS; Notes specific to postgres; restore, backup,  connect.
 
     = c++ =
          * [[c++/vectors|vectors]] -- cheat sheet for vectors in c++
@@ -183,17 +183,8 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
 # Debugging: Ipython scope error with list comprehensions:
 interact
 
-# check python path  with:
->>> import sys
->>> print(sys.path)
 
-# check which file is being sourced, and what version with the following:
->>> import sqlalchemy
->>> sqlalchemy.__file__
-'/home/brendan/mambaforge/envs/epic/lib/python3.8/site-packages/sqlalchemy/__init__.py'
->>> sqlalchemy.__version__
-'1.4.46'
-
+    * [[python/packages|packages]] -- manage, import, include packages and dependencies, check version, source paths, etc.
 
 
     Ternary op:
