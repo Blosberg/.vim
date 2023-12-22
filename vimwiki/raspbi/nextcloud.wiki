@@ -37,6 +37,37 @@ sudo chmod 750 nextcloud -R
 sudo chown www-data:www-data nextcloud -R
 
 
+== Notes from Sticky pad 29.11.2023 ==
+
+# Starting point:
+https://pimylifeup.com/raspberry-pi-nextcloud-server/
+# Alternative guide:
+https://raspberrytips.com/install-nextcloud-raspberry-pi/
+
+# W/ postgres
+https://pimylifeup.com/raspberry-pi-postgresql/
+# guide to postgres:
+https://chartio.com/resources/tutorials/how-to-list-databases-and-tables-in-postgresql-using-psql/
+
+Convert database command
+From:  https://docs.nextcloud.com/server/latest/admin_manual/configuration_database/db_conversion.html
+php occ db:convert-type --all-apps pgsql nextclouduser localhost  nextbrencloudpg
+
+# W/ postgres:
+https://www.youtube.com/watch?v=tUEPKwJD5pg
+
+Create postgresql database:
+https://docs.nextcloud.com/server/latest/admin_manual/configuration_database/linux_database_configuration.html
+
+# create/drop databases:
+https://www.postgresqltutorial.com/postgresql-administration/postgresql-drop-database/
+
+# config:
+https://docs.nextcloud.com/server/25/admin_manual/configuration_server/config_sample_php_parameters.html
+
+
+
+
 = mysql =
 
 MySQL configuration

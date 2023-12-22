@@ -1,5 +1,8 @@
 tmux wiki notes:
 
+iterm tmux integration
+https://gitlab.com/gnachman/iterm2/-/wikis/TmuxIntegration
+
 = Copy-pasting =
 
 Hold Shift to circumvent tmux's mouse handling --then highlight, and ctrl+shift+c/v to copy paste

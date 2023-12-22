@@ -205,7 +205,7 @@ ax.set_ylabel( "Mean Meth", fontsize=22)
 
 ax.tick_params( axis = 'both', which = 'major', labelsize = 14)
 ax.set_xlabel( "CG Density", fontsize=22)
-nplt.legend( bbox_to_anchor = (0.93, 0.4), fontsize=18)
+plt.legend( bbox_to_anchor = (0.93, 0.4), fontsize=18)
 
 PathFigOut='path/to/file/'
 plt.savefig( PathFigOut,

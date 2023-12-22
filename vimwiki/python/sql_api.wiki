@@ -1,3 +1,26 @@
+= cursor =
+# create a python sql cursor in psycopg2 as follows:
+
+import psycopg2
+# ...
+    conn_details = psycopg2.connect( host     = config['DB_ConnectionInfo']["host"],
+                                     user     = config['DB_ConnectionInfo']["user"],
+                                     database = config['DB_ConnectionInfo']["database"],
+                                     password = config['DB_ConnectionInfo']["password"],
+                                     port     = config['DB_ConnectionInfo']["port"]  )
+    cur = conn_details.cursor()
+    return cur
+    # modCommand = " UPDATE tmptable_postqry_merged set idat_names='FOO', case_identifier='BAR' WHERE methylation_arrays_analysis_id='014172' AND d_extraction_id='21486' ; "
+    # cur.execute( modCommand )
+    # conn_details.commit()
+    # cur.close()
+    # conn_details.close()
+
+= REferences =
+
+# https://www.appsloveworld.com/postgresql/100/229/how-to-psql-copy-with-python
+# 
+
 
 I initialized a local db with:
 

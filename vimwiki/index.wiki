@@ -16,12 +16,12 @@ Use at your own risk.
     * [[shell/top|]](h)top -- top and htop to view processes
 # to see what shell you're using:
 echo $0
-   * [[shell/users|manage_users]] -- add/remove users, create home directories, create groups, add users to groups, etc.
+   * [[shell/users|manage_users]] -- add/remove users, create home directories, create groups, add users to groups; set file permissions chmod chown etc.
 
 # Strange characters appear in terminal when you click with mouse? this is because of [[https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h2-Mouse-Tracking|mouse tracking mode]]  Enter command "reset"
 
     * [[shell/conda|conda]] -- Conda: manage environments, recipes.
-    * [[shell/cron|cron]]
+    * [[shell/cron|cron]]   -- job scheduler
 
     * [[shell/shell_variables|shell_variables]] -- string subsets, length, basename, dirname of filepaths partial subsets with #, %
     * [[shell/shell_scripting|shell_scripting]] -- parse command line args for shell scripts; if/else, control flow; compare files; check if file exists
@@ -94,7 +94,7 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     = SQL/sql =
 
     * [[sql/sqLite_Essential_LinkedIn|sqlIntro]] -- some notes may be specific to SQLite; from linkedIn Learning coarse
-    * [[sql/postgres|postgres]] --  INTERACTIVE interactive SESSIONS; Notes specific to postgres; restore, backup,  connect.
+    * [[sql/postgres|postgres]] --  INTERACTIVE interactive SESSIONS with psql; Notes specific to postgres; restore, backup,  connect.
 
     = c++ =
          * [[c++/vectors|vectors]] -- cheat sheet for vectors in c++
@@ -398,7 +398,7 @@ $ dconf reset -f /org/compiz/
     * [[BioInfo/ranges_exons|ranges_exons]] -- download ranges like exons/introns/etc. from ucsc
     * [[BioInfo/EnsemblIDs|EnsemblIDs]]
     * [[BioInfo/gtf|gtf_files]] -- convert gtf files to bed
-    * [[BioInfo/bedtools|bedtools]] -- map and manipulate bedfiles onto each other; make windows,
+    * [[BioInfo/bedtools|bedtools]] -- bedfile column definitions; smap and manipulate bedfiles onto each other; make windows 
     * [[BioInfo/metilene|metilene]]
     * http://rosalind.info/problems/locations/
     * [[BioInfo/Datasets|Datasets]]
@@ -406,6 +406,9 @@ $ dconf reset -f /org/compiz/
     * [[BioInfo/pyranges|pyranges]]
     * [[BioInfo/Galaxy|Galaxy]]
 
-= Job specific =
+    * [[BioInfo/Genes_of_interest|Genes_of_interest]] -- notes on specific genes
+
+= Job specific 
+=
 
 * [[Charite/bih_cluster|bih]]

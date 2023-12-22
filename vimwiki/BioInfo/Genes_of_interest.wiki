@@ -1,0 +1,29 @@
+
+Loci of interest (hg38):
+EGFR: chr7:55,019,017-55,211,628 Small in-frame insertions or missense mutations in the epidermal growth factor receptor gene (EGFR) have recently been identified in a distinct subset of pediatric-type bithalamic gliomas with a unique DNA methylation pattern. 
+
+IDH1: chr2:208,236,229-208,255,071 
+IDH2: chr15:90,083,045-90,102,468
+
+DNMT1 chr19:10,133,346-10,195,135
+
+DNMT3a chr2:25,227,855-25,342,590
+DNMT3b chr20:32,762,424-32,809,356
+
+Wnt
+
+TP53 (hg38) chr17:7,668,421-7,687,490
+Somatic mutations in the TP53 gene are one of the most frequent alterations in human cancers, and germline mutations are the underlying cause of Li-Fraumeni syndrome, which predisposes to a wide spectrum of early-onset cancers.
+
+
+hg19
+KIAA1549     --> chr7:138,516,127-138,666,064
+BRAF         --> chr7:140,433,813-140,624,564
+"A fusion of the genes KIAA1549 and BRAF, generated through a focal tandem duplication on 7q34, causes constitutive activation of the mitogen-activated protein kinase " Stichel et al 2020, 
+DOI: 10.1111/nan.12683  Accurate calling of KIAA1549-BRAF fusions from DNA of human brain tumours using methylation array-based copy number and gene panel sequencing data 
+
+CDKN2A p16 (--important focal deletion for cancer)
+hg19:chr9:21,967,751-21,994,490
+
+TP53 (codes for protein p53, tumor suppressor
+[hg19] chr17:7571720-7578562
