@@ -1,0 +1,150 @@
+
+
+= R =
+
+ library(rjson)
+ library(RPostgreSQL)
+
+ DBCredentials_path = "path/to/your/credentials/file"
+ DBDat = fromJSON( file = DBCredentials_path )
+
+
+ drv <- dbDriver( "PostgreSQL" )
+ connection <- dbConnect( drv,
+     dbname   = DBDat[["database"]],
+     host     = DBDat[["host"]],
+     port     = DBDat[["port"]],
+     user     = DBDat[["user"]],
+     password = DBDat[["password"]]
+     )
+
+
+ qry_command = " SELECT molecular_orders_id, d_extraction_id, process_step, epic_sentrix FROM molecular_orders_d_extractions  WHERE analysis_type='EPIC' AND process_step='running'; " 
+
+
+ df <- dbGetQuery( connection,  qry_command )
+
+
+= python =
+
+== psycopg2 ==
+import psycopg2
+
+conn = psycopg2.connect(database="red30",
+    	user="postgres",
+    	password="password",
+    	host="localhost",
+    	port="5433")
+
+
+cur = conn.cursor()
+cur.execute(  ''' INSERT INTO SALES(
+                ORDER_NUM   ,
+                ORDER_TYPE  ,
+                CUST_NAME   ,
+                PROD_NUMBER ,
+                PROD_NAME   ,
+                QUANTITY    ,
+                PRICE       ,
+                DISCOUNT    ,
+                ORDER_TOTAL ) VALUES ( %s, %s, %s, %s, %s, %s, %s, %s, %s )''', sale_data  )
+conn.commit()
+
+
+
+cur.execute(''' SELECT CUST_NAME, ORDER_TOTAL FROM SALES WHERE ORDER_NUM=%s''', (order_num,))
+
+rows = cur.fetchall()
+for row in rows:
+        print( "CUST_NAME=", row[0])
+        print( "ORDER_TOTAL=", row[1], "\n" )
+
+
+
+conn.close()
+
+== sqlalchemy ==
+
+from sqlalchemy import create_engine
+from sqlalchemy import Table, Column, String, MetaData
+
+engine = create_engine('postgresql://postgres:[password]@localhost:5433/red30')
+#                       ^ Type       |         |        |       |    |    [mysql|postgresql|...]
+#                                    ^Username |        |       |    |
+#                                              ^ Password       |    |
+#                                                       ^ Host  |    |
+#                                                               ^ Port #
+#                                                                    ^ Database Name
+
+engine = create_engine('postgresql://[user]:[password]@[address]:[port]/[database]')
+with engine.connect() as connection:
+    meta = MetaData(engine)
+    sales_table = Table('sales', meta, autoload=True, autoload_with=engine)
+
+    # Create
+    insert_statement = sales_table.insert().values(order_num=6562993,
+                                                order_type='Retail',
+                                                cust_name='Max Musterman',
+                                                prod_number='123124',
+                                                prod_name='GarBO The OK',
+                                                quantity=6,
+                                                price=666.5,
+                                                discount=0.6,
+with engine.connect() as connection:
+    meta = MetaData(engine)
+    sales_table = Table('sales', meta, autoload=True, autoload_with=engine)
+
+    # Create
+    insert_statement = sales_table.insert().values(order_num=6562993,
+                                                order_type='Retail',
+                                                cust_name='Max Musterman',
+                                                prod_number='123124',
+                                                prod_name='GarBO The OK',
+                                                quantity=6,
+                                                price=666.5,
+                                                discount=0.6,
+                                                order_total=568.5)
+    connection.execute(insert_statement)
+
+== pandas  ==
+
+def build_sqlAlq_EngineString(  ConnectInfo,
+                      prefix= "postgresql+psycopg2" ):
+    """Single function with which to build an engine for interfacing with the sql database: """
+
+    Engine_string = prefix
+    Engine_string = Engine_string + "://" + ConnectInfo["user"];
+    Engine_string = Engine_string + ":"   + ConnectInfo["password"]
+    Engine_string = Engine_string + "@"   + ConnectInfo["host"]
+    Engine_string = Engine_string + ":"   + ConnectInfo["port"]
+    Engine_string = Engine_string + "/"   + ConnectInfo["database"]
+    # engine = create_engine ( Engine_string )
+
+    return ( Engine_string )
+
+engine_DB = create_engine ( ConnectInfo['Engine_string'] )
+
+
+engine_DB = create_engine ( config['DB_ConnectionInfo']['Engine_string'] )
+    sql_command_sampleCollect  =    """ SELECT molecular_orders_id, d.d_extraction_id, process_step, epic_sentrix, epic_sentrix_row, case_identifier """
+    sql_command_sampleCollect  +=   """ FROM materials mat                                      """
+    sql_command_sampleCollect  +=   """ LEFT JOIN d_extractions d                               """
+    sql_command_sampleCollect  +=   """ ON d.material_id = mat.material_id                      """
+    sql_command_sampleCollect  +=   """ LEFT JOIN molecular_orders_d_extractions ord            """
+    sql_command_sampleCollect  +=   """ ON ord.d_extraction_id = d.d_extraction_id              """
+    sql_command_sampleCollect  +=   """ WHERE analysis_type='EPIC' AND process_step='running'   """
+    if( filter_null_idats ):
+        # Sometimes this is necessary, when other chip dataSets are simultaneously set to "running" and they get mixed up with the diagnostics
+        # TODO: find a more robust way of handling these (probably by setting scheduled scan-dates in the database)
+        sql_command_sampleCollect  +=   """ AND epic_sentrix IS  NOT NULL """
+    sql_command_sampleCollect  +=   """ ORDER BY d_extraction_id; """
+
+    # set_trace()
+    # ^ this is where we check to see what samples are getting caught up in the "running" criteria
+    sample_table =  pd.read_sql( sql = sql_command_sampleCollect,
+                                 con = engine_DB )
+				 
+engine_DB.dispose()
+
+				 
+				 

@@ -96,6 +96,8 @@ Mon 25 Jan 2021 10:56:52 CET (date stamp inserted with :r !date )
     * [[sql/sqLite_Essential_LinkedIn|sqlIntro]] -- some notes may be specific to SQLite; from linkedIn Learning coarse
     * [[sql/postgres|postgres]] --  INTERACTIVE interactive SESSIONS with psql; Notes specific to postgres; restore, backup,  connect.
 
+    * [[sql/programming_interface|program_interface]] -- interface with sql db from R or python using dbDriver/ sqlAlchemy / psycopg2
+
     = c++ =
          * [[c++/vectors|vectors]] -- cheat sheet for vectors in c++
          * [[c++/classes|classes]] -- define/derive classes, syntax
