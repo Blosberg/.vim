@@ -1,8 +1,9 @@
+== create new user ==
 
-
-$ sudo useradd -m bosberg --group sudo
+$ sudo useradd -m --group  neuropath   lab
 # The "-m" creates a home directory
-# The --group sudo extends sudo rights to this new user
+# The --group sets the primary group
+# (e.g. sudo extends sudo rights to this new user )
 
 # Now set the password:
 $ sudo passwd bosberg
@@ -14,8 +15,10 @@ passwd: password updated successfully
 
 == groups ==
 
-# list groups on a machine
-$ groups
+# list groups on a machine that a user is a member of
+# the first group is the primary group.
+$ groups [user]
+# ^ if no user is provided, by default, it's the user running the command
 
 # Create a new group
 $ sudo groupadd  bioinfo

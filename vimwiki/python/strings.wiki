@@ -19,6 +19,11 @@
 >>> str_2
 'Python is c-l!'
 
+.strip(): Removes leading and trailing characters (whitespace by default).
+.lstrip(): Removes leading characters (whitespace by default) from the left side of the string.
+.rstrip(): Removes trailing characters (whitespace by default) from the right side of the string.
+
+
  = Startswith endswith: =
 >>> print(astring.startswith("Hello"))
 True

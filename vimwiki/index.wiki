@@ -216,7 +216,7 @@ interact
          - [[python/import_exec|import_exec]]: sourcing, importing, etc.
          - [[python/numpy|numpy]]
          - [[python/random|random]]
-         - [[python/pandas|pandas]] -- tidy rearrange melt --regression on columns
+         - [[python/pandas|pandas]] -- tidy rearrange melt --regression on columns, count entries
 	 == visualizaiont, plotting: pca, matplotlib ==
          - [[python/PCA|PCA]] : principle components in python pca
          - [[python/matplotlib|matplotlib]] : plot examples: beeswarm, 3d, histogram, Dendrogram (hierarchical clustering), heatmap, Venn
@@ -400,7 +400,7 @@ $ dconf reset -f /org/compiz/
     * [[BioInfo/ranges_exons|ranges_exons]] -- download ranges like exons/introns/etc. from ucsc
     * [[BioInfo/EnsemblIDs|EnsemblIDs]]
     * [[BioInfo/gtf|gtf_files]] -- convert gtf files to bed
-    * [[BioInfo/bedtools|bedtools]] -- bedfile column definitions; smap and manipulate bedfiles onto each other; make windows 
+    * [[BioInfo/bedtools|bedtools]] -- bedfile column definitions; smap and manipulate bedfiles onto each other; make windows
     * [[BioInfo/metilene|metilene]]
     * http://rosalind.info/problems/locations/
     * [[BioInfo/Datasets|Datasets]]

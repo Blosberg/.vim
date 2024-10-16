@@ -21,9 +21,35 @@ ModeB <- function( x ){
 }
 ModeCov=apply( Cov2, 2, ModeB )
 
+
+
+lapply will also insert a list into the first place where it can 
+> testfunc <- function( a, b, c){
+  result = paste0( "a=", as.character(a),
+                   ", b=", as.character(b),
+                   ", c=", as.character(c) )
+  return(result)
+}
+> xarray=c(10,20)
+> lapply( xarray, testfunc, a=1, c=3 )
+[[1]]
+[1] "a=1, b=10, c=3"
+
+[[2]]
+[1] "a=1, b=20, c=3"
+
 =lapply -- lists =
 
 lapply( list, function(x)  [some operation on x as x goes through each member of the list](x) )
 # returns a list
 
 # sapply returns a vector
+
+
+= convert to matrix/dataframe with dplyer =
+library(dplyr)
+lapply(my_vector, my_function) %>% bind_rows()
+
+
+
+see: https://stackoverflow.com/questions/28657690/how-to-combine-result-of-lapply-to-a-data-frame
